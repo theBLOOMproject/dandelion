@@ -199,8 +199,7 @@ export function Home() {
       <Ticker />
       <div className="page">
         <section>
-          <div className="label">About this campaign</div>
-          <p className="lede">
+          <p className="lede lede-xl">
             {campaign.about}…{' '}
             <Link to="/about" viewTransition className="link-green">Read more</Link>
           </p>

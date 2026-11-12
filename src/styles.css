@@ -137,6 +137,7 @@ input, textarea { font: inherit; color: inherit; }
 .h2 { font-size: 34px; line-height: 1.15; margin: 48px 0 20px; }
 .h3 { font-size: 22px; line-height: 1.25; }
 .lede { font-size: 19px; line-height: 1.38; max-width: 940px; }
+.lede-xl { font-size: 28px; line-height: 1.4; max-width: 980px; padding: 16px 0 8px; }
 .lede-lg { font-size: 22px; line-height: 1.65; max-width: 900px; }
 .body { font-size: 19px; line-height: 1.58; margin-bottom: 14px; max-width: 940px; }
 .link-green { color: var(--green-dark); }
@@ -314,6 +315,7 @@ input, textarea { font: inherit; color: inherit; }
 .header-top { display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-bottom: auto; padding-bottom: 20px; }
 .header-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; padding-right: 18px; }
 .header-bottom { margin-top: 28px; }
+.hero-big .header-bottom .btn { height: 64px; padding: 0 40px; font-size: 22px; min-width: 300px; }
 .eyebrow { font-size: 17px; font-weight: 500; text-transform: uppercase; margin-bottom: 4px; }
 .header h1 { font-size: 48px; line-height: 1.12; letter-spacing: -0.005em; }
 .header h1.small { font-size: 36px; line-height: 1.15; max-width: 640px; }
@@ -849,7 +851,7 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
   .header-photo img { right: 50%; transform: translateX(50%); min-width: 100%; }
   .header-credit { left: 20px; top: 16px; }
   .header-bottom { margin-top: 24px; }
-  .header-bottom .btn { width: 100%; }
+  .hero-big .header-bottom .btn, .header-bottom .btn { width: 100%; height: 52px; padding: 0 22px; font-size: 17px; min-width: 0; }
   .header { padding: 16px 16px 22px 20px; }
   .header-row { padding-right: 0; }
   .header-top { padding-bottom: 16px; }
@@ -868,6 +870,7 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
 
   .page { padding: 24px 16px 72px; }
   .lede, .body, .muted-r { font-size: 17px; }
+  .lede-xl { font-size: 19px; padding: 4px 0 0; }
   .lede-lg { font-size: 18px; }
   .h2 { font-size: 26px; margin: 36px 0 16px; }
   .h3 { font-size: 19px; }
