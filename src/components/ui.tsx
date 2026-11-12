@@ -80,7 +80,7 @@ function Header({ eyebrow, title, stats, top, bottom, small, keepStatsMobile, ph
           <h1 className={small ? 'small' : ''}>{title}</h1>
         </div>
         {stats && (
-          <div className="stats" style={vt ? { viewTransitionName: 'hero-stats' } : undefined}>
+          <div className="stats">
             {stats.map((s) => (
               <div className="stat" key={s.label}>
                 <b>{formatStat(s.value)}</b>

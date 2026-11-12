@@ -158,7 +158,6 @@ input, textarea { font: inherit; color: inherit; }
   top: 0;
   height: 100vh;
   overflow-y: auto;
-  view-transition-name: sidebar;
   scrollbar-width: none;
 }
 .side-label {
@@ -228,7 +227,6 @@ input, textarea { font: inherit; color: inherit; }
   align-items: center;
   gap: 20px;
   padding-right: 22px;
-  view-transition-name: topbar;
   background: #fff;
   transition: box-shadow 0.2s;
 }
@@ -304,7 +302,7 @@ input, textarea { font: inherit; color: inherit; }
 .header-fade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, var(--hero-c) 12%, transparent 55%); }
 .header-credit { position: absolute !important; left: 34px; top: 22px; font-size: 11px; opacity: 0.55; letter-spacing: 0.02em; }
 .header-credit:hover { opacity: 0.9; text-decoration: underline; }
-.hero { view-transition-name: hero; margin: 0 -1px; }
+.hero { margin: 0 -1px; }
 /* Home only: big hero, ~3/4 of the viewport on desktop. */
 .hero-big {
   min-height: calc(75vh - var(--topbar-h));
@@ -771,42 +769,34 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 .scrim { display: none; }
 
-/* ---------- view transitions ---------- */
-/* Page content: quick light fade. Hero box & stats stay put; only the title fades up. */
-::view-transition-group(*) { animation-duration: 0.3s; animation-timing-function: var(--ease-out); }
-::view-transition-old(root) { animation: vt-out 0.1s ease both; }
-::view-transition-new(root) { animation: vt-in 0.2s ease both; }
-/* Top bar stays put and swaps instantly. */
-::view-transition-group(topbar), ::view-transition-old(topbar), ::view-transition-new(topbar) { animation: none; }
+/* ---------- view transitions ----------
+   Kept deliberately simple: nothing morphs size/position, and every snapshot pair
+   has a real crossfade (never 'animation: none' on a pair — that double-paints and flashes). */
+::view-transition-group(*) { animation: none; }
 
-/* The hero box never moves or resizes between pages — it just crossfades in place. */
-::view-transition-group(hero) { animation: none; }
-::view-transition-old(hero), ::view-transition-new(hero) { height: 100%; animation-duration: 0.2s; }
-/* Hero <-> subpage: the back card shrinks slightly in place (or grows back). */
-::view-transition-group(peek) { animation: none; }
-::view-transition-new(peek):only-child { animation: vt-peek-in 0.38s var(--ease-out) both; }
-::view-transition-old(peek):only-child { animation: vt-out 0.2s ease both; }
-::view-transition-new(hero):only-child { animation: vt-hero-back 0.3s var(--ease-out) both; }
-::view-transition-old(hero):only-child { animation: vt-out 0.25s ease both; }
+/* Whole page: one even crossfade. */
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.2s; animation-timing-function: ease; }
 
-::view-transition-group(hero-text), ::view-transition-group(hero-stats) { animation: none; }
+/* Header title: old one disappears quickly; new one waits, then fades up. */
 ::view-transition-old(hero-text), ::view-transition-new(hero-text) { top: auto; bottom: 0; left: 0; width: auto; height: auto; }
-::view-transition-old(hero-stats), ::view-transition-new(hero-stats) { top: auto; bottom: 0; left: auto; right: 0; width: auto; height: auto; animation: none; }
-::view-transition-old(hero-text) { animation: vt-out 0.1s ease both; }
+/* The outgoing title is drawn at the *new* title's position (which differs on the big home hero),
+   so hide it immediately rather than letting it fade in the wrong place. */
+::view-transition-old(hero-text) { animation: none; opacity: 0; }
 ::view-transition-new(hero-text) { animation: vt-in 0.4s 0.2s var(--ease-out) both; }
-::view-transition-old(hero-stats):only-child { animation: vt-out 0.1s ease both; }
-::view-transition-new(hero-stats):only-child { animation: vt-in 0.2s ease both; }
 
-/* Subpages slide up over the hero, which shrinks slightly behind them. */
+/* Subpages: the card slides up (and back down); the strip behind shrinks in slightly. */
 ::view-transition-new(sheet):only-child { animation: vt-sheet-in 0.38s var(--ease-out) both; }
 ::view-transition-old(sheet):only-child { animation: vt-sheet-out 0.22s ease-in both; }
+::view-transition-new(peek):only-child { animation: vt-peek-in 0.38s var(--ease-out) both; }
+::view-transition-old(peek):only-child { animation: vt-out 0.2s ease both; }
+/* Subpage -> subpage (e.g. event -> new event): plain crossfade. */
+::view-transition-old(sheet), ::view-transition-new(sheet), ::view-transition-old(peek), ::view-transition-new(peek) { animation-duration: 0.2s; }
 
 @keyframes vt-out { to { opacity: 0; } }
 @keyframes vt-in { from { opacity: 0; transform: translateY(6px); } }
 @keyframes vt-sheet-in { from { transform: translateY(100vh); } }
-@keyframes vt-peek-in { from { transform: scaleX(1.025); opacity: 1; } }
-@keyframes vt-hero-back { from { transform: scaleX(0.975); } }
 @keyframes vt-sheet-out { to { transform: translateY(100vh); } }
+@keyframes vt-peek-in { from { transform: scaleX(1.025); } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after, ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) {
@@ -849,7 +839,6 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
     transform: translateX(-100%);
     transition: transform 0.35s var(--ease-out);
     box-shadow: 0 0 40px rgba(13, 20, 82, 0.2);
-    view-transition-name: none;
   }
   .sidebar.open { transform: none; }
   .scrim {
