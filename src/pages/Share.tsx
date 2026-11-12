@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, useNavigate } from 'react-router';
-import { C, isLight, questions } from '../data';
+import { C, identityQuestions, isLight, questions } from '../data';
 import { useApp, type Vote } from '../state';
 import { Avatar, Sheet } from '../components/ui';
 import { VOTES, VoteIcon } from './Question';
+import { Icon } from '../components/icons';
 
 const REQUIRED_VOTES = 5;
 
@@ -20,17 +22,99 @@ function buildStatements() {
   return out;
 }
 
-type Phase = { kind: 'open'; index: number } | { kind: 'vote' } | { kind: 'done' };
+type Phase = { kind: 'about' } | { kind: 'open'; index: number } | { kind: 'vote' } | { kind: 'done' };
+
+function Check() {
+  return (
+    <svg viewBox="0 0 12 12" aria-hidden>
+      <path d="M2.5 6.2l2.3 2.3 4.7-5" />
+    </svg>
+  );
+}
+
+/** Demographic questions the host selected. All visible at once; each optional; options open in an overlay. */
+function AboutYou({ onNext }: { onNext(): void }) {
+  const { identityOn, demographics, setDemographic } = useApp();
+  const qs = identityQuestions.filter((q) => identityOn.includes(q.id));
+  const [open, setOpen] = useState<string | null>(null);
+  const q = qs.find((x) => x.id === open);
+
+  useEffect(() => {
+    if (!open) return;
+    const h = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(null);
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
+  }, [open]);
+
+  const pick = (value: string | null) => {
+    if (q) setDemographic(q.id, value);
+    setOpen(null);
+  };
+
+  return (
+    <section className="share-step">
+      <div className="share-eyebrow">About you</div>
+      <h1 className="share-q">Tell us a little about yourself.</h1>
+      <p className="share-note">Share only what you’re comfortable with. It helps hosts see whose voices are being heard.</p>
+      <div className="demo-list">
+        {qs.map((x) => {
+          const a = demographics[x.id];
+          return (
+            <button key={x.id} className={`demo-row ${a ? 'on' : ''}`} onClick={() => setOpen(x.id)}>
+              <Icon name={x.icon ?? 'person'} size={24} />
+              <span className="demo-text">
+                <b>{x.title}</b>
+                <small>{a ?? 'Tap to answer'}</small>
+              </span>
+              {a && <span className="demo-check"><Check /></span>}
+            </button>
+          );
+        })}
+      </div>
+      <div className="share-actions">
+        <button className="btn btn-share" onClick={onNext}>Continue</button>
+      </div>
+
+      {q &&
+        createPortal(
+          <div className="modal-scrim demo-scrim" onClick={() => setOpen(null)}>
+            <div className="modal demo-modal" role="dialog" aria-label={q.title} onClick={(e) => e.stopPropagation()}>
+              <div className="demo-modal-head">
+                <Icon name={q.icon ?? 'person'} size={24} />
+                <h2>{q.title}</h2>
+                <button className="demo-close" onClick={() => setOpen(null)} aria-label="Close">
+                  <svg viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8" /></svg>
+                </button>
+              </div>
+              <div className="demo-options">
+                {q.options.map((o) => (
+                  <button key={o} className={`demo-opt ${demographics[q.id] === o ? 'on' : ''}`} onClick={() => pick(o)}>
+                    {o}
+                    {demographics[q.id] === o && <Check />}
+                  </button>
+                ))}
+              </div>
+              {demographics[q.id] && (
+                <button className="demo-clear" onClick={() => pick(null)}>Clear my answer</button>
+              )}
+            </div>
+          </div>,
+          document.body,
+        )}
+    </section>
+  );
+}
 
 /**
  * Full-screen "Share your thoughts" flow in the theme color:
  * three open questions (each skippable), then react to statements (at least 5).
  */
 export function Share() {
-  const { heroColor, completeTask, showToast } = useApp();
+  const { heroColor, completeTask, showToast, identityOn } = useApp();
+  const hasAbout = identityOn.length > 0;
   const nav = useNavigate();
   const statements = useMemo(buildStatements, []);
-  const [phase, setPhase] = useState<Phase>({ kind: 'open', index: 0 });
+  const [phase, setPhase] = useState<Phase>(hasAbout ? { kind: 'about' } : { kind: 'open', index: 0 });
   const [answers, setAnswers] = useState<string[]>(['', '', '']);
   const [votes, setVotes] = useState<Vote[]>([]);
 
@@ -40,7 +124,8 @@ export function Share() {
   };
 
   useEffect(() => {
-    const h = (e: KeyboardEvent) => e.key === 'Escape' && close();
+    // Escape closes the flow, unless an option overlay is open (it handles its own Escape).
+    const h = (e: KeyboardEvent) => e.key === 'Escape' && !document.querySelector('.demo-modal') && close();
     window.addEventListener('keydown', h);
     return () => window.removeEventListener('keydown', h);
   });
@@ -50,10 +135,17 @@ export function Share() {
   const answered = answers.filter((a) => a.trim()).length;
   const canFinish = votes.length >= REQUIRED_VOTES;
 
-  // Progress: 3 open steps + the required votes.
-  const totalSteps = openQs.length + REQUIRED_VOTES;
+  // Progress: about-you (if any) + 3 open steps + the required votes.
+  const pre = hasAbout ? 1 : 0;
+  const totalSteps = pre + openQs.length + REQUIRED_VOTES;
   const doneSteps =
-    phase.kind === 'open' ? phase.index : phase.kind === 'vote' ? openQs.length + Math.min(votes.length, REQUIRED_VOTES) : totalSteps;
+    phase.kind === 'about'
+      ? 0
+      : phase.kind === 'open'
+        ? pre + phase.index
+        : phase.kind === 'vote'
+          ? pre + openQs.length + Math.min(votes.length, REQUIRED_VOTES)
+          : totalSteps;
 
   const nextOpen = () => {
     if (phase.kind !== 'open') return;
@@ -87,6 +179,8 @@ export function Share() {
       </div>
 
       <div className="share-body">
+        {phase.kind === 'about' && <AboutYou onNext={() => setPhase({ kind: 'open', index: 0 })} />}
+
         {phase.kind === 'open' && (
           <section className="share-step" key={`open-${phase.index}`}>
             <div className="share-eyebrow">Question {phase.index + 1} of {openQs.length}</div>

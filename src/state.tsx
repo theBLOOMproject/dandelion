@@ -36,6 +36,12 @@ interface AppState {
   /** The task the home page last showed as active, so it can animate the advance on return. */
   seenTask: string | null;
   setSeenTask(id: string | null): void;
+  /** Identity questions the host has turned on (asked in the share flow). */
+  identityOn: string[];
+  toggleIdentity(id: string): void;
+  /** The participant's demographic answers, by identity question id. */
+  demographics: Record<string, string>;
+  setDemographic(id: string, value: string | null): void;
 }
 
 const Ctx = createContext<AppState | null>(null);
@@ -56,6 +62,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [toast, setToast] = useState<string | null>(null);
   const [doneTasks, setDoneTasks] = useState<Record<string, boolean>>({});
   const [seenTask, setSeenTask] = useState<string | null>(null);
+  const [identityOn, setIdentityOn] = useState<string[]>(['party', 'tech']);
+  const [demographics, setDemographics] = useState<Record<string, string>>({});
   const toastTimer = useRef<number | undefined>(undefined);
 
   const showToast = useCallback((msg: string) => {
@@ -101,6 +109,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
     completeTask: (id) => setDoneTasks((s) => ({ ...s, [id]: true })),
     seenTask,
     setSeenTask,
+    identityOn,
+    toggleIdentity: (id) => setIdentityOn((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id])),
+    demographics,
+    setDemographic: (id, value) =>
+      setDemographics((s) => {
+        const next = { ...s };
+        if (value) next[id] = value;
+        else delete next[id];
+        return next;
+      }),
   };
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

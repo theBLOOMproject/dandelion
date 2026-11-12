@@ -6,7 +6,7 @@ import { Avatar, Hero } from '../components/ui';
 import { Icon } from '../components/icons';
 
 export function Edit() {
-  const { heroColor, setHeroColor, setHeroPhoto, showToast } = useApp();
+  const { heroColor, setHeroColor, setHeroPhoto, showToast, identityOn, toggleIdentity } = useApp();
   const fileRef = useRef<HTMLInputElement>(null);
   const onPhoto = (e: ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
@@ -14,19 +14,12 @@ export function Edit() {
   };
   const { hash } = useLocation();
   const [desc, setDesc] = useState(campaign.about);
-  const [on, setOn] = useState<Set<string>>(new Set(['party', 'tech']));
   const [tab, setTab] = useState<'statements' | 'questions'>('questions');
 
   useEffect(() => {
     if (hash) document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, [hash]);
 
-  const toggle = (id: string) =>
-    setOn((s) => {
-      const n = new Set(s);
-      n.has(id) ? n.delete(id) : n.add(id);
-      return n;
-    });
 
   return (
     <>
@@ -60,7 +53,7 @@ export function Edit() {
         </div>
         <div className="grid2 tight">
           {identityQuestions.map((q) => (
-            <button key={q.id} className={`idq ${on.has(q.id) ? 'on' : ''}`} onClick={() => toggle(q.id)}>
+            <button key={q.id} className={`idq ${identityOn.includes(q.id) ? 'on' : ''}`} onClick={() => toggleIdentity(q.id)}>
               <Icon name={q.icon ?? 'person'} size={24} />
               <span>
                 <b>{q.title}</b>
