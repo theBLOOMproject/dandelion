@@ -1,6 +1,5 @@
 import { Link } from 'react-router';
 import { C, campaign, questions, type Question } from '../data';
-import { useApp } from '../state';
 import { Avatar, AvatarStack, Hero } from '../components/ui';
 
 function QuestionCard({ q, className = '' }: { q: Question; className?: string }) {
@@ -26,7 +25,6 @@ function Statement({ tone, text, by = '@wizard' }: { tone: string; text: string;
 
 /** Community Q&A: the explore grid of questions and statements. */
 export function Canvas() {
-  const { openComposer } = useApp();
   const [q1, q2, q3] = questions;
   return (
     <>
@@ -34,7 +32,7 @@ export function Canvas() {
       <div className="page">
         <div className="section-head">
           <h3 className="h3">Explore thoughts from {campaign.place} on this issue.</h3>
-          <button className="btn btn-lg btn-pink" onClick={() => openComposer('thought')}>Share your thoughts</button>
+          <Link to="/share" viewTransition className="btn btn-lg btn-pink">Share your thoughts</Link>
         </div>
         <div className="explore">
           <QuestionCard q={q1} className="span2" />

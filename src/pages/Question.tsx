@@ -4,13 +4,13 @@ import { C, questions } from '../data';
 import { useApp, type Vote } from '../state';
 import { Avatar, Sheet } from '../components/ui';
 
-const VOTES: { id: Vote; label: string }[] = [
+export const VOTES: { id: Vote; label: string }[] = [
   { id: 'agree', label: 'Agree' },
   { id: 'disagree', label: 'Disagree' },
   { id: 'unsure', label: 'Unsure' },
 ];
 
-function VoteIcon({ id }: { id: Vote }) {
+export function VoteIcon({ id }: { id: Vote }) {
   const d = {
     agree: 'M3.5 8.5l3 3 6-7',
     disagree: 'M4.5 4.5l7 7M11.5 4.5l-7 7',

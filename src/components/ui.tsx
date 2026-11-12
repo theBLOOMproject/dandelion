@@ -101,13 +101,16 @@ export function Hero({ big, ...props }: HeaderProps) {
 }
 
 /** A subpage card that slides up over the (slightly shrunk) page hero. */
-export function Sheet({ color, children, ...head }: HeaderProps & { color: string; children: ReactNode }) {
+export function Sheet({ color, children, ...head }: Partial<HeaderProps> & { color: string; children: ReactNode }) {
   const { heroColor } = useApp();
+  // Without a title the sheet has no header card: the whole panel takes the color instead.
+  const bare = !head.title;
+  const fg = isLight(color) ? C.navy : '#fff';
   return (
     <div className="sheet-wrap">
       <div className="sheet-peek" style={{ background: heroColor }} />
-      <div className="sheet">
-        <Header {...head} color={color} />
+      <div className={`sheet ${bare ? 'sheet-bare' : ''}`} style={bare ? { background: color, color: fg } : undefined}>
+        {!bare && <Header {...(head as HeaderProps)} color={color} />}
         <div className="sheet-body">{children}</div>
       </div>
     </div>

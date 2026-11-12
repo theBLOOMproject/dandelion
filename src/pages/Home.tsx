@@ -78,9 +78,9 @@ const TASKS: Task[] = [
     id: 'share',
     title: 'Share your thoughts.',
     sub: 'With neighbors who are thinking about this issue.',
-    cta: 'Go to Community Q&A',
+    cta: 'Start',
     doneTitle: 'Thoughts shared.',
-    to: '/canvas',
+    to: '/share',
     tone: 'orange',
   },
   {
@@ -141,7 +141,8 @@ function TaskRow() {
 
   const act = (t: Task) => {
     if (t.id === 'follow') return follow();
-    if (!isDone(t.id)) completeTask(t.id);
+    // Sharing only counts once the flow is finished; the others count on click.
+    if (!isDone(t.id) && t.id !== 'share') completeTask(t.id);
     if (t.to) nav(t.to, { viewTransition: true });
   };
 
@@ -192,7 +193,7 @@ export function Home() {
         photo
         keepStatsMobile
         bottom={
-          <Link to="/canvas" viewTransition className="btn btn-lg btn-pink">Share your thoughts</Link>
+          <Link to="/share" viewTransition className="btn btn-lg btn-pink">Share your thoughts</Link>
         }
       />
       <Ticker />

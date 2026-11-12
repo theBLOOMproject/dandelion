@@ -102,6 +102,7 @@ function YouMenu() {
 /** Subpages show their own name and a back button instead of the campaign title. */
 function subpageFor(pathname: string): { name: string; back: string } | null {
   if (pathname.startsWith('/edit')) return { name: 'Edit Campaign', back: '/' };
+  if (pathname === '/share') return { name: 'Share your thoughts', back: '/canvas' };
   if (pathname === '/events/new') return { name: 'New Event', back: '/events' };
   if (/^\/events\/./.test(pathname)) return { name: 'Event', back: '/events' };
   if (/^\/canvas\/./.test(pathname)) return { name: 'Question', back: '/canvas' };

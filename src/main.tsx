@@ -10,6 +10,7 @@ import { Question } from './pages/Question';
 import { EventDetail, Events, NewEvent } from './pages/Events';
 import { Library } from './pages/Library';
 import { Edit } from './pages/Edit';
+import { Share } from './pages/Share';
 import './styles.css';
 
 const router = createBrowserRouter([
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/about', element: <About /> },
+      { path: '/share', element: <Share /> },
       { path: '/canvas', element: <Canvas /> },
       { path: '/canvas/explore', element: <Navigate to="/canvas" replace /> },
       { path: '/canvas/:qid', element: <Question /> },
