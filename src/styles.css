@@ -348,7 +348,7 @@ input, textarea { font: inherit; color: inherit; }
 .page { padding: 30px var(--pad) 96px; }
 .page-prose { padding-top: 12px; }
 .section-head { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: 40px; }
-.section-head .h3 + a { display: inline-block; margin-top: 4px; }
+.section-head .h3 + a:not(.btn) { display: inline-block; margin-top: 4px; }
 
 .panel { border: 1px solid var(--line); border-radius: 16px; padding: 34px 28px 28px; margin-top: 40px; }
 .panel-title { font-size: 22px; margin: 0 0 22px 10px; }
