@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { C, campaign, insightQuotes, reportQuotes, ticker } from '../data';
 import { useApp } from '../state';
@@ -54,6 +55,121 @@ export function WhatYouCanDo() {
   );
 }
 
+type Task = {
+  id: string;
+  title: string;
+  sub: string;
+  cta: string;
+  doneTitle: string;
+  to?: string;
+  tone: 'lav' | 'orange' | 'green' | 'navy';
+};
+
+const TASKS: Task[] = [
+  {
+    id: 'follow',
+    title: 'Follow this campaign',
+    sub: 'Sign up with your email to receive updates, resources, and more.',
+    cta: 'Follow',
+    doneTitle: 'You’re following this campaign.',
+    tone: 'lav',
+  },
+  {
+    id: 'share',
+    title: 'Share your thoughts.',
+    sub: 'With neighbors who are thinking about this issue.',
+    cta: 'Go to Community Q&A',
+    doneTitle: 'Thoughts shared.',
+    to: '/canvas',
+    tone: 'orange',
+  },
+  {
+    id: 'read',
+    title: 'Read about it.',
+    sub: 'Materials compiled and reviewed by your hosts.',
+    cta: 'Open the Library',
+    doneTitle: 'Read up.',
+    to: '/library',
+    tone: 'green',
+  },
+  {
+    id: 'attend',
+    title: 'Attend an Event.',
+    sub: 'Meet neighbors who are thinking about this issue.',
+    cta: 'See events',
+    doneTitle: 'Event found.',
+    to: '/events',
+    tone: 'navy',
+  },
+];
+
+/**
+ * Horizontal row of tasks. The next undone task is wide and dark; the rest are light.
+ * Completing a task holds briefly, then the next one grows/darkens and scrolls into view.
+ */
+function TaskRow() {
+  const { following, follow, doneTasks, completeTask, seenTask, setSeenTask } = useApp();
+  const nav = useNavigate();
+  const rowRef = useRef<HTMLDivElement>(null);
+  const isDone = (id: string) => (id === 'follow' ? following : !!doneTasks[id]);
+  const active = TASKS.find((t) => !isDone(t.id))?.id ?? null;
+  // What we display as active lags behind the real one so the change is visible.
+  const [shown, setShown] = useState<string | null>(seenTask ?? active);
+
+  useEffect(() => {
+    if (shown === active) {
+      setSeenTask(active);
+      return;
+    }
+    const t = window.setTimeout(() => {
+      setShown(active);
+      setSeenTask(active);
+    }, 450);
+    return () => window.clearTimeout(t);
+  }, [active, shown, setSeenTask]);
+
+  // After the resize settles, bring the active card to the start of the row.
+  useEffect(() => {
+    const row = rowRef.current;
+    const card = row?.querySelector<HTMLElement>('.task.active');
+    if (!row || !card) return;
+    const t = window.setTimeout(() => {
+      row.scrollTo({ left: card.offsetLeft - row.offsetLeft - parseFloat(getComputedStyle(row).paddingLeft), behavior: 'smooth' });
+    }, 480);
+    return () => window.clearTimeout(t);
+  }, [shown]);
+
+  const act = (t: Task) => {
+    if (t.id === 'follow') return follow();
+    if (!isDone(t.id)) completeTask(t.id);
+    if (t.to) nav(t.to, { viewTransition: true });
+  };
+
+  return (
+    <div className="task-scroll" ref={rowRef}>
+      {TASKS.map((t) => {
+        const done = isDone(t.id);
+        const state = t.id === shown ? 'active' : done ? 'done' : 'todo';
+        return (
+          <button key={t.id} className={`tcard task ${state} tone-${t.tone}`} onClick={() => act(t)}>
+            <h4>{done ? t.doneTitle : t.title}</h4>
+            <p>{t.sub}</p>
+            <span className="task-cta">
+              {done ? (
+                <>
+                  <svg viewBox="0 0 12 12" aria-hidden><path d="M2.5 6.2l2.3 2.3 4.7-5" /></svg> Done
+                </>
+              ) : (
+                t.cta
+              )}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 function QuoteCard({ color, text, by, dot }: { color: string; text: string; by: string; dot: string }) {
   return (
     <Link to="/canvas" viewTransition className="tcard qcard" style={{ background: color }}>
@@ -68,7 +184,16 @@ function QuoteCard({ color, text, by, dot }: { color: string; text: string; by: 
 export function Home() {
   return (
     <>
-      <Hero eyebrow="Issue campaign" title={campaign.title} stats={campaign.stats} />
+      <Hero
+        eyebrow="Issue campaign"
+        title={campaign.title}
+        stats={campaign.stats}
+        big
+        keepStatsMobile
+        bottom={
+          <Link to="/canvas" viewTransition className="btn btn-lg btn-pink">Share your thoughts</Link>
+        }
+      />
       <Ticker />
       <div className="page">
         <section>
@@ -83,20 +208,7 @@ export function Home() {
 
         <section className="panel">
           <h3 className="panel-title">What you can do</h3>
-          <div className="cards3">
-            <Link to="/canvas" viewTransition className="tcard" style={{ background: C.orange }}>
-              <h4>Share your thoughts.</h4>
-              <p>With neighbors who are thinking about this issue.</p>
-            </Link>
-            <Link to="/library" viewTransition className="tcard" style={{ background: C.greenDark }}>
-              <h4>Read about it.</h4>
-              <p>Materials compiled and reviewed by your hosts.</p>
-            </Link>
-            <Link to="/events" viewTransition className="tcard" style={{ background: C.navy }}>
-              <h4>Attend an Event.</h4>
-              <p>Meet neighbors who are thinking about this issue.</p>
-            </Link>
-          </div>
+          <TaskRow />
         </section>
 
         <div className="label" style={{ marginTop: 48 }}>From the community</div>

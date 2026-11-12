@@ -43,14 +43,20 @@ type HeaderProps = {
   title: string;
   stats?: Stat[];
   top?: ReactNode;
+  /** Content pinned to the bottom of the header, under the title row. */
+  bottom?: ReactNode;
   small?: boolean;
+  /** Keep the stats visible on mobile (hidden by default). */
+  keepStatsMobile?: boolean;
+  /** Oversized hero (home page only). */
+  big?: boolean;
 };
 
 /** The colored header card. `vt` marks it as the persistent page hero for view transitions. */
-function Header({ eyebrow, title, stats, top, small, color, vt, className = '' }: HeaderProps & { color: string; vt?: boolean; className?: string }) {
+function Header({ eyebrow, title, stats, top, bottom, small, keepStatsMobile, color, vt, className = '' }: HeaderProps & { color: string; vt?: boolean; className?: string }) {
   const fg = isLight(color) ? C.navy : '#fff';
   return (
-    <div className={`header ${className}`} style={{ background: color, color: fg }}>
+    <div className={`header ${className} ${keepStatsMobile ? 'keep-stats' : ''}`} style={{ background: color, color: fg }}>
       {top && <div className="header-top">{top}</div>}
       <div className="header-row">
         <div className="header-text" style={vt ? { viewTransitionName: 'hero-text' } : undefined}>
@@ -68,13 +74,14 @@ function Header({ eyebrow, title, stats, top, small, color, vt, className = '' }
           </div>
         )}
       </div>
+      {bottom && <div className="header-bottom">{bottom}</div>}
     </div>
   );
 }
 
-export function Hero(props: HeaderProps) {
+export function Hero({ big, ...props }: HeaderProps) {
   const { heroColor } = useApp();
-  return <Header {...props} color={heroColor} vt className="hero" />;
+  return <Header {...props} color={heroColor} vt className={big ? 'hero hero-big' : 'hero'} />;
 }
 
 /** A subpage card that slides up over the (slightly shrunk) page hero. */

@@ -22,6 +22,11 @@ interface AppState {
   submitComposer(text: string): void;
   toast: string | null;
   showToast(msg: string): void;
+  doneTasks: Record<string, boolean>;
+  completeTask(id: string): void;
+  /** The task the home page last showed as active, so it can animate the advance on return. */
+  seenTask: string | null;
+  setSeenTask(id: string | null): void;
 }
 
 const Ctx = createContext<AppState | null>(null);
@@ -39,6 +44,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [lastThought, setLastThought] = useState<string | null>(null);
   const [composer, setComposer] = useState<ComposerKind | null>(null);
   const [toast, setToast] = useState<string | null>(null);
+  const [doneTasks, setDoneTasks] = useState<Record<string, boolean>>({});
+  const [seenTask, setSeenTask] = useState<string | null>(null);
   const toastTimer = useRef<number | undefined>(undefined);
 
   const showToast = useCallback((msg: string) => {
@@ -78,6 +85,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
     },
     toast,
     showToast,
+    doneTasks,
+    completeTask: (id) => setDoneTasks((s) => ({ ...s, [id]: true })),
+    seenTask,
+    setSeenTask,
   };
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
