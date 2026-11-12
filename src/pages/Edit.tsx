@@ -64,7 +64,7 @@ export function Edit() {
         </div>
 
         <div className="section-head" style={{ marginTop: 64 }} id="moderation">
-          <h3 className="h3">Canvas Moderation</h3>
+          <h3 className="h3">Q&amp;A Moderation</h3>
           <div className="tabs">
             <button className={tab === 'statements' ? 'on' : ''} onClick={() => setTab('statements')}>Statements</button>
             <button className={tab === 'questions' ? 'on' : ''} onClick={() => setTab('questions')}>Questions</button>

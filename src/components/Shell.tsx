@@ -10,7 +10,7 @@ type NavItem = { to: string; label: string; icon: IconName; end?: boolean };
 const mainNav: NavItem[] = [
   { to: '/', label: 'Home', icon: 'home', end: true },
   { to: '/about', label: 'About', icon: 'about' },
-  { to: '/canvas', label: 'Community Canvas', icon: 'canvas' },
+  { to: '/canvas', label: 'Community Q&A', icon: 'canvas' },
   { to: '/events', label: 'Events', icon: 'events' },
   { to: '/library', label: 'Library', icon: 'library' },
 ];
@@ -18,7 +18,7 @@ const mainNav: NavItem[] = [
 const editNav: NavItem[] = [
   { to: '/', label: 'Go Home', icon: 'home', end: true },
   { to: '/edit#basics', label: 'Basics & Description', icon: 'edit' },
-  { to: '/edit#moderation', label: 'Canvas Moderation', icon: 'shield' },
+  { to: '/edit#moderation', label: 'Q&A Moderation', icon: 'shield' },
   { to: '/events', label: 'Events', icon: 'events' },
   { to: '/library', label: 'Library', icon: 'library' },
 ];

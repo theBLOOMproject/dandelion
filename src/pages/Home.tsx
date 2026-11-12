@@ -19,7 +19,7 @@ function Ticker() {
   );
 }
 
-function WhatYouCanDo() {
+export function WhatYouCanDo() {
   const { following, follow, lastThought } = useApp();
   const nav = useNavigate();
   const steps = [
@@ -79,10 +79,10 @@ export function Home() {
           </p>
         </section>
 
-        <WhatYouCanDo />
+        {/* Hidden for now: <WhatYouCanDo /> */}
 
         <section className="panel">
-          <h3 className="panel-title">Your Tasks</h3>
+          <h3 className="panel-title">What you can do</h3>
           <div className="cards3">
             <Link to="/canvas" viewTransition className="tcard" style={{ background: C.orange }}>
               <h4>Share your thoughts.</h4>

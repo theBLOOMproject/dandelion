@@ -401,16 +401,16 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
 .span2 { grid-column: span 2; }
 .tall { grid-row: span 2; }
 .xq { padding: 30px 30px 22px; }
-.xq-title { font-size: 28px; line-height: 1.05; max-width: 520px; width: fit-content; }
-.tall .xq-title { font-size: 28px; }
+.tcard .xq-title { font-size: 28px; line-height: 1.12; max-width: 560px; width: fit-content; }
 .xq-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 22px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
 .xq-meta span { display: inline-flex; align-items: center; gap: 8px; }
 .xq-meta.stacked { flex-direction: column; align-items: flex-end; gap: 8px; }
-.you-line { display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 500; margin: -6px 0 14px -8px; }
 .quote { font-size: 19px; line-height: 1.37; }
 .statement { padding: 26px 24px 18px; }
 .statement .quote { flex: 1; }
 .statement.peach { background: var(--peach); color: var(--navy); box-shadow: inset 0 0 0 1px #f6cdb9; }
+.statement.mint { background: #e6f6ef; color: #0b5a42; box-shadow: inset 0 0 0 1px #c6eadb; }
+.statement .quote { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; line-clamp: 4; overflow: hidden; }
 .statement.lav { background: var(--lavender); color: var(--navy); }
 .statement.blush { background: #fff8fb; color: #6b1240; box-shadow: inset 0 0 0 1px #f4e3ec; }
 .statement .byline { color: #7d7fa0; }
@@ -768,7 +768,7 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
   .tcard { min-height: 0; padding: 22px; gap: 4px; }
   .tcard h4 { font-size: 19px; }
   .tcard p, .quote { font-size: 17px; }
-  .xq-title, .tall .xq-title { font-size: 22px; }
+  .tcard .xq-title { font-size: 22px; }
   .xq-meta { font-size: 11px; flex-wrap: wrap; gap: 8px; }
   .ocard { min-height: 0; padding: 22px; }
   .ocard h4 { font-size: 19px; }

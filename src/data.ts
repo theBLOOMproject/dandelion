@@ -21,7 +21,7 @@ export const campaign = {
   stats: [
     { value: 120, label: 'participants' },
     { value: 70, label: 'statements' },
-    { value: 3, label: 'events' },
+    { value: 2431, label: 'votes' },
   ],
 };
 

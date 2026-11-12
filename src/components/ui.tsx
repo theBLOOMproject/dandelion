@@ -33,6 +33,11 @@ export function AvatarStack({ colors = [C.orange, C.orangeLight, C.green] }: { c
 
 type Stat = { value: number; label: string };
 
+/** 999 → "999", 2431 → "2.4k" */
+export function formatStat(n: number) {
+  return n > 999 ? `${(n / 1000).toFixed(1)}k` : String(n);
+}
+
 type HeaderProps = {
   eyebrow?: string;
   title: string;
@@ -56,7 +61,7 @@ function Header({ eyebrow, title, stats, top, small, color, vt, className = '' }
           <div className="stats" style={vt ? { viewTransitionName: 'hero-stats' } : undefined}>
             {stats.map((s) => (
               <div className="stat" key={s.label}>
-                <b>{s.value}</b>
+                <b>{formatStat(s.value)}</b>
                 <span>{s.label}</span>
               </div>
             ))}
