@@ -50,13 +50,29 @@ type HeaderProps = {
   keepStatsMobile?: boolean;
   /** Oversized hero (home page only). */
   big?: boolean;
+  /** Show the campaign photo, tinted to the header color. */
+  photo?: boolean;
 };
 
 /** The colored header card. `vt` marks it as the persistent page hero for view transitions. */
-function Header({ eyebrow, title, stats, top, bottom, small, keepStatsMobile, color, vt, className = '' }: HeaderProps & { color: string; vt?: boolean; className?: string }) {
+function Header({ eyebrow, title, stats, top, bottom, small, keepStatsMobile, photo, color, vt, className = '' }: HeaderProps & { color: string; vt?: boolean; className?: string }) {
+  const { heroPhoto } = useApp();
   const fg = isLight(color) ? C.navy : '#fff';
+  const shot = photo ? heroPhoto : null;
   return (
-    <div className={`header ${className} ${keepStatsMobile ? 'keep-stats' : ''}`} style={{ background: color, color: fg }}>
+    <div className={`header ${className} ${keepStatsMobile ? 'keep-stats' : ''}`} style={{ background: color, color: fg, ['--hero-c' as string]: color }}>
+      {shot && (
+        <>
+          {/* Any photo works: it's desaturated and blended by luminosity, so the header color supplies the hue. */}
+          <div className="header-photo" aria-hidden>
+            <img src={shot.src} alt="" />
+          </div>
+          <div className="header-fade" aria-hidden />
+          {shot.credit && (
+            <a className="header-credit" href={shot.creditUrl} target="_blank" rel="noreferrer">{shot.credit}</a>
+          )}
+        </>
+      )}
       {top && <div className="header-top">{top}</div>}
       <div className="header-row">
         <div className="header-text" style={vt ? { viewTransitionName: 'hero-text' } : undefined}>

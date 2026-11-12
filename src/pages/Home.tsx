@@ -189,6 +189,7 @@ export function Home() {
         title={campaign.title}
         stats={campaign.stats}
         big
+        photo
         keepStatsMobile
         bottom={
           <Link to="/canvas" viewTransition className="btn btn-lg btn-pink">Share your thoughts</Link>

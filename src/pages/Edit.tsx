@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState, type ChangeEvent } from 'react';
 import { useLocation } from 'react-router';
 import { C, campaign, heroSwatches, identityQuestions, questions, ticker } from '../data';
 import { useApp } from '../state';
@@ -6,7 +6,12 @@ import { Avatar, Hero } from '../components/ui';
 import { Icon } from '../components/icons';
 
 export function Edit() {
-  const { heroColor, setHeroColor, showToast } = useApp();
+  const { heroColor, setHeroColor, setHeroPhoto, showToast } = useApp();
+  const fileRef = useRef<HTMLInputElement>(null);
+  const onPhoto = (e: ChangeEvent<HTMLInputElement>) => {
+    const f = e.target.files?.[0];
+    if (f) setHeroPhoto({ src: URL.createObjectURL(f) });
+  };
   const { hash } = useLocation();
   const [desc, setDesc] = useState(campaign.about);
   const [on, setOn] = useState<Set<string>>(new Set(['party', 'tech']));
@@ -26,11 +31,13 @@ export function Edit() {
   return (
     <>
       <Hero
+        photo
         title={campaign.title}
         stats={campaign.stats}
         top={
           <div className="swatches">
-              <button className="btn btn-sm btn-dark" onClick={() => showToast('Photo upload coming soon.')}>Change Photo</button>
+              <button className="btn btn-sm btn-dark" onClick={() => fileRef.current?.click()}>Change Photo</button>
+              <input ref={fileRef} type="file" accept="image/*" hidden onChange={onPhoto} />
               {heroSwatches.map((c) => (
                 <button
                   key={c}

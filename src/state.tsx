@@ -3,6 +3,13 @@ import { C } from './data';
 
 export type Vote = 'agree' | 'disagree' | 'unsure';
 export type ComposerKind = 'thought' | 'resource';
+export type HeroPhoto = { src: string; credit?: string; creditUrl?: string };
+
+const defaultPhoto: HeroPhoto = {
+  src: '/images/tribune-tower.jpg',
+  credit: 'Photo: Eugene Zelenko, CC BY-SA 4.0',
+  creditUrl: 'https://commons.wikimedia.org/wiki/File:USA-Oakland-Tribune_Building_and_Tower-8.jpg',
+};
 
 interface AppState {
   following: boolean;
@@ -10,6 +17,8 @@ interface AppState {
   toggleFollowing(): void;
   heroColor: string;
   setHeroColor(c: string): void;
+  heroPhoto: HeroPhoto | null;
+  setHeroPhoto(p: HeroPhoto | null): void;
   votes: Record<string, Vote[]>;
   vote(qid: string, v: Vote): void;
   resetVotes(qid: string): void;
@@ -39,6 +48,7 @@ const toastFor: Record<ComposerKind, string> = {
 export function AppProvider({ children }: { children: ReactNode }) {
   const [following, setFollowing] = useState(false);
   const [heroColor, setHeroColor] = useState(C.navy);
+  const [heroPhoto, setHeroPhoto] = useState<HeroPhoto | null>(defaultPhoto);
   const [votes, setVotes] = useState<Record<string, Vote[]>>({});
   const [rsvps, setRsvps] = useState<Record<string, boolean>>({});
   const [lastThought, setLastThought] = useState<string | null>(null);
@@ -65,6 +75,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     toggleFollowing: () => setFollow(!following),
     heroColor,
     setHeroColor,
+    heroPhoto,
+    setHeroPhoto,
     votes,
     vote: (qid, v) => setVotes((s) => ({ ...s, [qid]: [...(s[qid] ?? []), v] })),
     resetVotes: (qid) => setVotes((s) => ({ ...s, [qid]: [] })),
