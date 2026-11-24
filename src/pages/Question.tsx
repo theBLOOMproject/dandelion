@@ -26,7 +26,14 @@ export function VoteIcon({ id }: { id: Vote }) {
 export function Question() {
   const { qid } = useParams();
   const q = questions.find((x) => x.id === qid) ?? questions[0];
-  const { votes, vote, resetVotes, showToast } = useApp();
+  const { votes, vote, resetVotes, showToast, requireAuth, userColor, account } = useApp();
+  const join = (onDone: () => void) =>
+    requireAuth({
+      fields: ['email', 'zip'],
+      title: 'Join the conversation',
+      sub: 'Create an account to share and vote alongside your neighbors.',
+      onDone,
+    });
   const mine = votes[q.id] ?? [];
   const n = mine.length;
   const done = n >= q.answers.length;
@@ -72,8 +79,18 @@ export function Question() {
       </div>
 
       <form className="compose-inline" onSubmit={submit}>
-        <Avatar color={C.orange} size={36} />
-        <input placeholder="Share a standalone response…" value={draft} onChange={(e) => setDraft(e.target.value)} />
+        <Avatar color={userColor} size={36} />
+        <input
+          placeholder="Share a standalone response…"
+          value={draft}
+          onChange={(e) => setDraft(e.target.value)}
+          onFocus={(e) => {
+            if (account?.zip) return;
+            const input = e.currentTarget;
+            input.blur();
+            join(() => window.setTimeout(() => input.focus(), 50));
+          }}
+        />
         {draft && <button className="btn btn-sm btn-navy">Share</button>}
       </form>
 
@@ -99,7 +116,7 @@ export function Question() {
                     {state === 'active' && (
                       <div className="vote-row">
                         {VOTES.map((x) => (
-                          <button key={x.id} className={`vote vote-${x.id}`} onClick={() => vote(q.id, x.id)}>
+                          <button key={x.id} className={`vote vote-${x.id}`} onClick={() => join(() => vote(q.id, x.id))}>
                             <VoteIcon id={x.id} />
                             {x.label}
                           </button>

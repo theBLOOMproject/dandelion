@@ -966,3 +966,31 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
   .modal textarea { font-size: 19px; }
   @keyframes sheet-up { from { transform: translateY(100%); } }
 }
+
+/* ---------- sign in / create account ---------- */
+.auth-modal { position: relative; width: min(440px, 100%); padding: 40px 36px 28px; color: var(--navy); text-align: center; }
+.auth-close { position: absolute; top: 16px; right: 16px; }
+.auth-avatar { display: flex; justify-content: center; margin-bottom: 22px; }
+.auth-avatar-btn { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.auth-avatar-btn .avatar { box-shadow: 0 0 0 6px #fff, 0 0 0 8px var(--line); transition: background-color 0.3s, transform 0.15s; }
+.auth-avatar-btn:hover .avatar { transform: scale(1.04); }
+.auth-avatar-btn:active .avatar { transform: scale(0.96); }
+.auth-avatar-hint { font-size: 13px; color: var(--muted); }
+.auth-title { font-size: 28px; line-height: 1.15; }
+.auth-sub { font-size: 17px; line-height: 1.4; color: #6b6f99; margin: 8px auto 0; max-width: 340px; }
+.auth-fields { display: flex; flex-direction: column; gap: 12px; margin-top: 26px; text-align: left; }
+.auth-field { display: block; padding: 10px 18px 12px; border-radius: 14px; border: 1.5px solid var(--line); cursor: text; transition: border-color 0.2s, box-shadow 0.2s; }
+.auth-field:focus-within { border-color: #cfd3f5; box-shadow: 0 0 0 4px var(--lavender); }
+.auth-field span { display: block; font-size: 13px; color: var(--muted); }
+.auth-field input { width: 100%; border: 0; outline: 0; background: transparent; font-size: 19px; font-weight: 500; padding: 2px 0 0; }
+.auth-field input::placeholder { color: #c3c6e0; }
+.auth-submit { width: 100%; height: 54px; margin-top: 20px; font-size: 18px; }
+.auth-switch { margin-top: 16px; font-size: 15px; color: #6b6f99; }
+
+@media (max-width: 860px) {
+  .auth-modal { width: 100%; padding: 32px 20px calc(24px + env(safe-area-inset-bottom)); }
+  .auth-avatar .avatar { width: 84px !important; height: 84px !important; }
+  .auth-title { font-size: 24px; }
+  .auth-sub { font-size: 16px; }
+}
+.auth-switch .text-btn { margin: 0; }

@@ -110,7 +110,7 @@ function AboutYou({ onNext }: { onNext(): void }) {
  * three open questions (each skippable), then react to statements (at least 5).
  */
 export function Share() {
-  const { heroColor, completeTask, showToast, identityOn } = useApp();
+  const { heroColor, completeTask, showToast, identityOn, requireAuth } = useApp();
   const hasAbout = identityOn.length > 0;
   const nav = useNavigate();
   const statements = useMemo(buildStatements, []);
@@ -125,7 +125,7 @@ export function Share() {
 
   useEffect(() => {
     // Escape closes the flow, unless an option overlay is open (it handles its own Escape).
-    const h = (e: KeyboardEvent) => e.key === 'Escape' && !document.querySelector('.demo-modal') && close();
+    const h = (e: KeyboardEvent) => e.key === 'Escape' && !document.querySelector('.demo-modal, .auth-modal') && close();
     window.addEventListener('keydown', h);
     return () => window.removeEventListener('keydown', h);
   });
@@ -147,6 +147,9 @@ export function Share() {
           ? pre + openQs.length + Math.min(votes.length, REQUIRED_VOTES)
           : totalSteps;
 
+  // Clamped: if every statement is used up and the sign-in is dismissed, stay on the last one.
+  const current = statements[Math.min(votes.length, statements.length - 1)];
+
   const nextOpen = () => {
     if (phase.kind !== 'open') return;
     if (phase.index < openQs.length - 1) setPhase({ kind: 'open', index: phase.index + 1 });
@@ -159,10 +162,18 @@ export function Share() {
     if (next.length >= statements.length) finish();
   };
 
-  const finish = () => {
-    completeTask('share');
-    setPhase({ kind: 'done' });
-  };
+  // Ask for email + zip before the responses count.
+  const finish = () =>
+    requireAuth({
+      fields: ['email', 'zip'],
+      title: 'Save your responses',
+      sub: 'Add your email and zip code so your thoughts count toward what Oakland is saying.',
+      cta: 'Finish',
+      onDone: () => {
+        completeTask('share');
+        setPhase({ kind: 'done' });
+      },
+    });
 
   const done = () => {
     showToast('Thanks — your thoughts were shared with neighbors.');
@@ -209,10 +220,10 @@ export function Share() {
                 ? `You’ve reacted to ${votes.length}. Keep going, or finish whenever.`
                 : `React to your neighbors · ${votes.length} of ${REQUIRED_VOTES}`}
             </div>
-            <div className="share-context">On “{statements[votes.length].question}”</div>
-            <h1 className="share-statement">“{statements[votes.length].text}”</h1>
+            <div className="share-context">On “{current.question}”</div>
+            <h1 className="share-statement">“{current.text}”</h1>
             <div className="share-author">
-              <Avatar color={statements[votes.length].color} size={22} /> {statements[votes.length].author}
+              <Avatar color={current.color} size={22} /> {current.author}
             </div>
             <div className="share-actions">
               {VOTES.map((v) => (

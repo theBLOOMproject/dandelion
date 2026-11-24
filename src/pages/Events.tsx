@@ -5,7 +5,7 @@ import { useApp } from '../state';
 import { Avatar, Dot, Hero, Sheet } from '../components/ui';
 
 export function Events() {
-  const { rsvps } = useApp();
+  const { rsvps, userColor } = useApp();
   return (
     <>
       <Hero title="Events" stats={[{ value: events.length, label: 'events' }]} />
@@ -25,7 +25,7 @@ export function Events() {
               <div className="ocard-foot">
                 <span className="avatar-row">
                   {e.attendees.map((a) => <Avatar key={a.name} color={a.color} size={20} />)}
-                  {rsvps[e.id] && <Avatar color={C.orange} size={20} />}
+                  {rsvps[e.id] && <Avatar color={userColor} size={20} />}
                 </span>
                 {rsvps[e.id] && <span className="tag">Going</span>}
               </div>
@@ -52,9 +52,9 @@ function InfoRow({ title, sub }: { title: string; sub?: string }) {
 export function EventDetail() {
   const { eid } = useParams();
   const e = events.find((x) => x.id === eid) ?? events[0];
-  const { rsvps, toggleRsvp } = useApp();
+  const { rsvps, toggleRsvp, userColor } = useApp();
   const going = !!rsvps[e.id];
-  const attendees = going ? [{ name: 'You', color: C.orange }, ...e.attendees] : e.attendees;
+  const attendees = going ? [{ name: 'You', color: userColor }, ...e.attendees] : e.attendees;
 
   return (
     <Sheet

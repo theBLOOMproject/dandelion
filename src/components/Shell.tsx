@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router';
-import { C, campaign, hosts } from '../data';
+import { campaign, hosts } from '../data';
 import { useApp, type ComposerKind } from '../state';
 import { Avatar, Toast } from './ui';
+import { AuthModal } from './AuthModal';
 import { Icon, type IconName } from './icons';
 
 type NavItem = { to: string; label: string; icon: IconName; end?: boolean };
@@ -69,6 +70,7 @@ function YouMenu() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const { pathname } = useLocation();
+  const { account, userColor, signOut } = useApp();
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
     if (!open) return;
@@ -79,20 +81,21 @@ function YouMenu() {
   return (
     <div className="you" ref={ref}>
       <button className="you-btn" onClick={() => setOpen((o) => !o)} aria-expanded={open}>
-        <Avatar color={C.orange} size={20} />
+        <Avatar color={userColor} size={20} />
         <span className="you-label">You</span>
       </button>
       {open && (
         <div className="menu">
           <div className="menu-head">
-            <Avatar color={C.orange} size={36} />
+            <Avatar color={userColor} size={36} />
             <div>
               <b>You</b>
-              <span>Oakland, CA</span>
+              <span>{account?.email ?? 'Oakland, CA'}</span>
             </div>
           </div>
           <Link to="/edit" viewTransition>Edit campaign <small>Host view</small></Link>
           <button onClick={() => setOpen(false)}>Settings</button>
+          {account && <button onClick={() => { signOut(); setOpen(false); }}>Sign out <small>Demo reset</small></button>}
         </div>
       )}
     </div>
@@ -171,7 +174,7 @@ const composerCopy: Record<ComposerKind, { title: string; sub: string; placehold
 };
 
 function Composer() {
-  const { composer, closeComposer, submitComposer } = useApp();
+  const { composer, closeComposer, submitComposer, userColor } = useApp();
   const [text, setText] = useState('');
   useEffect(() => {
     setText('');
@@ -195,7 +198,7 @@ function Composer() {
         </div>
         <div className="modal-body">
           <div className="modal-author">
-            <Avatar color={C.orange} size={24} /> <b>You</b>
+            <Avatar color={userColor} size={24} /> <b>You</b>
           </div>
           <textarea autoFocus rows={4} placeholder={c.placeholder} value={text} onChange={(e) => setText(e.target.value)} />
           <div className="modal-actions">
@@ -224,6 +227,7 @@ export function Shell() {
         </main>
       </div>
       <Composer />
+      <AuthModal />
       <Toast />
       <ScrollRestoration />
     </div>

@@ -3,6 +3,10 @@ import { C } from './data';
 
 export type Vote = 'agree' | 'disagree' | 'unsure';
 export type ComposerKind = 'thought' | 'resource';
+export type AuthField = 'email' | 'zip';
+export type Account = { email: string; zip?: string };
+/** What the sign-in modal should ask for, and what to do once it's done. */
+export type AuthRequest = { fields: AuthField[]; title: string; sub: string; cta?: string; onDone(): void };
 export type HeroPhoto = { src: string; credit?: string; creditUrl?: string };
 
 const defaultPhoto: HeroPhoto = {
@@ -12,6 +16,15 @@ const defaultPhoto: HeroPhoto = {
 };
 
 interface AppState {
+  account: Account | null;
+  userColor: string;
+  setUserColor(c: string): void;
+  auth: AuthRequest | null;
+  /** Run `onDone` now if the account already has these fields; otherwise ask for them first. */
+  requireAuth(req: AuthRequest): void;
+  completeAuth(data: Partial<Account>): void;
+  cancelAuth(): void;
+  signOut(): void;
   following: boolean;
   follow(): void;
   toggleFollowing(): void;
@@ -52,6 +65,9 @@ const toastFor: Record<ComposerKind, string> = {
 };
 
 export function AppProvider({ children }: { children: ReactNode }) {
+  const [account, setAccount] = useState<Account | null>(null);
+  const [userColor, setUserColor] = useState(C.orange);
+  const [auth, setAuth] = useState<AuthRequest | null>(null);
   const [following, setFollowing] = useState(false);
   const [heroColor, setHeroColor] = useState(C.navy);
   const [heroPhoto, setHeroPhoto] = useState<HeroPhoto | null>(defaultPhoto);
@@ -77,10 +93,41 @@ export function AppProvider({ children }: { children: ReactNode }) {
     showToast(next ? 'You’re following this campaign.' : 'You unfollowed this campaign.');
   };
 
+  const requireAuth = (req: AuthRequest) => {
+    const missing = req.fields.filter((f) => !account?.[f]);
+    if (account && missing.length === 0) req.onDone();
+    else setAuth({ ...req, fields: account ? missing : req.fields });
+  };
+
+  const followGated = () =>
+    requireAuth({
+      fields: ['email'],
+      title: 'Follow this campaign',
+      sub: 'Get updates when there’s news, a new question, or an event near you.',
+      cta: 'Follow',
+      onDone: () => setFollow(true),
+    });
+
   const value: AppState = {
+    account,
+    userColor,
+    setUserColor,
+    auth,
+    requireAuth,
+    completeAuth: (data) => {
+      const req = auth;
+      setAccount((a) => ({ ...a, ...data }) as Account);
+      setAuth(null);
+      req?.onDone();
+    },
+    cancelAuth: () => setAuth(null),
+    signOut: () => {
+      setAccount(null);
+      showToast('Signed out.');
+    },
     following,
-    follow: () => !following && setFollow(true),
-    toggleFollowing: () => setFollow(!following),
+    follow: () => !following && followGated(),
+    toggleFollowing: () => (following ? setFollow(false) : followGated()),
     heroColor,
     setHeroColor,
     heroPhoto,
@@ -90,9 +137,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
     resetVotes: (qid) => setVotes((s) => ({ ...s, [qid]: [] })),
     rsvps,
     toggleRsvp: (id) => {
-      const next = !rsvps[id];
-      setRsvps((s) => ({ ...s, [id]: next }));
-      showToast(next ? 'You’re registered. See you there!' : 'Registration removed.');
+      const set = (next: boolean) => {
+        setRsvps((s) => ({ ...s, [id]: next }));
+        showToast(next ? 'You’re registered. See you there!' : 'Registration removed.');
+      };
+      if (rsvps[id]) return set(false);
+      requireAuth({
+        fields: ['email'],
+        title: 'Register for this event',
+        sub: 'We’ll send you a confirmation and a reminder the day before.',
+        cta: 'Register',
+        onDone: () => set(true),
+      });
     },
     lastThought,
     composer,
