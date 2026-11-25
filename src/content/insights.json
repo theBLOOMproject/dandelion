@@ -1,0 +1,1774 @@
+{
+  "report": "central-oregon-ai",
+  "groups": [
+    "A",
+    "B",
+    "C"
+  ],
+  "insights": [
+    {
+      "id": "datacenters-1",
+      "claim": "Data center development needs thorough environmental review and reporting",
+      "direction": "agree",
+      "question": "datacenters",
+      "theme": "Data Centers & the Environment",
+      "statements": [
+        {
+          "id": 128,
+          "source": "poll",
+          "text": "Data center development requires fair, methodical, and unhurried environmental and community review. I would not want to live next to a 5000 acre data center campus that competes with humans and wildlife for water and raises my energy bill.",
+          "votes": {
+            "total": 53,
+            "agree": 50,
+            "disagree": 1,
+            "pass": 2,
+            "agreePct": 94,
+            "groups": {
+              "A": {
+                "total": 8,
+                "agree": 8,
+                "disagree": 0,
+                "pass": 0,
+                "agreePct": 100
+              },
+              "B": {
+                "total": 17,
+                "agree": 15,
+                "disagree": 1,
+                "pass": 1,
+                "agreePct": 88
+              },
+              "C": {
+                "total": 28,
+                "agree": 27,
+                "disagree": 0,
+                "pass": 1,
+                "agreePct": 96
+              }
+            }
+          }
+        },
+        {
+          "id": 0,
+          "source": "poll",
+          "text": "Oregon now requires large (especially new or expanding) data centers to report their water use. They should also have to report how much electricity they consume.",
+          "votes": {
+            "total": 235,
+            "agree": 223,
+            "disagree": 6,
+            "pass": 6,
+            "agreePct": 95,
+            "groups": {
+              "A": {
+                "total": 44,
+                "agree": 37,
+                "disagree": 3,
+                "pass": 4,
+                "agreePct": 84
+              },
+              "B": {
+                "total": 106,
+                "agree": 103,
+                "disagree": 1,
+                "pass": 2,
+                "agreePct": 97
+              },
+              "C": {
+                "total": 85,
+                "agree": 83,
+                "disagree": 2,
+                "pass": 0,
+                "agreePct": 98
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "datacenters-2",
+      "claim": "AI companies shouldn't get special treatment (though Optimists are less certain about the negative impacts)",
+      "direction": "agree",
+      "question": "datacenters",
+      "theme": "Data Centers & the Environment",
+      "statements": [
+        {
+          "id": 100,
+          "source": "poll",
+          "text": "Cities and counties should continue to give huge tax breaks and limit existing regulations so data centers can be built in their area.",
+          "votes": {
+            "total": 87,
+            "agree": 3,
+            "disagree": 82,
+            "pass": 2,
+            "agreePct": 3,
+            "groups": {
+              "A": {
+                "total": 15,
+                "agree": 1,
+                "disagree": 12,
+                "pass": 2,
+                "agreePct": 7
+              },
+              "B": {
+                "total": 23,
+                "agree": 0,
+                "disagree": 23,
+                "pass": 0,
+                "agreePct": 0
+              },
+              "C": {
+                "total": 49,
+                "agree": 2,
+                "disagree": 47,
+                "pass": 0,
+                "agreePct": 4
+              }
+            }
+          }
+        },
+        {
+          "id": 161,
+          "source": "poll",
+          "text": "The AI industry seems to be moving too fast towards an uncertain outcome. We should not be subsiding building data centers with tax breaks. The downsides are just not worth it: noise, pollution, higher water and electric bills.",
+          "votes": {
+            "total": 30,
+            "agree": 28,
+            "disagree": 1,
+            "pass": 1,
+            "agreePct": 93,
+            "groups": {
+              "A": {
+                "total": 1,
+                "agree": 0,
+                "disagree": 1,
+                "pass": 0,
+                "agreePct": 0
+              },
+              "B": {
+                "total": 14,
+                "agree": 13,
+                "disagree": 0,
+                "pass": 1,
+                "agreePct": 93
+              },
+              "C": {
+                "total": 15,
+                "agree": 15,
+                "disagree": 0,
+                "pass": 0,
+                "agreePct": 100
+              }
+            }
+          }
+        },
+        {
+          "id": 130,
+          "source": "poll",
+          "text": "AI companies should not receive “liability shields” from lawsuits that stem from negative environmental or health effects that arise from the construction and operation of data centers. They need to pay for negative side effects.",
+          "votes": {
+            "total": 56,
+            "agree": 51,
+            "disagree": 2,
+            "pass": 3,
+            "agreePct": 91,
+            "groups": {
+              "A": {
+                "total": 7,
+                "agree": 3,
+                "disagree": 2,
+                "pass": 2,
+                "agreePct": 43
+              },
+              "B": {
+                "total": 18,
+                "agree": 17,
+                "disagree": 0,
+                "pass": 1,
+                "agreePct": 94
+              },
+              "C": {
+                "total": 31,
+                "agree": 31,
+                "disagree": 0,
+                "pass": 0,
+                "agreePct": 100
+              }
+            }
+          }
+        },
+        {
+          "id": 109,
+          "source": "poll",
+          "text": "I'm not sure Oregon should continue giving tax breaks to AI companies that use increasingly scarce resources like water.",
+          "votes": {
+            "total": 101,
+            "agree": 86,
+            "disagree": 7,
+            "pass": 8,
+            "agreePct": 85,
+            "groups": {
+              "A": {
+                "total": 18,
+                "agree": 9,
+                "disagree": 5,
+                "pass": 4,
+                "agreePct": 50
+              },
+              "B": {
+                "total": 29,
+                "agree": 27,
+                "disagree": 0,
+                "pass": 2,
+                "agreePct": 93
+              },
+              "C": {
+                "total": 54,
+                "agree": 50,
+                "disagree": 2,
+                "pass": 2,
+                "agreePct": 93
+              }
+            }
+          }
+        },
+        {
+          "id": 123,
+          "source": "poll",
+          "text": "There should be no tax credits for AI data centers - these centers raise everyone's electric bill, create very few jobs and their usefulness is up for debate. The people of Oregon shouldn't be giving these billionaires a tax break",
+          "votes": {
+            "total": 52,
+            "agree": 45,
+            "disagree": 2,
+            "pass": 5,
+            "agreePct": 87,
+            "groups": {
+              "A": {
+                "total": 7,
+                "agree": 3,
+                "disagree": 1,
+                "pass": 3,
+                "agreePct": 43
+              },
+              "B": {
+                "total": 15,
+                "agree": 12,
+                "disagree": 1,
+                "pass": 2,
+                "agreePct": 80
+              },
+              "C": {
+                "total": 30,
+                "agree": 30,
+                "disagree": 0,
+                "pass": 0,
+                "agreePct": 100
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "datacenters-3",
+      "claim": "The benefits of data centers are not well established",
+      "direction": "divided",
+      "question": "datacenters",
+      "theme": "Data Centers & the Environment",
+      "statements": [
+        {
+          "id": 89,
+          "source": "poll",
+          "text": "Data centers bring temporary construction jobs, use out of state contractors (worked at one), gives a temporary housing shortage (thousands of workers that leave) and VERY few jobs once running. It is monitoring temperature.",
+          "votes": {
+            "total": 108,
+            "agree": 80,
+            "disagree": 5,
+            "pass": 23,
+            "agreePct": 74,
+            "groups": {
+              "A": {
+                "total": 19,
+                "agree": 9,
+                "disagree": 3,
+                "pass": 7,
+                "agreePct": 47
+              },
+              "B": {
+                "total": 35,
+                "agree": 25,
+                "disagree": 2,
+                "pass": 8,
+                "agreePct": 71
+              },
+              "C": {
+                "total": 54,
+                "agree": 46,
+                "disagree": 0,
+                "pass": 8,
+                "agreePct": 85
+              }
+            }
+          }
+        },
+        {
+          "id": 115,
+          "source": "poll",
+          "text": "The environmental cost of being more data centers to Central Oregon will outweigh the benefits.",
+          "votes": {
+            "total": 48,
+            "agree": 35,
+            "disagree": 2,
+            "pass": 11,
+            "agreePct": 73,
+            "groups": {
+              "A": {
+                "total": 6,
+                "agree": 0,
+                "disagree": 2,
+                "pass": 4,
+                "agreePct": 0
+              },
+              "B": {
+                "total": 15,
+                "agree": 8,
+                "disagree": 0,
+                "pass": 7,
+                "agreePct": 53
+              },
+              "C": {
+                "total": 27,
+                "agree": 27,
+                "disagree": 0,
+                "pass": 0,
+                "agreePct": 100
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "datacenters-4",
+      "claim": "People disagree about whether data center benefits outweigh the costs",
+      "direction": "divided",
+      "question": "datacenters",
+      "theme": "Data Centers & the Environment",
+      "statements": [
+        {
+          "id": 35,
+          "source": "poll",
+          "text": "Data centers bring good-paying jobs and tax revenue to Central Oregon communities that need economic growth.",
+          "votes": {
+            "total": 245,
+            "agree": 55,
+            "disagree": 147,
+            "pass": 43,
+            "agreePct": 22,
+            "groups": {
+              "A": {
+                "total": 44,
+                "agree": 26,
+                "disagree": 7,
+                "pass": 11,
+                "agreePct": 59
+              },
+              "B": {
+                "total": 110,
+                "agree": 29,
+                "disagree": 53,
+                "pass": 28,
+                "agreePct": 26
+              },
+              "C": {
+                "total": 91,
+                "agree": 0,
+                "disagree": 87,
+                "pass": 4,
+                "agreePct": 0
+              }
+            }
+          }
+        },
+        {
+          "id": 50,
+          "source": "poll",
+          "text": "A small increase in power costs is worth it if we can get a lot of tax revenue out of new data centers.",
+          "votes": {
+            "total": 211,
+            "agree": 31,
+            "disagree": 145,
+            "pass": 35,
+            "agreePct": 15,
+            "groups": {
+              "A": {
+                "total": 44,
+                "agree": 21,
+                "disagree": 12,
+                "pass": 11,
+                "agreePct": 48
+              },
+              "B": {
+                "total": 83,
+                "agree": 10,
+                "disagree": 52,
+                "pass": 21,
+                "agreePct": 12
+              },
+              "C": {
+                "total": 84,
+                "agree": 0,
+                "disagree": 81,
+                "pass": 3,
+                "agreePct": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "governance-1",
+      "claim": "Communities should be involved in decisions about AI",
+      "direction": "agree",
+      "question": "governance",
+      "theme": "Governance & Decision-making",
+      "statements": [
+        {
+          "id": 24,
+          "source": "poll",
+          "text": "When Oregon decides how to expand AI access or manage its risks, rural communities and lower-income neighborhoods should be fully involved — not an afterthought.",
+          "votes": {
+            "total": 231,
+            "agree": 214,
+            "disagree": 5,
+            "pass": 12,
+            "agreePct": 93,
+            "groups": {
+              "A": {
+                "total": 43,
+                "agree": 39,
+                "disagree": 2,
+                "pass": 2,
+                "agreePct": 91
+              },
+              "B": {
+                "total": 103,
+                "agree": 98,
+                "disagree": 1,
+                "pass": 4,
+                "agreePct": 95
+              },
+              "C": {
+                "total": 85,
+                "agree": 77,
+                "disagree": 2,
+                "pass": 6,
+                "agreePct": 91
+              }
+            }
+          }
+        },
+        {
+          "id": 150,
+          "source": "poll",
+          "text": "Community members' voices should be included when local leaders are making decisions on using AI in government.",
+          "votes": {
+            "total": 34,
+            "agree": 33,
+            "disagree": 0,
+            "pass": 1,
+            "agreePct": 97,
+            "groups": {
+              "A": {
+                "total": 4,
+                "agree": 3,
+                "disagree": 0,
+                "pass": 1,
+                "agreePct": 75
+              },
+              "B": {
+                "total": 14,
+                "agree": 14,
+                "disagree": 0,
+                "pass": 0,
+                "agreePct": 100
+              },
+              "C": {
+                "total": 16,
+                "agree": 16,
+                "disagree": 0,
+                "pass": 0,
+                "agreePct": 100
+              }
+            }
+          }
+        },
+        {
+          "id": 22,
+          "source": "poll",
+          "text": "Oregon's strong community networks — neighbors, faith groups, civic organizations — have a role to play in helping residents navigate AI, not just governments and tech companies.",
+          "votes": {
+            "total": 242,
+            "agree": 197,
+            "disagree": 16,
+            "pass": 29,
+            "agreePct": 81,
+            "groups": {
+              "A": {
+                "total": 44,
+                "agree": 35,
+                "disagree": 4,
+                "pass": 5,
+                "agreePct": 80
+              },
+              "B": {
+                "total": 111,
+                "agree": 98,
+                "disagree": 4,
+                "pass": 9,
+                "agreePct": 88
+              },
+              "C": {
+                "total": 87,
+                "agree": 64,
+                "disagree": 8,
+                "pass": 15,
+                "agreePct": 74
+              }
+            }
+          }
+        },
+        {
+          "id": 51,
+          "source": "poll",
+          "text": "I trust our local and regional government officials to make the right decisions on new data centers – they are best positioned to make decisions that benefit everyone.",
+          "votes": {
+            "total": 199,
+            "agree": 17,
+            "disagree": 158,
+            "pass": 24,
+            "agreePct": 9,
+            "groups": {
+              "A": {
+                "total": 39,
+                "agree": 8,
+                "disagree": 24,
+                "pass": 7,
+                "agreePct": 21
+              },
+              "B": {
+                "total": 78,
+                "agree": 8,
+                "disagree": 54,
+                "pass": 16,
+                "agreePct": 10
+              },
+              "C": {
+                "total": 82,
+                "agree": 1,
+                "disagree": 80,
+                "pass": 1,
+                "agreePct": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "governance-2",
+      "claim": "Government use of AI should be transparent and independently audited",
+      "direction": "agree",
+      "question": "governance",
+      "theme": "Governance & Decision-making",
+      "statements": [
+        {
+          "id": 18,
+          "source": "poll",
+          "text": "Government should be required to disclose when and how it is using AI to make decisions, and why it thinks it is a better use of taxpayer money than the alternative.",
+          "votes": {
+            "total": 254,
+            "agree": 232,
+            "disagree": 8,
+            "pass": 14,
+            "agreePct": 91,
+            "groups": {
+              "A": {
+                "total": 44,
+                "agree": 32,
+                "disagree": 6,
+                "pass": 6,
+                "agreePct": 73
+              },
+              "B": {
+                "total": 115,
+                "agree": 106,
+                "disagree": 2,
+                "pass": 7,
+                "agreePct": 92
+              },
+              "C": {
+                "total": 95,
+                "agree": 94,
+                "disagree": 0,
+                "pass": 1,
+                "agreePct": 99
+              }
+            }
+          }
+        },
+        {
+          "id": 156,
+          "source": "poll",
+          "text": "Before being deployed in public sectors like law enforcement or healthcare, AI models must be independently audited to prove they do not have racial or gender biases.",
+          "votes": {
+            "total": 31,
+            "agree": 25,
+            "disagree": 0,
+            "pass": 6,
+            "agreePct": 81,
+            "groups": {
+              "A": {
+                "total": 3,
+                "agree": 2,
+                "disagree": 0,
+                "pass": 1,
+                "agreePct": 67
+              },
+              "B": {
+                "total": 13,
+                "agree": 10,
+                "disagree": 0,
+                "pass": 3,
+                "agreePct": 77
+              },
+              "C": {
+                "total": 15,
+                "agree": 13,
+                "disagree": 0,
+                "pass": 2,
+                "agreePct": 87
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "governance-3",
+      "claim": "People disagree about whether AI should be publicly- or privately-owned",
+      "direction": "divided",
+      "question": "governance",
+      "theme": "Governance & Decision-making",
+      "statements": [
+        {
+          "id": 64,
+          "source": "poll",
+          "text": "AI fundamentally restructures the foundations of capitalism. All training data for AI is either other people's intellectual property or in the public domain. Therefore, AI should be publicly owned only. No private ownership.",
+          "votes": {
+            "total": 203,
+            "agree": 121,
+            "disagree": 29,
+            "pass": 53,
+            "agreePct": 60,
+            "groups": {
+              "A": {
+                "total": 35,
+                "agree": 4,
+                "disagree": 22,
+                "pass": 9,
+                "agreePct": 11
+              },
+              "B": {
+                "total": 81,
+                "agree": 50,
+                "disagree": 5,
+                "pass": 26,
+                "agreePct": 62
+              },
+              "C": {
+                "total": 87,
+                "agree": 67,
+                "disagree": 2,
+                "pass": 18,
+                "agreePct": 77
+              }
+            }
+          }
+        },
+        {
+          "id": 154,
+          "source": "poll",
+          "text": "Keeping the code behind world's most powerful AI models private is a necessary safety measure to prevent bad actors from using the technology for harm.",
+          "votes": {
+            "total": 24,
+            "agree": 5,
+            "disagree": 7,
+            "pass": 12,
+            "agreePct": 21,
+            "groups": {
+              "A": {
+                "total": 3,
+                "agree": 1,
+                "disagree": 1,
+                "pass": 1,
+                "agreePct": 33
+              },
+              "B": {
+                "total": 8,
+                "agree": 3,
+                "disagree": 1,
+                "pass": 4,
+                "agreePct": 38
+              },
+              "C": {
+                "total": 13,
+                "agree": 1,
+                "disagree": 5,
+                "pass": 7,
+                "agreePct": 8
+              }
+            }
+          }
+        },
+        {
+          "id": 153,
+          "source": "poll",
+          "text": "The most powerful AI models should be open so the public can inspect the code and prevent monopolies.",
+          "votes": {
+            "total": 27,
+            "agree": 17,
+            "disagree": 4,
+            "pass": 6,
+            "agreePct": 63,
+            "groups": {
+              "A": {
+                "total": 3,
+                "agree": 1,
+                "disagree": 1,
+                "pass": 1,
+                "agreePct": 33
+              },
+              "B": {
+                "total": 11,
+                "agree": 5,
+                "disagree": 3,
+                "pass": 3,
+                "agreePct": 45
+              },
+              "C": {
+                "total": 13,
+                "agree": 11,
+                "disagree": 0,
+                "pass": 2,
+                "agreePct": 85
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "governance-4",
+      "claim": "Some regulation of AI is necessary",
+      "direction": "agree",
+      "question": "governance",
+      "theme": "Governance & Decision-making",
+      "statements": [
+        {
+          "id": 59,
+          "source": "poll",
+          "text": "There should be no regulation of any kind on AI. Let the free market determine how it will be applied.",
+          "votes": {
+            "total": 184,
+            "agree": 7,
+            "disagree": 171,
+            "pass": 6,
+            "agreePct": 4,
+            "groups": {
+              "A": {
+                "total": 37,
+                "agree": 5,
+                "disagree": 29,
+                "pass": 3,
+                "agreePct": 14
+              },
+              "B": {
+                "total": 69,
+                "agree": 0,
+                "disagree": 69,
+                "pass": 0,
+                "agreePct": 0
+              },
+              "C": {
+                "total": 78,
+                "agree": 2,
+                "disagree": 73,
+                "pass": 3,
+                "agreePct": 3
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "education-1",
+      "claim": "Schools need clear rules and transparency about AI use",
+      "direction": "agree",
+      "question": "education",
+      "theme": "Education, Cognition & Children",
+      "statements": [
+        {
+          "id": 6,
+          "source": "poll",
+          "text": "Oregon schools should have clear rules about when and how students can use AI.",
+          "votes": {
+            "total": 243,
+            "agree": 227,
+            "disagree": 6,
+            "pass": 10,
+            "agreePct": 93,
+            "groups": {
+              "A": {
+                "total": 42,
+                "agree": 38,
+                "disagree": 2,
+                "pass": 2,
+                "agreePct": 90
+              },
+              "B": {
+                "total": 111,
+                "agree": 104,
+                "disagree": 2,
+                "pass": 5,
+                "agreePct": 94
+              },
+              "C": {
+                "total": 90,
+                "agree": 85,
+                "disagree": 2,
+                "pass": 3,
+                "agreePct": 94
+              }
+            }
+          }
+        },
+        {
+          "id": 72,
+          "source": "poll",
+          "text": "We need stronger transparency around how AI is being used in the education system – by teachers, administrators, and students.",
+          "votes": {
+            "total": 143,
+            "agree": 135,
+            "disagree": 2,
+            "pass": 6,
+            "agreePct": 94,
+            "groups": {
+              "A": {
+                "total": 26,
+                "agree": 25,
+                "disagree": 0,
+                "pass": 1,
+                "agreePct": 96
+              },
+              "B": {
+                "total": 51,
+                "agree": 47,
+                "disagree": 1,
+                "pass": 3,
+                "agreePct": 92
+              },
+              "C": {
+                "total": 66,
+                "agree": 63,
+                "disagree": 1,
+                "pass": 2,
+                "agreePct": 95
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "education-2",
+      "claim": "Children need guardrails before AI is used with them",
+      "direction": "agree",
+      "question": "education",
+      "theme": "Education, Cognition & Children",
+      "statements": [
+        {
+          "id": 71,
+          "source": "poll",
+          "text": "We should not be using children as guinea pigs when it comes to AI. Allowing them to use these tools without guardrails has serious short and long-term risks.",
+          "votes": {
+            "total": 153,
+            "agree": 144,
+            "disagree": 1,
+            "pass": 8,
+            "agreePct": 94,
+            "groups": {
+              "A": {
+                "total": 25,
+                "agree": 22,
+                "disagree": 0,
+                "pass": 3,
+                "agreePct": 88
+              },
+              "B": {
+                "total": 58,
+                "agree": 54,
+                "disagree": 1,
+                "pass": 3,
+                "agreePct": 93
+              },
+              "C": {
+                "total": 70,
+                "agree": 68,
+                "disagree": 0,
+                "pass": 2,
+                "agreePct": 97
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "education-3",
+      "claim": "People disagree about how much AI erodes critical thinking and creativity",
+      "direction": "divided",
+      "question": "education",
+      "theme": "Education, Cognition & Children",
+      "statements": [
+        {
+          "id": 67,
+          "source": "poll",
+          "text": "AI often provides inaccurate information (occasionally harmfully). While it could be viewed as useful, most students use it as a crutch more than a tool that ends up negatively impacting their ability to think critically and problem solve.",
+          "votes": {
+            "total": 158,
+            "agree": 124,
+            "disagree": 9,
+            "pass": 25,
+            "agreePct": 78,
+            "groups": {
+              "A": {
+                "total": 26,
+                "agree": 8,
+                "disagree": 5,
+                "pass": 13,
+                "agreePct": 31
+              },
+              "B": {
+                "total": 58,
+                "agree": 43,
+                "disagree": 4,
+                "pass": 11,
+                "agreePct": 74
+              },
+              "C": {
+                "total": 74,
+                "agree": 73,
+                "disagree": 0,
+                "pass": 1,
+                "agreePct": 99
+              }
+            }
+          }
+        },
+        {
+          "id": 76,
+          "source": "poll",
+          "text": "AI is taking money and opportunity from artists, writers, musicians, and thinkers. It’s taking brain cells from our children.",
+          "votes": {
+            "total": 152,
+            "agree": 110,
+            "disagree": 25,
+            "pass": 17,
+            "agreePct": 72,
+            "groups": {
+              "A": {
+                "total": 23,
+                "agree": 4,
+                "disagree": 17,
+                "pass": 2,
+                "agreePct": 17
+              },
+              "B": {
+                "total": 55,
+                "agree": 37,
+                "disagree": 5,
+                "pass": 13,
+                "agreePct": 67
+              },
+              "C": {
+                "total": 74,
+                "agree": 69,
+                "disagree": 3,
+                "pass": 2,
+                "agreePct": 93
+              }
+            }
+          }
+        },
+        {
+          "id": 114,
+          "source": "poll",
+          "text": "Prolific AI use is causing us to lose cognitive and creative abilities at a rapid rate. While all new technology improves our lives in various ways, we are giving up more than we are gaining with AI.",
+          "votes": {
+            "total": 45,
+            "agree": 23,
+            "disagree": 8,
+            "pass": 14,
+            "agreePct": 51,
+            "groups": {
+              "A": {
+                "total": 7,
+                "agree": 1,
+                "disagree": 5,
+                "pass": 1,
+                "agreePct": 14
+              },
+              "B": {
+                "total": 13,
+                "agree": 1,
+                "disagree": 3,
+                "pass": 9,
+                "agreePct": 8
+              },
+              "C": {
+                "total": 25,
+                "agree": 21,
+                "disagree": 0,
+                "pass": 4,
+                "agreePct": 84
+              }
+            }
+          }
+        },
+        {
+          "id": 118,
+          "source": "poll",
+          "text": "While there are many situations in which AI can be a benefit, I can see that using AI can lead to us forgetting how to think for ourselves, because AI is quick and convenient. That's a huge risk in our education system.",
+          "votes": {
+            "total": 57,
+            "agree": 49,
+            "disagree": 4,
+            "pass": 4,
+            "agreePct": 86,
+            "groups": {
+              "A": {
+                "total": 9,
+                "agree": 5,
+                "disagree": 3,
+                "pass": 1,
+                "agreePct": 56
+              },
+              "B": {
+                "total": 20,
+                "agree": 18,
+                "disagree": 1,
+                "pass": 1,
+                "agreePct": 90
+              },
+              "C": {
+                "total": 28,
+                "agree": 26,
+                "disagree": 0,
+                "pass": 2,
+                "agreePct": 93
+              }
+            }
+          }
+        },
+        {
+          "id": 103,
+          "source": "poll",
+          "text": "As a former educator, I am very concerned about how AI is changing the ability of our students to write. It is easy to search for facts, but much harder to evaluate the quality of the info and then present a coherent analysis.",
+          "votes": {
+            "total": 107,
+            "agree": 97,
+            "disagree": 2,
+            "pass": 8,
+            "agreePct": 91,
+            "groups": {
+              "A": {
+                "total": 18,
+                "agree": 11,
+                "disagree": 2,
+                "pass": 5,
+                "agreePct": 61
+              },
+              "B": {
+                "total": 33,
+                "agree": 31,
+                "disagree": 0,
+                "pass": 2,
+                "agreePct": 94
+              },
+              "C": {
+                "total": 56,
+                "agree": 55,
+                "disagree": 0,
+                "pass": 1,
+                "agreePct": 98
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "education-4",
+      "claim": "Parents should be able to monitor their children's interactions with AI",
+      "direction": "agree",
+      "question": "education",
+      "theme": "Education, Cognition & Children",
+      "statements": [
+        {
+          "id": 5,
+          "source": "poll",
+          "text": "Parents should be able to see what their minor children discuss with AI mental health or companion apps.",
+          "votes": {
+            "total": 252,
+            "agree": 196,
+            "disagree": 23,
+            "pass": 33,
+            "agreePct": 78,
+            "groups": {
+              "A": {
+                "total": 45,
+                "agree": 30,
+                "disagree": 9,
+                "pass": 6,
+                "agreePct": 67
+              },
+              "B": {
+                "total": 118,
+                "agree": 93,
+                "disagree": 9,
+                "pass": 16,
+                "agreePct": 79
+              },
+              "C": {
+                "total": 89,
+                "agree": 73,
+                "disagree": 5,
+                "pass": 11,
+                "agreePct": 82
+              }
+            }
+          }
+        },
+        {
+          "id": 57,
+          "source": "poll",
+          "text": "I don't think parents should be able to monitor their teenagers' chat logs in ChatGPT, etc – it's an invasion of privacy.",
+          "votes": {
+            "total": 193,
+            "agree": 13,
+            "disagree": 152,
+            "pass": 28,
+            "agreePct": 7,
+            "groups": {
+              "A": {
+                "total": 40,
+                "agree": 5,
+                "disagree": 29,
+                "pass": 6,
+                "agreePct": 13
+              },
+              "B": {
+                "total": 75,
+                "agree": 4,
+                "disagree": 58,
+                "pass": 13,
+                "agreePct": 5
+              },
+              "C": {
+                "total": 78,
+                "agree": 4,
+                "disagree": 65,
+                "pass": 9,
+                "agreePct": 5
+              }
+            }
+          }
+        },
+        {
+          "id": 111,
+          "source": "poll",
+          "text": "Allowing teens to maintain privacy has to be balanced with safety. I trust counselors and teachers to balance those two values much more than I trust an AI chatbot. Some queries should just shut down the bot and direct the teen to a person",
+          "votes": {
+            "total": 108,
+            "agree": 89,
+            "disagree": 4,
+            "pass": 15,
+            "agreePct": 82,
+            "groups": {
+              "A": {
+                "total": 18,
+                "agree": 14,
+                "disagree": 1,
+                "pass": 3,
+                "agreePct": 78
+              },
+              "B": {
+                "total": 35,
+                "agree": 27,
+                "disagree": 2,
+                "pass": 6,
+                "agreePct": 77
+              },
+              "C": {
+                "total": 55,
+                "agree": 48,
+                "disagree": 1,
+                "pass": 6,
+                "agreePct": 87
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "mentalhealth-1",
+      "claim": "People disagree about whether AI erodes social connection",
+      "direction": "divided",
+      "question": "mentalhealth",
+      "theme": "Mental Health & Social Connection",
+      "statements": [
+        {
+          "id": 44,
+          "source": "poll",
+          "text": "The more Central Oregon residents rely on AI for advice, connection, and even companionship, the less they will turn to each other.",
+          "votes": {
+            "total": 251,
+            "agree": 170,
+            "disagree": 45,
+            "pass": 36,
+            "agreePct": 68,
+            "groups": {
+              "A": {
+                "total": 46,
+                "agree": 15,
+                "disagree": 20,
+                "pass": 11,
+                "agreePct": 33
+              },
+              "B": {
+                "total": 113,
+                "agree": 76,
+                "disagree": 17,
+                "pass": 20,
+                "agreePct": 67
+              },
+              "C": {
+                "total": 92,
+                "agree": 79,
+                "disagree": 8,
+                "pass": 5,
+                "agreePct": 86
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "mentalhealth-2",
+      "claim": "AI chatbots are not an acceptable substitute for therapy",
+      "direction": "agree",
+      "question": "mentalhealth",
+      "theme": "Mental Health & Social Connection",
+      "statements": [
+        {
+          "id": 4,
+          "source": "poll",
+          "text": "For teenagers who can't access or afford therapy, AI chatbots are better than nothing.",
+          "votes": {
+            "total": 210,
+            "agree": 27,
+            "disagree": 132,
+            "pass": 51,
+            "agreePct": 13,
+            "groups": {
+              "A": {
+                "total": 44,
+                "agree": 13,
+                "disagree": 17,
+                "pass": 14,
+                "agreePct": 30
+              },
+              "B": {
+                "total": 81,
+                "agree": 9,
+                "disagree": 46,
+                "pass": 26,
+                "agreePct": 11
+              },
+              "C": {
+                "total": 85,
+                "agree": 5,
+                "disagree": 69,
+                "pass": 11,
+                "agreePct": 6
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "workforce-1",
+      "claim": "Workers should know when AI is used to evaluate them",
+      "direction": "agree",
+      "question": "workforce",
+      "theme": "Workforce & the Economy",
+      "statements": [
+        {
+          "id": 13,
+          "source": "poll",
+          "text": "Workers should have the right to know when AI is being used to evaluate their performance or productivity.",
+          "votes": {
+            "total": 234,
+            "agree": 218,
+            "disagree": 7,
+            "pass": 9,
+            "agreePct": 93,
+            "groups": {
+              "A": {
+                "total": 46,
+                "agree": 35,
+                "disagree": 7,
+                "pass": 4,
+                "agreePct": 76
+              },
+              "B": {
+                "total": 100,
+                "agree": 95,
+                "disagree": 0,
+                "pass": 5,
+                "agreePct": 95
+              },
+              "C": {
+                "total": 88,
+                "agree": 88,
+                "disagree": 0,
+                "pass": 0,
+                "agreePct": 100
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "workforce-2",
+      "claim": "Companies that automate jobs should help fund retraining",
+      "direction": "mixed",
+      "question": "workforce",
+      "theme": "Workforce & the Economy",
+      "statements": [
+        {
+          "id": 12,
+          "source": "poll",
+          "text": "Companies that use AI to automate jobs should also help fund training for the workers they displace.",
+          "votes": {
+            "total": 267,
+            "agree": 205,
+            "disagree": 33,
+            "pass": 29,
+            "agreePct": 77,
+            "groups": {
+              "A": {
+                "total": 45,
+                "agree": 21,
+                "disagree": 17,
+                "pass": 7,
+                "agreePct": 47
+              },
+              "B": {
+                "total": 128,
+                "agree": 104,
+                "disagree": 12,
+                "pass": 12,
+                "agreePct": 81
+              },
+              "C": {
+                "total": 94,
+                "agree": 80,
+                "disagree": 4,
+                "pass": 10,
+                "agreePct": 85
+              }
+            }
+          }
+        },
+        {
+          "id": 106,
+          "source": "poll",
+          "text": "Fix the corporate tax structure and don't worry about adding more displaced worker programs. We already have unemployment insurance and worker training.",
+          "votes": {
+            "total": 87,
+            "agree": 18,
+            "disagree": 36,
+            "pass": 33,
+            "agreePct": 21,
+            "groups": {
+              "A": {
+                "total": 15,
+                "agree": 7,
+                "disagree": 5,
+                "pass": 3,
+                "agreePct": 47
+              },
+              "B": {
+                "total": 23,
+                "agree": 3,
+                "disagree": 8,
+                "pass": 12,
+                "agreePct": 13
+              },
+              "C": {
+                "total": 49,
+                "agree": 8,
+                "disagree": 23,
+                "pass": 18,
+                "agreePct": 16
+              }
+            }
+          }
+        },
+        {
+          "id": 53,
+          "source": "poll",
+          "text": "I would be fine with AI-related unemployment as long as Oregon had a better a better social safety net.",
+          "votes": {
+            "total": 208,
+            "agree": 44,
+            "disagree": 105,
+            "pass": 59,
+            "agreePct": 21,
+            "groups": {
+              "A": {
+                "total": 41,
+                "agree": 15,
+                "disagree": 15,
+                "pass": 11,
+                "agreePct": 37
+              },
+              "B": {
+                "total": 84,
+                "agree": 22,
+                "disagree": 34,
+                "pass": 28,
+                "agreePct": 26
+              },
+              "C": {
+                "total": 83,
+                "agree": 7,
+                "disagree": 56,
+                "pass": 20,
+                "agreePct": 8
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "workforce-3",
+      "claim": "The jobs AI replaces are essential",
+      "direction": "agree",
+      "question": "workforce",
+      "theme": "Workforce & the Economy",
+      "statements": [
+        {
+          "id": 54,
+          "source": "poll",
+          "text": "The jobs being replaced by AI weren’t that essential to begin with. Let’s find more meaningful work for those affected.",
+          "votes": {
+            "total": 198,
+            "agree": 27,
+            "disagree": 133,
+            "pass": 38,
+            "agreePct": 14,
+            "groups": {
+              "A": {
+                "total": 41,
+                "agree": 14,
+                "disagree": 12,
+                "pass": 15,
+                "agreePct": 34
+              },
+              "B": {
+                "total": 76,
+                "agree": 7,
+                "disagree": 54,
+                "pass": 15,
+                "agreePct": 9
+              },
+              "C": {
+                "total": 81,
+                "agree": 6,
+                "disagree": 67,
+                "pass": 8,
+                "agreePct": 7
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "workforce-4",
+      "claim": "People disagree about AI companies' role in preparing the workforce",
+      "direction": "divided",
+      "question": "workforce",
+      "theme": "Workforce & the Economy",
+      "statements": [
+        {
+          "id": 48,
+          "source": "poll",
+          "text": "AI Companies -- like NVIDIA -- sending ambassadors to Oregon universities will give our students a leg up in the job market.",
+          "votes": {
+            "total": 234,
+            "agree": 70,
+            "disagree": 82,
+            "pass": 82,
+            "agreePct": 30,
+            "groups": {
+              "A": {
+                "total": 45,
+                "agree": 30,
+                "disagree": 3,
+                "pass": 12,
+                "agreePct": 67
+              },
+              "B": {
+                "total": 96,
+                "agree": 38,
+                "disagree": 9,
+                "pass": 49,
+                "agreePct": 40
+              },
+              "C": {
+                "total": 93,
+                "agree": 2,
+                "disagree": 70,
+                "pass": 21,
+                "agreePct": 2
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "agency-1",
+      "claim": "AI should strengthen human judgment, not replace it",
+      "direction": "agree",
+      "question": "agency",
+      "theme": "Human Agency, Existential Risk & Moving Fast",
+      "statements": [
+        {
+          "id": 121,
+          "source": "poll",
+          "text": "AI should sharpen human judgment, not substitute for it. If we let it think for us instead of improving us, we trade agency for convenience. The risk is that we will choose the \"easy button\" temptation of AI over improving ones thinking.",
+          "votes": {
+            "total": 55,
+            "agree": 52,
+            "disagree": 1,
+            "pass": 2,
+            "agreePct": 95,
+            "groups": {
+              "A": {
+                "total": 9,
+                "agree": 8,
+                "disagree": 0,
+                "pass": 1,
+                "agreePct": 89
+              },
+              "B": {
+                "total": 20,
+                "agree": 19,
+                "disagree": 1,
+                "pass": 0,
+                "agreePct": 95
+              },
+              "C": {
+                "total": 26,
+                "agree": 25,
+                "disagree": 0,
+                "pass": 1,
+                "agreePct": 96
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "agency-2",
+      "claim": "People disagree about whether AI is fundamentally different from past technologies",
+      "direction": "divided",
+      "question": "agency",
+      "theme": "Human Agency, Existential Risk & Moving Fast",
+      "statements": [
+        {
+          "id": 117,
+          "source": "poll",
+          "text": "AI is a tool, just like any other. Tools can be used for harm or good, depending on the user.",
+          "votes": {
+            "total": 51,
+            "agree": 37,
+            "disagree": 10,
+            "pass": 4,
+            "agreePct": 73,
+            "groups": {
+              "A": {
+                "total": 9,
+                "agree": 9,
+                "disagree": 0,
+                "pass": 0,
+                "agreePct": 100
+              },
+              "B": {
+                "total": 17,
+                "agree": 15,
+                "disagree": 0,
+                "pass": 2,
+                "agreePct": 88
+              },
+              "C": {
+                "total": 25,
+                "agree": 13,
+                "disagree": 10,
+                "pass": 2,
+                "agreePct": 52
+              }
+            }
+          }
+        },
+        {
+          "id": 78,
+          "source": "poll",
+          "text": "I think the human species is not evolved enough to be able to for see the effects this technology could have on humanity. It is unfortunate that we have the ability to create it.",
+          "votes": {
+            "total": 155,
+            "agree": 89,
+            "disagree": 39,
+            "pass": 27,
+            "agreePct": 57,
+            "groups": {
+              "A": {
+                "total": 25,
+                "agree": 1,
+                "disagree": 23,
+                "pass": 1,
+                "agreePct": 4
+              },
+              "B": {
+                "total": 58,
+                "agree": 28,
+                "disagree": 13,
+                "pass": 17,
+                "agreePct": 48
+              },
+              "C": {
+                "total": 72,
+                "agree": 60,
+                "disagree": 3,
+                "pass": 9,
+                "agreePct": 83
+              }
+            }
+          }
+        },
+        {
+          "id": 61,
+          "source": "poll",
+          "text": "Concerns that AI could threaten humanity’s survival are overblown and distract from the real ways AI is affecting people in Oregon right now",
+          "votes": {
+            "total": 255,
+            "agree": 81,
+            "disagree": 125,
+            "pass": 49,
+            "agreePct": 32,
+            "groups": {
+              "A": {
+                "total": 45,
+                "agree": 38,
+                "disagree": 2,
+                "pass": 5,
+                "agreePct": 84
+              },
+              "B": {
+                "total": 112,
+                "agree": 36,
+                "disagree": 46,
+                "pass": 30,
+                "agreePct": 32
+              },
+              "C": {
+                "total": 98,
+                "agree": 7,
+                "disagree": 77,
+                "pass": 14,
+                "agreePct": 7
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "agency-3",
+      "claim": "People disagree about whether to adapt to AI or resist it",
+      "direction": "divided",
+      "question": "agency",
+      "theme": "Human Agency, Existential Risk & Moving Fast",
+      "statements": [
+        {
+          "id": 52,
+          "source": "poll",
+          "text": "The changes coming with AI are inevitable. We should be learning to adapt, not trying to stop it.",
+          "votes": {
+            "total": 260,
+            "agree": 110,
+            "disagree": 117,
+            "pass": 33,
+            "agreePct": 42,
+            "groups": {
+              "A": {
+                "total": 46,
+                "agree": 44,
+                "disagree": 0,
+                "pass": 2,
+                "agreePct": 96
+              },
+              "B": {
+                "total": 110,
+                "agree": 60,
+                "disagree": 28,
+                "pass": 22,
+                "agreePct": 55
+              },
+              "C": {
+                "total": 104,
+                "agree": 6,
+                "disagree": 89,
+                "pass": 9,
+                "agreePct": 6
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

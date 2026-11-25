@@ -1,6 +1,7 @@
 import { agreePct, groups as polisGroups, statements, type Statement } from './content/polis';
 import { HOST_ID, participant } from './content/participants';
 import { topics, type Topic } from './content/topics';
+import { insights, insightsFor, type Insight } from './content/insights';
 
 export const C = {
   navy: '#31387D',
@@ -43,12 +44,16 @@ export type GroupPct = { id: string; label: string; pct: number };
 export type SummaryItem = { pct: number; color: string; text: string; groups: GroupPct[] };
 export type Question = {
   id: string;
+  /** Report theme this question is framed around. */
+  theme: string;
   text: string;
   askedBy: string;
   askedColor: string;
   participants: number;
   answers: Answer[];
   summary: SummaryItem[];
+  /** Report insights drawn from this question's statements. */
+  insights: Insight[];
 };
 
 const byId = new Map(statements.map((s) => [s.id, s]));
@@ -83,6 +88,7 @@ export const questions: Question[] = topics.map((t) => {
   const st = topicStatements(t);
   return {
     id: t.id,
+    theme: t.theme,
     text: t.question,
     askedBy: host.name,
     askedColor: host.color,
@@ -93,8 +99,15 @@ export const questions: Question[] = topics.map((t) => {
       .sort((a, b) => agreePct(b.total) - agreePct(a.total))
       .slice(0, 3)
       .map(toSummary),
+    insights: insightsFor(t.id),
   };
 });
+
+if (import.meta.env.DEV) {
+  const known = new Set(topics.map((t) => t.id));
+  const orphans = insights.filter((i) => !known.has(i.question));
+  if (orphans.length) console.warn('Insights point at unknown questions:', orphans.map((i) => `${i.id} → ${i.question}`));
+}
 
 export { polisGroups as groups };
 

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "import:insights": "node scripts/import-insights.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",

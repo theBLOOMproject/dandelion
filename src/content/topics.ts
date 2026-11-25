@@ -1,10 +1,15 @@
 /**
- * How Polis statements are grouped into the questions shown in the Q&A.
- * Each topic lists Polis comment ids. Accepted statements that aren't listed
- * anywhere fall into the topic marked `catchAll`, so a new export never drops content.
+ * The Q&A questions, one per report theme. Each lists the Polis comment ids it
+ * collects. Accepted statements that aren't listed anywhere fall into the topic
+ * marked `catchAll`, so a new export never drops content.
+ *
+ * Topic ids match the theme `key` in the insights report, so insights can point
+ * at the question they came from (see insights.ts).
  */
 export type Topic = {
   id: string;
+  /** Theme name from the insights report. */
+  theme: string;
   question: string;
   /** Polis comment ids, in no particular order (answers are sorted by votes). */
   statements: number[];
@@ -13,29 +18,40 @@ export type Topic = {
 
 export const topics: Topic[] = [
   {
-    id: 'data-centers',
-    question: 'Should Central Oregon welcome new data centers?',
-    statements: [0, 2, 35, 50, 51, 79, 89, 100, 109, 115, 123, 128, 130, 131, 161],
+    id: 'datacenters',
+    theme: 'Data Centers & the Environment',
+    question: 'What should new data centers owe Central Oregon?',
+    statements: [0, 2, 35, 50, 79, 89, 100, 109, 115, 123, 128, 130, 131, 161],
   },
   {
-    id: 'kids-schools',
+    id: 'governance',
+    theme: 'Governance & Decision-making',
+    question: 'Who should have a say in how AI is governed here?',
+    statements: [16, 18, 22, 24, 39, 42, 46, 51, 59, 64, 65, 74, 75, 80, 112, 122, 125, 141, 142, 143, 150, 151, 152, 153, 154, 155, 156, 157],
+  },
+  {
+    id: 'education',
+    theme: 'Education, Cognition & Children',
     question: 'How should AI show up in kids’ lives and schools?',
-    statements: [4, 5, 6, 7, 10, 48, 49, 57, 58, 67, 71, 72, 103, 111],
+    statements: [5, 6, 7, 10, 49, 57, 58, 63, 67, 70, 71, 72, 73, 76, 103, 111, 114, 118],
   },
   {
-    id: 'work',
+    id: 'mentalhealth',
+    theme: 'Mental Health & Social Connection',
+    question: 'Is AI bringing us together or pulling us apart?',
+    statements: [4, 44, 77],
+  },
+  {
+    id: 'workforce',
+    theme: 'Workforce & the Economy',
     question: 'Who should carry the cost when AI changes work?',
-    statements: [12, 13, 38, 53, 54, 55, 56, 81, 86, 88, 106, 119, 134, 135],
+    statements: [12, 13, 38, 48, 53, 54, 55, 56, 81, 86, 88, 106, 119, 134, 135],
   },
   {
-    id: 'oversight',
-    question: 'What should government and AI companies be held to?',
-    statements: [16, 18, 22, 24, 39, 42, 46, 59, 60, 61, 62, 65, 74, 75, 80, 122, 125, 141, 142, 143, 150, 153, 154, 155, 156, 157],
-  },
-  {
-    id: 'everyday',
-    question: 'How do we feel about AI in our everyday lives?',
-    statements: [43, 44, 52, 63, 64, 68, 70, 73, 76, 77, 78, 101, 112, 114, 116, 117, 118, 120, 121, 127, 147, 151, 152],
+    id: 'agency',
+    theme: 'Human Agency, Existential Risk & Moving Fast',
+    question: 'How much should we let AI think and decide for us?',
+    statements: [43, 52, 60, 61, 62, 68, 78, 101, 116, 117, 120, 121, 127, 147],
     catchAll: true,
   },
 ];
