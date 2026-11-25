@@ -68,6 +68,24 @@ function buildFeed(): FeedItem[] {
   return feed;
 }
 
+/** Rough rendered height, just to balance the two columns (quotes are hidden until hover). */
+const estimate = (item: FeedItem) => (item.kind === 'post' ? 300 : 150 + item.insight.claim.length * 0.6);
+
+/**
+ * Split into two columns, each item going to the shorter one. Fixed columns (rather
+ * than CSS columns) mean a tile growing on hover only pushes down its own column.
+ */
+function balance(feed: FeedItem[]) {
+  const cols: { item: FeedItem; index: number }[][] = [[], []];
+  const h = [0, 0];
+  feed.forEach((item, index) => {
+    const c = h[0] <= h[1] ? 0 : 1;
+    cols[c].push({ item, index });
+    h[c] += estimate(item);
+  });
+  return cols;
+}
+
 const PLACE_MS = 3000;
 
 /** Top-left place tag: cycles through the campaign's places. */
@@ -124,12 +142,15 @@ function RotatingQuote({ insight, offset }: { insight: Insight; offset: number }
   }, [n, offset]);
 
   return (
-    <div className="feed-quotes">
-      {insight.statements.map((s, k) => (
-        <p key={s.id} className={`feed-quote ${k === i ? 'on' : ''}`} aria-hidden={k !== i}>
-          “{s.text}” <span className={`lvl-text ${level(s.votes.agreePct)}`}>({s.votes.agreePct}%)</span>
-        </p>
-      ))}
+    // Hidden until the tile is hovered or focused (always shown on touch screens).
+    <div className="feed-quotes-wrap">
+      <div className="feed-quotes">
+        {insight.statements.map((s, k) => (
+          <p key={s.id} className={`feed-quote ${k === i ? 'on' : ''}`} aria-hidden={k !== i}>
+            “{s.text}” <span className={`lvl-text ${level(s.votes.agreePct)}`}>({s.votes.agreePct}%)</span>
+          </p>
+        ))}
+      </div>
     </div>
   );
 }
@@ -202,13 +223,20 @@ export function Home() {
             <h2 className="h2">Learnings and updates</h2>
           </div>
           <div className="feed">
-            {feed.map((item, i) =>
-              item.kind === 'insight' ? (
-                <InsightTile key={item.insight.id} insight={item.insight} index={i} />
-              ) : (
-                <PostTile key={item.post.id} post={item.post} />
-              ),
-            )}
+            {balance(feed).map((col, c) => (
+              <div className="feed-col" key={c}>
+                {col.map(({ item, index }) => (
+                  // `order` restores the original sequence when the columns collapse into one on mobile.
+                  <div className="feed-cell" key={index} style={{ order: index }}>
+                    {item.kind === 'insight' ? (
+                      <InsightTile insight={item.insight} index={index} />
+                    ) : (
+                      <PostTile post={item.post} />
+                    )}
+                  </div>
+                ))}
+              </div>
+            ))}
           </div>
         </section>
       </div>

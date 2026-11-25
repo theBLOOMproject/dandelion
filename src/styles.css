@@ -1097,8 +1097,8 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
 .feed-head .h2 { margin: 0; }
 
 /* Pinterest-style: two balanced columns, cards never split across them. */
-.feed { columns: 2; column-gap: 16px; }
-.feed > * { break-inside: avoid; margin-bottom: 16px; }
+.feed { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+.feed-col { display: flex; flex-direction: column; gap: 16px; }
 
 .feed-tile { display: flex; flex-direction: column; gap: 12px; padding: 22px 24px 18px; border-radius: 16px; background: #fff; border: 1px solid var(--line); color: var(--navy); transition: border-color 0.15s, background-color 0.15s; }
 /* Outline takes the insight type's color: a soft tint at rest, the full color on hover. */
@@ -1114,6 +1114,10 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
 .feed-tile h3 { font-size: 24px; line-height: 1.2; }
 
 /* Stacked in one cell: the tallest quote sets the height, so rotating never reflows the feed. */
+.feed-quotes-wrap { display: grid; grid-template-rows: 0fr; opacity: 0; margin-top: -12px; transition: grid-template-rows 0.3s var(--ease-out), opacity 0.2s ease, margin-top 0.3s var(--ease-out); }
+.feed-quotes-wrap > .feed-quotes { overflow: hidden; min-height: 0; }
+.feed-tile:hover .feed-quotes-wrap, .feed-tile:focus-visible .feed-quotes-wrap { grid-template-rows: 1fr; opacity: 1; margin-top: 0; }
+@media (hover: none) { .feed-quotes-wrap { grid-template-rows: 1fr; opacity: 1; margin-top: 0; } }
 .feed-quotes { display: grid; }
 .feed-quote { grid-area: 1 / 1; font-size: 15px; line-height: 1.45; color: #5b5f8c; opacity: 0; transition: opacity 0.5s ease; }
 .feed-quote.on { opacity: 1; }
@@ -1156,7 +1160,8 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
   .about-box p { font-size: 16px; }
   .feed-section { margin-top: 36px; }
   .feed-head { flex-direction: column; gap: 6px; }
-  .feed { columns: 1; }
+  .feed { display: flex; flex-direction: column; }
+  .feed-col { display: contents; }
   .feed-tile { padding: 18px 18px 14px; }
   .feed-more { padding: 5px 12px; font-size: 13px; }
   .feed-tile h3 { font-size: 20px; }
