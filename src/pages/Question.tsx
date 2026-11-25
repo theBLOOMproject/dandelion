@@ -4,6 +4,7 @@ import { C, questions, resources } from '../data';
 import { useApp, type Vote } from '../state';
 import { Avatar, Sheet } from '../components/ui';
 import { Icon, type IconName } from '../components/icons';
+import { InsightCard, InsightSummary } from '../components/InsightCard';
 
 export const VOTES: { id: Vote; label: string }[] = [
   { id: 'agree', label: 'Agree' },
@@ -54,7 +55,7 @@ export function Question() {
   const tabs: { id: Tab; label: string; icon: IconName; count?: number }[] = [
     { id: 'answers', label: 'Answers', icon: 'canvas', count: q.answers.length },
     { id: 'resources', label: 'Resources', icon: 'library', count: related.length },
-    { id: 'summary', label: 'Summary', icon: 'chart' },
+    { id: 'summary', label: 'Summary', icon: 'chart', count: q.insights.length || undefined },
   ];
 
   return (
@@ -150,24 +151,26 @@ export function Question() {
       )}
 
       {tab === 'summary' && (
-        <div className="qtab-panel summary">
-          <div className="label">Most agreed with</div>
-          {q.summary.map((s) => (
-            <div className="resp resp-groups" key={s.text}>
-              <span className="pct">{s.pct}%</span>
-              <Avatar color={s.color} size={18} />
-              <div>
-                <span>“{s.text}”</span>
-                <div className="group-pcts">
-                  {s.groups.map((g) => (
-                    <span key={g.id}>
-                      {g.label} <b>{g.pct}%</b>
-                    </span>
-                  ))}
-                </div>
+        <div className="qtab-panel">
+          {q.insights.length > 0 ? (
+            <>
+              <InsightSummary insights={q.insights} />
+              <div className="insights">
+                {q.insights.map((i) => <InsightCard key={i.id} insight={i} />)}
               </div>
+            </>
+          ) : (
+            <div className="summary">
+              <div className="label">Most agreed with</div>
+              {q.summary.map((s) => (
+                <div className="resp" key={s.text}>
+                  <span className="pct">{s.pct}%</span>
+                  <Avatar color={s.color} size={18} />
+                  <span>“{s.text}”</span>
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
       )}
     </Sheet>

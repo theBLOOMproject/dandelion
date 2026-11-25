@@ -22,7 +22,7 @@ function statement(s) {
   return {
     id: m ? Number(m[2]) : s.id,
     source: (m && SOURCES[m[1]]) || 'unknown',
-    text: s.text.replace(/\s+/g, ' ').trim(),
+    text: s.text, // verbatim from the report
     votes: {
       total: s.vote.total,
       agree: s.vote.agree,
@@ -41,7 +41,7 @@ const insights = report.themes.flatMap((theme) =>
     statements.forEach((s) => Object.keys(s.votes.groups).forEach((g) => groups.add(g)));
     return {
       id: `${theme.key}-${i + 1}`,
-      claim: ins.claim.charAt(0).toUpperCase() + ins.claim.slice(1),
+      claim: ins.claim, // verbatim from the report
       direction: ins.direction,
       question: theme.key,
       theme: theme.name,
