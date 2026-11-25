@@ -468,11 +468,16 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
 
 /* Explore (Community Q&A list) */
 .qlist { display: flex; flex-direction: column; gap: 24px; }
-.qrow { display: block; padding: 28px 30px 32px; border-radius: 24px; color: var(--navy); transition: background 0.15s; }
+.qrow { display: block; padding: 28px 30px; border-radius: 24px; color: var(--navy); transition: background 0.15s; }
 .qrow:hover, .qrow:focus-visible { background: var(--soft); }
-.qrow-title { display: flex; align-items: center; gap: 22px; font-size: 34px; line-height: 1.15; margin: 0 0 16px; }
+.qrow-title { display: flex; align-items: center; gap: 22px; font-size: 34px; line-height: 1.15; margin: 0; }
 .qrow-title .avatar { flex: none; }
+.qrow-resps { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.3s var(--ease-out), opacity 0.2s ease; }
+.qrow-resps > div { overflow: hidden; min-height: 0; }
 .qrow-resps .resp { font-size: 19px; }
+.qrow-resps .resp:first-child { margin-top: 16px; }
+.qrow:hover .qrow-resps, .qrow:focus-visible .qrow-resps { grid-template-rows: 1fr; opacity: 1; }
+@media (hover: none) { .qrow-resps { grid-template-rows: 1fr; opacity: 1; } }
 
 /* outline cards (library / events) */
 .ocard {
@@ -901,7 +906,7 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
   .tcard h4 { font-size: 19px; }
   .tcard p { font-size: 17px; }
   .qlist { gap: 8px; }
-  .qrow { padding: 18px 14px 20px; border-radius: 16px; }
+  .qrow { padding: 18px 14px; border-radius: 16px; }
   .qrow-title { font-size: 22px; gap: 14px; align-items: flex-start; }
   .qrow-title .avatar { width: 26px !important; height: 26px !important; margin-top: 1px; }
   .qrow-resps .resp { font-size: 16px; grid-template-columns: 34px 14px 1fr; gap: 10px; }

@@ -9,14 +9,17 @@ function QuestionRow({ q }: { q: Question }) {
         <Avatar color={C.orange} size={36} />
         <span>{q.text}</span>
       </h4>
+      {/* Collapsed until the row is hovered or focused (always open on touch screens). */}
       <div className="qrow-resps">
-        {q.summary.slice(0, 2).map((s) => (
-          <div className="resp" key={s.text}>
-            <span className="pct">{s.pct}%</span>
-            <Avatar color={s.color} size={18} />
-            <span>“{s.text}”</span>
-          </div>
-        ))}
+        <div>
+          {q.summary.slice(0, 2).map((s) => (
+            <div className="resp" key={s.text}>
+              <span className="pct">{s.pct}%</span>
+              <Avatar color={s.color} size={18} />
+              <span>“{s.text}”</span>
+            </div>
+          ))}
+        </div>
       </div>
     </Link>
   );
