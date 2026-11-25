@@ -469,11 +469,21 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
 .pct { font-size: 14px; color: var(--muted); }
 
 /* Explore (Community Q&A list) */
-.qlist { display: flex; flex-direction: column; gap: 24px; }
-.qrow { display: block; padding: 28px 30px; border-radius: 24px; color: var(--navy); transition: background 0.15s; }
+.qlist-head { margin: 0 0 8px; padding: 0 30px; }
+.qlist { display: flex; flex-direction: column; }
+.qrow { position: relative; display: grid; grid-template-columns: 36px 1fr; gap: 22px; padding: 28px 30px; border-radius: 24px; color: var(--navy); transition: background 0.15s, opacity 0.2s; }
+.qrow > .avatar { margin-top: 2px; } /* centers the icon on the title's first line (34px × 1.15) */
+/* Hairline between rows, inset to the padding; hidden around the hovered row. */
+.qrow + .qrow::before { content: ''; position: absolute; top: 0; left: 30px; right: 30px; height: 1px; background: var(--line); transition: opacity 0.15s; }
+.qrow:hover::before, .qrow:hover + .qrow::before { opacity: 0; }
 .qrow:hover, .qrow:focus-visible { background: var(--soft); }
-.qrow-title { display: flex; align-items: center; gap: 22px; font-size: 34px; line-height: 1.15; margin: 0; }
-.qrow-title .avatar { flex: none; }
+.qrow-body { min-width: 0; padding-right: 56px; }
+.qrow-title { font-size: 34px; line-height: 1.15; margin: 0; }
+.qrow-meta { font-size: 15px; color: var(--muted); margin-top: 8px; }
+.qrow-arrow { position: absolute; top: 26px; right: 26px; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--navy); color: #fff; opacity: 0; transform: translateX(-6px); transition: opacity 0.15s, transform 0.2s var(--ease-out); }
+.qrow-arrow svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.qrow:hover .qrow-arrow, .qrow:focus-visible .qrow-arrow { opacity: 1; transform: none; }
+@media (hover: hover) { .qlist:has(.qrow:hover) .qrow:not(:hover) { opacity: 0.4; } }
 .qrow-resps { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.3s var(--ease-out), opacity 0.2s ease; }
 .qrow-resps > div { overflow: hidden; min-height: 0; }
 .qrow-resps .resp { font-size: 19px; }
@@ -907,10 +917,14 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
   .tcard { min-height: 0; padding: 22px; gap: 4px; }
   .tcard h4 { font-size: 19px; }
   .tcard p { font-size: 17px; }
-  .qlist { gap: 8px; }
-  .qrow { padding: 18px 14px; border-radius: 16px; }
-  .qrow-title { font-size: 22px; gap: 14px; align-items: flex-start; }
-  .qrow-title .avatar { width: 26px !important; height: 26px !important; margin-top: 1px; }
+  .qlist-head { padding: 0 14px; }
+  .qrow { grid-template-columns: 26px 1fr; gap: 14px; padding: 18px 14px; border-radius: 16px; }
+  .qrow + .qrow::before { left: 14px; right: 14px; }
+  .qrow > .avatar { width: 26px !important; height: 26px !important; margin-top: 0; }
+  .qrow-body { padding-right: 0; }
+  .qrow-title { font-size: 22px; }
+  .qrow-meta { font-size: 13px; margin-top: 6px; }
+  .qrow-arrow { display: none; }
   .qrow-resps .resp { font-size: 16px; grid-template-columns: 34px 14px 1fr; gap: 10px; }
   .ocard { min-height: 0; padding: 22px; }
   .ocard h4 { font-size: 19px; }
@@ -1186,3 +1200,16 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
 .hero-join { font-size: 20px; font-weight: 400; opacity: 0.9; line-height: 1.35; }
 .hero-join b { font-weight: 500; opacity: 1; }
 @media (max-width: 860px) { .hero-join { font-size: 16px; } .header-sub { margin-top: 8px; } }
+
+.hero-sub { font-size: 19px; line-height: 1.4; max-width: 560px; opacity: 0.9; }
+@media (max-width: 860px) { .hero-sub { font-size: 16px; } }
+
+/* Regular page hero with a subheading + CTA (e.g. Community Q&A): even vertical padding, CTA centered beside the title block. */
+.hero:not(.hero-big):has(.header-aside) { padding: 36px 34px; justify-content: center; }
+.hero:not(.hero-big):has(.header-aside) .header-row { align-items: center; padding-right: 0; }
+.hero:not(.hero-big) .header-sub { margin-top: 4px; }
+@media (max-width: 860px) {
+  .hero:not(.hero-big):has(.header-aside) { padding: 24px 20px; }
+  .hero:not(.hero-big) .header-sub { margin-top: 4px; }
+}
+@media (max-width: 1080px) { .hero:not(.hero-big):has(.header-aside) .header-row { align-items: flex-start; } }
