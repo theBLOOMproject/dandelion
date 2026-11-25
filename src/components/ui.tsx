@@ -45,6 +45,8 @@ type HeaderProps = {
   top?: ReactNode;
   /** Content pinned to the bottom of the header, under the title row. */
   bottom?: ReactNode;
+  /** Short line under the title. */
+  sub?: ReactNode;
   /** A call to action at the bottom right, level with the title (stats sit above it). */
   action?: ReactNode;
   small?: boolean;
@@ -57,7 +59,7 @@ type HeaderProps = {
 };
 
 /** The colored header card. `vt` marks it as the persistent page hero for view transitions. */
-function Header({ eyebrow, title, stats, top, bottom, action, small, keepStatsMobile, photo, color, vt, className = '' }: HeaderProps & { color: string; vt?: boolean; className?: string }) {
+function Header({ eyebrow, title, sub, stats, top, bottom, action, small, keepStatsMobile, photo, color, vt, className = '' }: HeaderProps & { color: string; vt?: boolean; className?: string }) {
   const { heroPhoto } = useApp();
   const fg = isLight(color) ? C.navy : '#fff';
   const shot = photo ? heroPhoto : null;
@@ -90,6 +92,7 @@ function Header({ eyebrow, title, stats, top, bottom, action, small, keepStatsMo
         <div className="header-text" style={vt ? { viewTransitionName: 'hero-text' } : undefined}>
           {eyebrow && <div className="eyebrow">{eyebrow}</div>}
           <h1 className={small ? 'small' : ''}>{title}</h1>
+          {sub && <div className="header-sub">{sub}</div>}
         </div>
         {action ? (
           <div className="header-aside">

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { C, campaign, posts, ticker, type Post } from '../data';
 import { useApp } from '../state';
-import { Avatar, formatStat, Hero } from '../components/ui';
+import { Avatar, Hero } from '../components/ui';
 import { Icon } from '../components/icons';
 import { authorOf, insights, type Insight } from '../content/insights';
 import { DirectionIcon, directionLabel, level } from '../components/InsightCard';
@@ -108,16 +108,12 @@ function PlaceTag() {
   );
 }
 
-function HeroStats() {
+function JoinLine() {
+  const people = campaign.stats.find((s) => s.label === 'participants')?.value ?? 0;
   return (
-    <div className="stats">
-      {campaign.stats.map((s) => (
-        <div className="stat" key={s.label}>
-          <b>{formatStat(s.value)}</b>
-          <span>{s.label}</span>
-        </div>
-      ))}
-    </div>
+    <p className="hero-join">
+      Join <b>{people.toLocaleString()} people</b> in {campaign.location} to figure out this issue.
+    </p>
   );
 }
 
@@ -198,10 +194,10 @@ export function Home() {
       <Hero
         eyebrow="Issue campaign"
         title={campaign.title}
+        sub={<JoinLine />}
         top={
           <div className="header-top-split">
             <PlaceTag />
-            <HeroStats />
           </div>
         }
         big
