@@ -21,6 +21,8 @@ export const campaign = {
   place: '@CentralOregon',
   location: 'Central Oregon',
   slug: 'central-oregon-ai',
+  /** Places the campaign covers; the home hero rotates through them. */
+  places: ['Deschutes County', 'Jefferson County', 'Crook County'],
   about:
     'AI is already showing up in our schools, our jobs, and our power bills, and new data centers are being proposed across the region. Before state and local leaders decide how to respond, we want to hear from people who live here. Tap in to help Central Oregon figure out where it stands.',
   stats: [

@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { C, campaign, posts, ticker, type Post } from '../data';
 import { useApp } from '../state';
-import { Avatar, Hero } from '../components/ui';
+import { Avatar, formatStat, Hero } from '../components/ui';
+import { Icon } from '../components/icons';
 import { authorOf, insights, type Insight } from '../content/insights';
 import { DirectionIcon, directionLabel, level } from '../components/InsightCard';
 
@@ -65,6 +66,41 @@ function buildFeed(): FeedItem[] {
   const slots = [2, 8, 15];
   posts.forEach((post, i) => feed.splice(Math.min(slots[i] ?? feed.length, feed.length), 0, { kind: 'post', post }));
   return feed;
+}
+
+const PLACE_MS = 3000;
+
+/** Top-left place tag: cycles through the campaign's places. */
+function PlaceTag() {
+  const [i, setI] = useState(0);
+  const n = campaign.places.length;
+  useEffect(() => {
+    if (n < 2) return;
+    const t = window.setInterval(() => setI((x) => (x + 1) % n), PLACE_MS);
+    return () => window.clearInterval(t);
+  }, [n]);
+  return (
+    <span className="place-slot" aria-label={`Places: ${campaign.places.join(', ')}`}>
+      {/* A fresh pill per place, so it always hugs the name. */}
+      <span className="place-tag" key={i} aria-hidden>
+        <Icon name="pin" size={18} />
+        {campaign.places[i]}
+      </span>
+    </span>
+  );
+}
+
+function HeroStats() {
+  return (
+    <div className="stats">
+      {campaign.stats.map((s) => (
+        <div className="stat" key={s.label}>
+          <b>{formatStat(s.value)}</b>
+          <span>{s.label}</span>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 const QUOTE_MS = 5000;
@@ -141,7 +177,12 @@ export function Home() {
       <Hero
         eyebrow="Issue campaign"
         title={campaign.title}
-        stats={campaign.stats}
+        top={
+          <div className="header-top-split">
+            <PlaceTag />
+            <HeroStats />
+          </div>
+        }
         big
         photo
         keepStatsMobile
