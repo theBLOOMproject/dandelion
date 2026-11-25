@@ -313,6 +313,8 @@ input, textarea { font: inherit; color: inherit; }
 .header-top { display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-bottom: auto; padding-bottom: 20px; }
 .header-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; padding-right: 18px; }
 .header-bottom { margin-top: 28px; }
+.header-aside { display: flex; flex-direction: column; align-items: flex-end; gap: 28px; flex: none; }
+.hero-big .header-action .btn { height: 64px; padding: 0 40px; font-size: 22px; min-width: 300px; }
 .hero-big .header-bottom .btn { height: 64px; padding: 0 40px; font-size: 22px; min-width: 300px; }
 .eyebrow { font-size: 17px; font-weight: 500; text-transform: uppercase; margin-bottom: 4px; }
 .header h1 { font-size: 48px; line-height: 1.12; letter-spacing: -0.005em; }
@@ -1084,4 +1086,80 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
   .insight-summary button { font-size: 16px; padding: 8px 6px; gap: 10px; }
   .insight-slide { min-height: 0; }
   .gbars { grid-template-columns: 1fr; max-width: none; }
+}
+
+/* ---------- home: about box + insight feed ---------- */
+.about-box { margin-top: 8px; padding: 22px 26px; border-radius: 16px; background: #eef2fc; }
+.about-box p { font-size: 17px; line-height: 1.5; }
+
+.feed-section { margin-top: 56px; }
+.feed-head { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-bottom: 20px; }
+.feed-head .h2 { margin: 0; }
+
+/* Pinterest-style: two balanced columns, cards never split across them. */
+.feed { columns: 2; column-gap: 16px; }
+.feed > * { break-inside: avoid; margin-bottom: 16px; }
+
+.feed-tile { display: flex; flex-direction: column; gap: 12px; padding: 22px 24px 18px; border-radius: 16px; background: #fff; border: 1px solid var(--line); color: var(--navy); transition: border-color 0.15s, background-color 0.15s; }
+/* Outline takes the insight type's color: a soft tint at rest, the full color on hover. */
+.feed-tile { border-width: 1.5px; }
+.feed-tile-agree { border-color: color-mix(in srgb, var(--agree) 25%, #fff); }
+.feed-tile-divided { border-color: color-mix(in srgb, var(--divided) 25%, #fff); }
+.feed-tile-mixed { border-color: color-mix(in srgb, var(--mixed) 30%, #fff); }
+.feed-tile:hover { background: var(--soft); }
+.feed-tile-agree:hover { border-color: var(--agree); }
+.feed-tile-divided:hover { border-color: var(--divided); }
+.feed-tile-mixed:hover { border-color: var(--mixed); }
+.feed-type { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; }
+.feed-tile h3 { font-size: 24px; line-height: 1.2; }
+
+/* Stacked in one cell: the tallest quote sets the height, so rotating never reflows the feed. */
+.feed-quotes { display: grid; }
+.feed-quote { grid-area: 1 / 1; font-size: 15px; line-height: 1.45; color: #5b5f8c; opacity: 0; transition: opacity 0.5s ease; }
+.feed-quote.on { opacity: 1; }
+:root { --lvl-high-ink: #00875f; --lvl-mid-ink: #a87700; --lvl-low-ink: #d1343a; }
+.lvl-text { font-weight: 500; white-space: nowrap; }
+.lvl-text.high { color: var(--lvl-high-ink); }
+.lvl-text.mid { color: var(--lvl-mid-ink); }
+.lvl-text.low { color: var(--lvl-low-ink); }
+
+.feed-foot { display: flex; align-items: center; gap: 10px; min-height: 32px; padding-top: 4px; font-size: 14px; color: var(--muted); }
+.feed-foot .avatar-row .avatar + .avatar { box-shadow: 0 0 0 2px #fff; }
+.feed-tile:hover .feed-foot .avatar-row .avatar + .avatar { box-shadow: 0 0 0 2px var(--soft); }
+.feed-more { margin-left: auto; padding: 6px 14px; border-radius: 999px; background: var(--blue); color: #fff; font-weight: 500; opacity: 0; transform: translateX(-4px); transition: opacity 0.15s, transform 0.15s; }
+.feed-tile:hover .feed-more, .feed-tile:focus-visible .feed-more { opacity: 1; transform: none; }
+@media (hover: none) { .feed-more { opacity: 1; transform: none; } }
+
+.feed-post { display: flex; flex-direction: column; gap: 12px; padding: 28px 26px 24px; border-radius: 16px; color: #fff; transition: filter 0.15s; }
+.feed-post:hover { filter: brightness(1.06); }
+.feed-post.tone-navy { background: var(--navy); }
+.feed-post.tone-green { background: var(--green-dark); }
+.feed-post.tone-orange { background: var(--orange); }
+.feed-kicker { align-self: flex-start; padding: 4px 10px; border-radius: 999px; background: rgba(255, 255, 255, 0.18); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+.feed-post h3 { font-size: 30px; line-height: 1.1; }
+.feed-post p { font-size: 17px; line-height: 1.45; opacity: 0.92; }
+.feed-byline { display: flex; align-items: center; gap: 8px; font-size: 14px; opacity: 0.9; padding-top: 4px; }
+.avatar.on-dark svg { fill: rgba(13, 20, 82, 0.35); }
+
+/* Arriving from a home feed link. */
+.insight.flash { animation: insight-flash 1.6s ease; }
+@keyframes insight-flash { 0%, 30% { box-shadow: 0 0 0 4px var(--lavender); border-color: #cfd3f5; } 100% { box-shadow: 0 0 0 0 transparent; } }
+
+@media (max-width: 1080px) {
+  .header-aside { align-items: flex-start; width: 100%; }
+}
+@media (max-width: 860px) {
+  .header-aside { gap: 20px; }
+  .header-action { width: 100%; }
+  .hero-big .header-action .btn { width: 100%; height: 52px; padding: 0 22px; font-size: 17px; min-width: 0; }
+  .about-box { padding: 16px 18px; }
+  .about-box p { font-size: 16px; }
+  .feed-section { margin-top: 36px; }
+  .feed-head { flex-direction: column; gap: 6px; }
+  .feed { columns: 1; }
+  .feed-tile { padding: 18px 18px 14px; }
+  .feed-more { padding: 5px 12px; font-size: 13px; }
+  .feed-tile h3 { font-size: 20px; }
+  .feed-post h3 { font-size: 24px; }
+  .feed-post p { font-size: 16px; }
 }

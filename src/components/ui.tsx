@@ -45,6 +45,8 @@ type HeaderProps = {
   top?: ReactNode;
   /** Content pinned to the bottom of the header, under the title row. */
   bottom?: ReactNode;
+  /** A call to action at the bottom right, level with the title (stats sit above it). */
+  action?: ReactNode;
   small?: boolean;
   /** Keep the stats visible on mobile (hidden by default). */
   keepStatsMobile?: boolean;
@@ -55,10 +57,20 @@ type HeaderProps = {
 };
 
 /** The colored header card. `vt` marks it as the persistent page hero for view transitions. */
-function Header({ eyebrow, title, stats, top, bottom, small, keepStatsMobile, photo, color, vt, className = '' }: HeaderProps & { color: string; vt?: boolean; className?: string }) {
+function Header({ eyebrow, title, stats, top, bottom, action, small, keepStatsMobile, photo, color, vt, className = '' }: HeaderProps & { color: string; vt?: boolean; className?: string }) {
   const { heroPhoto } = useApp();
   const fg = isLight(color) ? C.navy : '#fff';
   const shot = photo ? heroPhoto : null;
+  const statsEl = stats && (
+    <div className="stats">
+      {stats.map((s) => (
+        <div className="stat" key={s.label}>
+          <b>{formatStat(s.value)}</b>
+          <span>{s.label}</span>
+        </div>
+      ))}
+    </div>
+  );
   return (
     <div className={`header ${className} ${keepStatsMobile ? 'keep-stats' : ''}`} style={{ background: color, color: fg, ['--hero-c' as string]: color }}>
       {shot && (
@@ -79,15 +91,13 @@ function Header({ eyebrow, title, stats, top, bottom, small, keepStatsMobile, ph
           {eyebrow && <div className="eyebrow">{eyebrow}</div>}
           <h1 className={small ? 'small' : ''}>{title}</h1>
         </div>
-        {stats && (
-          <div className="stats">
-            {stats.map((s) => (
-              <div className="stat" key={s.label}>
-                <b>{formatStat(s.value)}</b>
-                <span>{s.label}</span>
-              </div>
-            ))}
+        {action ? (
+          <div className="header-aside">
+            {statsEl}
+            <div className="header-action">{action}</div>
           </div>
+        ) : (
+          statsEl
         )}
       </div>
       {bottom && <div className="header-bottom">{bottom}</div>}

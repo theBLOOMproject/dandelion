@@ -26,7 +26,7 @@ export function DirectionIcon({ direction, size = 20 }: { direction: Direction; 
 }
 
 /** Bar color tracks the agree level: green > 66%, red < 33%, yellow between. */
-const level = (pct: number) => (pct > 66 ? 'high' : pct < 33 ? 'low' : 'mid');
+export const level = (pct: number) => (pct > 66 ? 'high' : pct < 33 ? 'low' : 'mid');
 
 function GroupBars({ s }: { s: InsightStatement }) {
   return (

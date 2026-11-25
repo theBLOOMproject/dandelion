@@ -111,13 +111,7 @@ if (import.meta.env.DEV) {
 
 export { polisGroups as groups };
 
-export type Quote = { text: string; color: string; groups: GroupPct[] };
-const toQuote = (s: Statement): Quote => ({ text: s.text, color: participant(s.authorId).color, groups: groupPcts(s) });
-const minGroup = (s: Statement) => Math.min(...polisGroups.map((g) => agreePct(s.groups[g.id])));
-const groupGap = (s: Statement) => {
-  const p = polisGroups.map((g) => agreePct(s.groups[g.id]));
-  return Math.max(...p) - Math.min(...p);
-};
+export type Quote = { text: string; color: string };
 const short = (s: Statement) => s.text.length <= 140;
 
 /** Participant (non-host) statements most people agreed with, for the home ticker. */
@@ -125,21 +119,40 @@ export const ticker: Quote[] = statements
   .filter((s) => s.authorId !== HOST_ID && voted(s) && short(s))
   .sort((a, b) => agreePct(b.total) - agreePct(a.total))
   .slice(0, 6)
-  .map(toQuote);
+  .map((s) => ({ text: s.text, color: participant(s.authorId).color }));
 
-/** Common ground: statements every opinion group agreed with. */
-export const commonGround: Quote[] = statements
-  .filter((s) => voted(s) && short(s))
-  .sort((a, b) => minGroup(b) - minGroup(a))
-  .slice(0, 3)
-  .map(toQuote);
+/** Short host-written posts mixed into the home feed. Placeholder copy. */
+export type Post = { id: string; kicker: string; title: string; excerpt: string; author: string; date: string; tone: 'navy' | 'green' | 'orange' };
 
-/** Where opinion groups split the most. */
-export const divides: Quote[] = statements
-  .filter((s) => voted(s) && short(s))
-  .sort((a, b) => groupGap(b) - groupGap(a))
-  .slice(0, 3)
-  .map(toQuote);
+export const posts: Post[] = [
+  {
+    id: 'what-we-heard',
+    kicker: 'From the hosts',
+    title: 'What hundreds of neighbors told us about AI',
+    excerpt: 'Six listening sessions, one open poll, and a lot more agreement than we expected. Here’s how we read the results.',
+    author: 'Organization 1',
+    date: 'Nov 12',
+    tone: 'navy',
+  },
+  {
+    id: 'data-centers-101',
+    kicker: 'Explainer',
+    title: 'Data centers 101: water, power, and tax breaks',
+    excerpt: 'What a new facility actually asks of a town, and the questions worth asking before anything gets approved.',
+    author: 'Organization 3',
+    date: 'Nov 5',
+    tone: 'orange',
+  },
+  {
+    id: 'whats-next',
+    kicker: 'What’s next',
+    title: 'Turning common ground into recommendations',
+    excerpt: 'Residents will meet this winter to draft proposals for local and state leaders. Here’s how to get involved.',
+    author: 'Organization 2',
+    date: 'Oct 28',
+    tone: 'green',
+  },
+];
 
 export type Event = {
   id: string;

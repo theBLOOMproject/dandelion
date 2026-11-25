@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
-import { C, campaign, commonGround, divides, ticker, type Quote } from '../data';
+import { C, campaign, posts, ticker, type Post } from '../data';
 import { useApp } from '../state';
 import { Avatar, Hero } from '../components/ui';
+import { authorOf, insights, type Insight } from '../content/insights';
+import { DirectionIcon, directionLabel, level } from '../components/InsightCard';
 
 function Ticker() {
   const items = [...ticker, ...ticker];
@@ -55,138 +57,85 @@ export function WhatYouCanDo() {
   );
 }
 
-type Task = {
-  id: string;
-  title: string;
-  sub: string;
-  cta: string;
-  doneTitle: string;
-  to?: string;
-  tone: 'lav' | 'orange' | 'green' | 'navy';
-};
+type FeedItem = { kind: 'insight'; insight: Insight } | { kind: 'post'; post: Post };
 
-const TASKS: Task[] = [
-  {
-    id: 'follow',
-    title: 'Follow this campaign',
-    sub: 'Sign up with your email to receive updates, resources, and more.',
-    cta: 'Follow',
-    doneTitle: 'You’re following this campaign.',
-    tone: 'lav',
-  },
-  {
-    id: 'share',
-    title: 'Share your thoughts.',
-    sub: 'With neighbors who are thinking about this issue.',
-    cta: 'Start',
-    doneTitle: 'Thoughts shared.',
-    to: '/share',
-    tone: 'orange',
-  },
-  {
-    id: 'read',
-    title: 'Read about it.',
-    sub: 'Materials compiled and reviewed by your hosts.',
-    cta: 'Open the Library',
-    doneTitle: 'Read up.',
-    to: '/library',
-    tone: 'green',
-  },
-  {
-    id: 'attend',
-    title: 'Attend an Event.',
-    sub: 'Meet neighbors who are thinking about this issue.',
-    cta: 'See events',
-    doneTitle: 'Event found.',
-    to: '/events',
-    tone: 'navy',
-  },
-];
+/** Insights in report order, with host posts dropped in at uneven intervals. */
+function buildFeed(): FeedItem[] {
+  const feed: FeedItem[] = insights.map((insight) => ({ kind: 'insight', insight }));
+  const slots = [2, 8, 15];
+  posts.forEach((post, i) => feed.splice(Math.min(slots[i] ?? feed.length, feed.length), 0, { kind: 'post', post }));
+  return feed;
+}
 
-/**
- * Horizontal row of tasks. The next undone task is wide and dark; the rest are light.
- * Completing a task holds briefly, then the next one grows/darkens and scrolls into view.
- */
-function TaskRow() {
-  const { following, follow, doneTasks, completeTask, seenTask, setSeenTask } = useApp();
-  const nav = useNavigate();
-  const rowRef = useRef<HTMLDivElement>(null);
-  const isDone = (id: string) => (id === 'follow' ? following : !!doneTasks[id]);
-  const active = TASKS.find((t) => !isDone(t.id))?.id ?? null;
-  // What we display as active lags behind the real one so the change is visible.
-  const [shown, setShown] = useState<string | null>(seenTask ?? active);
+const QUOTE_MS = 5000;
 
+/** Cycles through the insight's statements every 5s. All quotes share one grid cell so the tile never changes height. */
+function RotatingQuote({ insight, offset }: { insight: Insight; offset: number }) {
+  const n = insight.statements.length;
+  const [i, setI] = useState(0);
   useEffect(() => {
-    if (shown === active) {
-      setSeenTask(active);
-      return;
-    }
-    const t = window.setTimeout(() => {
-      setShown(active);
-      setSeenTask(active);
-    }, 450);
-    return () => window.clearTimeout(t);
-  }, [active, shown, setSeenTask]);
-
-  // After the resize settles, bring the active card to the start of the row.
-  useEffect(() => {
-    const row = rowRef.current;
-    const card = row?.querySelector<HTMLElement>('.task.active');
-    if (!row || !card) return;
-    const t = window.setTimeout(() => {
-      row.scrollTo({ left: card.offsetLeft - row.offsetLeft - parseFloat(getComputedStyle(row).paddingLeft), behavior: 'smooth' });
-    }, 480);
-    return () => window.clearTimeout(t);
-  }, [shown]);
-
-  const act = (t: Task) => {
-    if (t.id === 'follow') return follow();
-    // Sharing only counts once the flow is finished; the others count on click.
-    if (!isDone(t.id) && t.id !== 'share') completeTask(t.id);
-    if (t.to) nav(t.to, { viewTransition: true });
-  };
+    if (n < 2) return;
+    // Stagger tiles so the whole feed doesn't flip at once.
+    let interval: number | undefined;
+    const start = window.setTimeout(() => {
+      setI((x) => (x + 1) % n);
+      interval = window.setInterval(() => setI((x) => (x + 1) % n), QUOTE_MS);
+    }, QUOTE_MS + (offset % 5) * 700);
+    return () => {
+      window.clearTimeout(start);
+      window.clearInterval(interval);
+    };
+  }, [n, offset]);
 
   return (
-    <div className="task-scroll" ref={rowRef}>
-      {TASKS.map((t) => {
-        const done = isDone(t.id);
-        const state = t.id === shown ? 'active' : done ? 'done' : 'todo';
-        return (
-          <button key={t.id} className={`tcard task ${state} tone-${t.tone}`} onClick={() => act(t)}>
-            <h4>{done ? t.doneTitle : t.title}</h4>
-            <p>{t.sub}</p>
-            <span className="task-cta">
-              {done ? (
-                <>
-                  <svg viewBox="0 0 12 12" aria-hidden><path d="M2.5 6.2l2.3 2.3 4.7-5" /></svg> Done
-                </>
-              ) : (
-                t.cta
-              )}
-            </span>
-          </button>
-        );
-      })}
+    <div className="feed-quotes">
+      {insight.statements.map((s, k) => (
+        <p key={s.id} className={`feed-quote ${k === i ? 'on' : ''}`} aria-hidden={k !== i}>
+          “{s.text}” <span className={`lvl-text ${level(s.votes.agreePct)}`}>({s.votes.agreePct}%)</span>
+        </p>
+      ))}
     </div>
   );
 }
 
-/** A statement card; the byline shows how much each opinion group agreed. */
-function QuoteCard({ bg, q }: { bg: string; q: Quote }) {
+function InsightTile({ insight, index }: { insight: Insight; index: number }) {
+  const n = insight.statements.length;
   return (
-    <Link to="/canvas" viewTransition className="tcard qcard" style={{ background: bg }}>
-      <p>“{q.text}”</p>
-      <span className="byline">
-        <Avatar color={q.color} size={12} /> {q.groups.map((g) => `${g.label} ${g.pct}%`).join(' · ')} agree
+    <Link to={`/canvas/${insight.question}#insight-${insight.id}`} viewTransition className={`feed-tile feed-tile-${insight.direction}`}>
+      <span className={`feed-type dir-text-${insight.direction}`}>
+        <DirectionIcon direction={insight.direction} size={18} />
+        {directionLabel[insight.direction]}
+      </span>
+      <h3>{insight.claim}</h3>
+      <RotatingQuote insight={insight} offset={index} />
+      <span className="feed-foot">
+        <span className="feed-count">
+          {n} statement{n === 1 ? '' : 's'}
+        </span>
+        <span className="avatar-row">
+          {insight.statements.map((s) => <Avatar key={s.id} color={authorOf(s).color} size={20} />)}
+        </span>
+        <span className="feed-more">Learn more →</span>
       </span>
     </Link>
   );
 }
 
-const groundBgs = [C.navy, C.greenDark, C.pink];
-const divideBgs = [C.orangeLight, C.orange, C.blue];
+function PostTile({ post }: { post: Post }) {
+  return (
+    <a href="#" className={`feed-post tone-${post.tone}`} onClick={(e) => e.preventDefault()}>
+      <span className="feed-kicker">{post.kicker}</span>
+      <h3>{post.title}</h3>
+      <p>{post.excerpt}</p>
+      <span className="feed-byline">
+        <Avatar color="#fff" size={18} className="on-dark" /> {post.author} · {post.date}
+      </span>
+    </a>
+  );
+}
 
 export function Home() {
+  const feed = buildFeed();
   return (
     <>
       <Hero
@@ -196,41 +145,29 @@ export function Home() {
         big
         photo
         keepStatsMobile
-        bottom={
-          <Link to="/share" viewTransition className="btn btn-lg btn-pink">Share your thoughts</Link>
-        }
+        action={<Link to="/share" viewTransition className="btn btn-lg btn-pink">Share your thoughts</Link>}
       />
       <Ticker />
       <div className="page">
-        <section>
-          <p className="lede lede-xl">
-            {campaign.about}…{' '}
+        <section className="about-box">
+          <p>
+            {campaign.about}{' '}
             <Link to="/about" viewTransition className="link-green">Read more</Link>
           </p>
         </section>
 
-        {/* Hidden for now: <WhatYouCanDo /> */}
-
-        <section className="panel">
-          <h3 className="panel-title">What you can do</h3>
-          <TaskRow />
-        </section>
-
-        <div className="label" style={{ marginTop: 48 }}>From the community</div>
-
-        <section className="panel" style={{ marginTop: 24 }}>
-          <div className="panel-eyebrow">Common ground</div>
-          <h2 className="panel-heading">Across every group, people want transparency and a say in how AI is used.</h2>
-          <div className="cards3">
-            {commonGround.map((q, i) => <QuoteCard key={q.text} q={q} bg={groundBgs[i % groundBgs.length]} />)}
+        <section className="feed-section">
+          <div className="feed-head">
+            <h2 className="h2">Learnings and updates</h2>
           </div>
-        </section>
-
-        <section className="panel">
-          <div className="panel-eyebrow">Where we differ</div>
-          <h2 className="panel-heading">The statements that split opinion groups the most.</h2>
-          <div className="cards3">
-            {divides.map((q, i) => <QuoteCard key={q.text} q={q} bg={divideBgs[i % divideBgs.length]} />)}
+          <div className="feed">
+            {feed.map((item, i) =>
+              item.kind === 'insight' ? (
+                <InsightTile key={item.insight.id} insight={item.insight} index={i} />
+              ) : (
+                <PostTile key={item.post.id} post={item.post} />
+              ),
+            )}
           </div>
         </section>
       </div>

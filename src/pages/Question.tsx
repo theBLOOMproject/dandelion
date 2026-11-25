@@ -1,5 +1,5 @@
-import { useState, type FormEvent } from 'react';
-import { Link, useParams } from 'react-router';
+import { useEffect, useState, type FormEvent } from 'react';
+import { Link, useLocation, useParams } from 'react-router';
 import { C, questions, resources } from '../data';
 import { useApp, type Vote } from '../state';
 import { Avatar, Sheet } from '../components/ui';
@@ -41,7 +41,22 @@ export function Question() {
   const mine = votes[q.id] ?? [];
   const n = mine.length;
   const done = n >= q.answers.length;
-  const [tab, setTab] = useState<Tab>('answers');
+  // Links like /canvas/education#insight-education-2 open the Summary tab at that insight.
+  const { hash } = useLocation();
+  const linkedInsight = hash.startsWith('#insight-') ? hash.slice(1) : null;
+  const [tab, setTab] = useState<Tab>(linkedInsight ? 'summary' : 'answers');
+
+  useEffect(() => {
+    if (!linkedInsight) return;
+    setTab('summary');
+    // Wait for the sheet transition to settle before scrolling.
+    const t = window.setTimeout(() => {
+      const el = document.getElementById(linkedInsight);
+      el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el?.classList.add('flash');
+    }, 350);
+    return () => window.clearTimeout(t);
+  }, [linkedInsight]);
   const [draft, setDraft] = useState('');
   const related = resources.slice(0, 3);
 
