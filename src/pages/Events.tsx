@@ -8,15 +8,16 @@ export function Events() {
   const { rsvps, userColor } = useApp();
   return (
     <>
-      <Hero title="Events" stats={[{ value: events.length, label: 'events' }]} />
+      <Hero
+        title="Events"
+        sub={
+          <p className="hero-sub">
+            Meet neighbors in person to talk through this issue. <a href="#" onClick={(e) => e.preventDefault()}>How do events work?</a>
+          </p>
+        }
+        action={<Link to="/events/new" viewTransition className="btn btn-lg btn-navy">Host an event</Link>}
+      />
       <div className="page">
-        <div className="section-head">
-          <div>
-            <h3 className="h3">Attend an event on this topic.</h3>
-            <a className="link-green underline" href="#">How do events work?</a>
-          </div>
-          <Link to="/events/new" viewTransition className="btn btn-lg btn-navy">Host an event</Link>
-        </div>
         <div className="grid2">
           {events.map((e) => (
             <Link key={e.id} to={`/events/${e.id}`} viewTransition className="ocard">

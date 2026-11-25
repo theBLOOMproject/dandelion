@@ -4,7 +4,10 @@ import { Avatar, Hero } from '../components/ui';
 export function About() {
   return (
     <>
-      <Hero title="About this campaign" />
+      <Hero
+        title="About this campaign"
+        sub={<p className="hero-sub">Who’s hosting this conversation, and what it’s for.</p>}
+      />
       <div className="page page-prose">
         <h2 className="h2">Your Hosts</h2>
         <div className="host-row">

@@ -1,4 +1,4 @@
-import { campaign, resources } from '../data';
+import { resources } from '../data';
 import { useApp } from '../state';
 import { Hero } from '../components/ui';
 
@@ -6,15 +6,17 @@ export function Library() {
   const { openComposer } = useApp();
   return (
     <>
-      <Hero title="Library" stats={[{ value: resources.length, label: 'resources' }]} />
+      <Hero
+        title="Library"
+        sub={
+          <p className="hero-sub">
+            Articles, videos, and guides to help you understand the issue.{' '}
+            <a href="#" onClick={(e) => e.preventDefault()}>How did these sources get chosen?</a>
+          </p>
+        }
+        action={<button className="btn btn-lg btn-green" onClick={() => openComposer('resource')}>Share a resource</button>}
+      />
       <div className="page">
-        <div className="section-head">
-          <div>
-            <h3 className="h3">Explore resources from {campaign.place} on this issue.</h3>
-            <a className="link-green underline" href="#">How did these sources get chosen?</a>
-          </div>
-          <button className="btn btn-lg btn-green" onClick={() => openComposer('resource')}>Share a resource</button>
-        </div>
         <div className="cards3">
           {resources.map((r) => (
             <a key={r.title} href="#" className="ocard" onClick={(e) => e.preventDefault()}>

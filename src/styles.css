@@ -1202,14 +1202,16 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
 @media (max-width: 860px) { .hero-join { font-size: 16px; } .header-sub { margin-top: 8px; } }
 
 .hero-sub { font-size: 19px; line-height: 1.4; max-width: 560px; opacity: 0.9; }
+.hero-sub a { color: inherit; text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
+.hero-sub a:hover { opacity: 0.8; }
 @media (max-width: 860px) { .hero-sub { font-size: 16px; } }
 
 /* Regular page hero with a subheading + CTA (e.g. Community Q&A): even vertical padding, CTA centered beside the title block. */
-.hero:not(.hero-big):has(.header-aside) { padding: 36px 34px; justify-content: center; }
-.hero:not(.hero-big):has(.header-aside) .header-row { align-items: center; padding-right: 0; }
+.hero:not(.hero-big):has(.header-sub) { padding: 36px 34px; justify-content: center; }
+.hero:not(.hero-big):has(.header-sub) .header-row { align-items: center; padding-right: 0; }
 .hero:not(.hero-big) .header-sub { margin-top: 4px; }
 @media (max-width: 860px) {
-  .hero:not(.hero-big):has(.header-aside) { padding: 24px 20px; }
+  .hero:not(.hero-big):has(.header-sub) { padding: 24px 20px; }
   .hero:not(.hero-big) .header-sub { margin-top: 4px; }
 }
-@media (max-width: 1080px) { .hero:not(.hero-big):has(.header-aside) .header-row { align-items: flex-start; } }
+@media (max-width: 1080px) { .hero:not(.hero-big):has(.header-sub) .header-row { align-items: flex-start; } }
