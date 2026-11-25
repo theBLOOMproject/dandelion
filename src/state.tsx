@@ -10,9 +10,9 @@ export type AuthRequest = { fields: AuthField[]; title: string; sub: string; cta
 export type HeroPhoto = { src: string; credit?: string; creditUrl?: string };
 
 const defaultPhoto: HeroPhoto = {
-  src: '/images/tribune-tower.jpg',
-  credit: 'Photo: Eugene Zelenko, CC BY-SA 4.0',
-  creditUrl: 'https://commons.wikimedia.org/wiki/File:USA-Oakland-Tribune_Building_and_Tower-8.jpg',
+  src: '/images/three-sisters.jpg',
+  credit: 'Photo: Ken Lund, CC BY-SA 2.0',
+  creditUrl: 'https://commons.wikimedia.org/wiki/File:The_Three_Sisters,_Oregon_(1291724866).jpg',
 };
 
 interface AppState {

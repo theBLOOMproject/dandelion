@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
-import { C, campaign, insightQuotes, reportQuotes, ticker } from '../data';
+import { C, campaign, commonGround, divides, ticker, type Quote } from '../data';
 import { useApp } from '../state';
 import { Avatar, Hero } from '../components/ui';
 
@@ -171,16 +171,20 @@ function TaskRow() {
   );
 }
 
-function QuoteCard({ color, text, by, dot }: { color: string; text: string; by: string; dot: string }) {
+/** A statement card; the byline shows how much each opinion group agreed. */
+function QuoteCard({ bg, q }: { bg: string; q: Quote }) {
   return (
-    <Link to="/canvas" viewTransition className="tcard qcard" style={{ background: color }}>
-      <p>“{text}”</p>
+    <Link to="/canvas" viewTransition className="tcard qcard" style={{ background: bg }}>
+      <p>“{q.text}”</p>
       <span className="byline">
-        <Avatar color={dot} size={12} /> Asked by {by}
+        <Avatar color={q.color} size={12} /> {q.groups.map((g) => `${g.label} ${g.pct}%`).join(' · ')} agree
       </span>
     </Link>
   );
 }
+
+const groundBgs = [C.navy, C.greenDark, C.pink];
+const divideBgs = [C.orangeLight, C.orange, C.blue];
 
 export function Home() {
   return (
@@ -215,18 +219,18 @@ export function Home() {
         <div className="label" style={{ marginTop: 48 }}>From the community</div>
 
         <section className="panel" style={{ marginTop: 24 }}>
-          <div className="panel-eyebrow">Insight</div>
-          <h2 className="panel-heading">People don’t believe that data centers should consume more of our natural resources.</h2>
+          <div className="panel-eyebrow">Common ground</div>
+          <h2 className="panel-heading">Across every group, people want transparency and a say in how AI is used.</h2>
           <div className="cards3">
-            {insightQuotes.map((q) => <QuoteCard key={q.text} {...q} />)}
+            {commonGround.map((q, i) => <QuoteCard key={q.text} q={q} bg={groundBgs[i % groundBgs.length]} />)}
           </div>
         </section>
 
         <section className="panel">
-          <div className="panel-eyebrow">Report back</div>
-          <h2 className="panel-heading">From @cassidy’s living room conversation</h2>
+          <div className="panel-eyebrow">Where we differ</div>
+          <h2 className="panel-heading">The statements that split opinion groups the most.</h2>
           <div className="cards3">
-            {reportQuotes.map((q) => <QuoteCard key={q.text} {...q} />)}
+            {divides.map((q, i) => <QuoteCard key={q.text} q={q} bg={divideBgs[i % divideBgs.length]} />)}
           </div>
         </section>
       </div>

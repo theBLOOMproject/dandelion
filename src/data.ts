@@ -1,3 +1,7 @@
+import { agreePct, groups as polisGroups, statements, type Statement } from './content/polis';
+import { HOST_ID, participant } from './content/participants';
+import { topics, type Topic } from './content/topics';
+
 export const C = {
   navy: '#31387D',
   navyDeep: '#0D1452',
@@ -12,16 +16,17 @@ export const C = {
 };
 
 export const campaign = {
-  title: 'Data Centers in Oakland',
-  place: '@Oakland',
-  location: 'Oakland, CA',
-  slug: 'data-centers-oakland',
+  title: 'AI in Central Oregon',
+  place: '@CentralOregon',
+  location: 'Central Oregon',
+  slug: 'central-oregon-ai',
   about:
-    'Since the start of the AI boom, a few different corporations have proposed new data center developments in Oakland. There are broad concerns about this stuff. Tap in to help the community figure out where we should stand on this issue.',
+    'AI is already showing up in our schools, our jobs, and our power bills, and new data centers are being proposed across the region. Before state and local leaders decide how to respond, we want to hear from people who live here. Tap in to help Central Oregon figure out where it stands.',
   stats: [
-    { value: 120, label: 'participants' },
-    { value: 70, label: 'statements' },
-    { value: 2431, label: 'votes' },
+    // Polis exports don't include a participant count; the most-voted statement is a floor for it.
+    { value: Math.max(...statements.map((s) => s.total.votes)), label: 'participants' },
+    { value: statements.length, label: 'statements' },
+    { value: statements.reduce((n, s) => n + s.total.votes, 0), label: 'votes' },
   ],
 };
 
@@ -33,7 +38,9 @@ export const hosts: Person[] = [
   { name: 'Organization 3', color: C.green },
 ];
 
-export type Answer = { author: string; color: string; text: string };
+export type Answer = { id: number; author: string; color: string; text: string; votes: number; agreePct: number };
+export type GroupPct = { id: string; label: string; pct: number };
+export type SummaryItem = { pct: number; color: string; text: string; groups: GroupPct[] };
 export type Question = {
   id: string;
   text: string;
@@ -41,117 +48,85 @@ export type Question = {
   askedColor: string;
   participants: number;
   answers: Answer[];
-  summary: { pct: number; color: string; text: string }[];
+  summary: SummaryItem[];
 };
 
-const answerPeople = [
-  { author: '@wizard', color: C.orange },
-  { author: '@marisol', color: C.green },
-  { author: '@deshawn', color: C.blue },
-  { author: '@kenji', color: C.pink },
-  { author: '@cassidy', color: C.orangeLight },
-  { author: '@tomas', color: C.greenDark },
-  { author: '@ade', color: C.navy },
-];
+const byId = new Map(statements.map((s) => [s.id, s]));
+const assigned = new Set(topics.flatMap((t) => t.statements));
+const maxVotes = Math.max(...statements.map((s) => s.total.votes));
+/** Ignore thinly-voted statements when ranking (late additions with only a few votes). */
+const MIN_VOTES = Math.max(10, Math.round(maxVotes * 0.08));
+const voted = (s: Statement) => s.total.votes >= MIN_VOTES;
 
-function answersFrom(texts: string[]): Answer[] {
-  return texts.map((text, i) => ({ ...answerPeople[i % answerPeople.length], text }));
+function groupPcts(s: Statement): GroupPct[] {
+  return polisGroups.map((g) => ({ ...g, pct: agreePct(s.groups[g.id]) }));
 }
 
-export const questions: Question[] = [
-  {
-    id: 'city-role',
-    text: 'What role should the city play in this industry?',
-    askedBy: 'Host',
-    askedColor: C.orange,
-    participants: 67,
-    answers: answersFrom([
-      'Require community benefit agreements before any permits.',
-      'Stay out of it and let the market decide.',
-      'Tax them and fund our schools with the revenue.',
-      'Hold public hearings in every affected neighborhood.',
-      'Cap how much water any one facility can use.',
-      'Make them hire locally, and put it in writing.',
-      'Zone them away from homes and schools.',
-      'Ask the state for help — this is bigger than Oakland.',
-      'Require them to run on clean energy from day one.',
-      'Let residents vote on each project directly.',
-    ]),
-    summary: [
-      { pct: 95, color: C.green, text: 'Require community benefit agreements first' },
-      { pct: 81, color: C.orangeLight, text: 'Hold hearings in affected neighborhoods' },
-      { pct: 42, color: C.blue, text: 'Tax them and fund our schools' },
-    ],
-  },
-  {
-    id: 'ai-general',
-    text: 'How do we feel about AI in general y’all?',
-    askedBy: '@wizard',
-    askedColor: C.orangeLight,
-    participants: 67,
-    answers: answersFrom([
-      'Curious, but nervous about who gets left behind.',
-      'It’s a tool. Depends who’s holding it.',
-      'I use it every day at work and it helps.',
-      'Honestly, it feels like it’s moving too fast.',
-      'I worry about what it does to jobs here.',
-      'It could help small businesses compete.',
-      'I don’t trust the companies building it.',
-      'My kids already use it for homework.',
-      'We should slow down until there are rules.',
-      'I haven’t made up my mind yet.',
-    ]),
-    summary: [
-      { pct: 88, color: C.green, text: 'Curious, but nervous' },
-      { pct: 64, color: C.orange, text: 'Depends who’s holding it' },
-      { pct: 30, color: C.blue, text: 'Helps me every day' },
-    ],
-  },
-  {
-    id: 'water',
-    text: 'Should data centers pay more for water and power?',
-    askedBy: '@marisol',
-    askedColor: C.green,
-    participants: 54,
-    answers: answersFrom([
-      'Yes — they should pay what it actually costs us.',
-      'Only if the money goes back to residents.',
-      'Higher rates will just push them to another city.',
-      'Charge more during droughts and heat waves.',
-      'They should pay to upgrade the grid they strain.',
-      'Same rates as everyone — fair is fair.',
-      'Give discounts if they recycle their water.',
-      'Make the rates public so we can see them.',
-      'Use the extra money to lower bills for families.',
-      'Tie the price to how many local jobs they create.',
-    ]),
-    summary: [
-      { pct: 91, color: C.green, text: 'Pay what it actually costs' },
-      { pct: 77, color: C.orange, text: 'Money goes back to residents' },
-      { pct: 25, color: C.pink, text: 'It will push them elsewhere' },
-    ],
-  },
-];
+function toAnswer(s: Statement): Answer {
+  const p = participant(s.authorId);
+  return { id: s.id, author: p.name, color: p.color, text: s.text, votes: s.total.votes, agreePct: agreePct(s.total) };
+}
 
-export const ticker = [
-  { color: C.orange, text: 'We should all be careful about large corporations getting in.' },
-  { color: C.blue, text: 'Where is all the water going to come from?' },
-  { color: C.green, text: 'Jobs matter, but so does the air we breathe.' },
-  { color: C.pink, text: 'Who actually benefits from this?' },
-  { color: C.orangeLight, text: 'I want to hear from people who live near the sites.' },
-];
+function toSummary(s: Statement): SummaryItem {
+  return { pct: agreePct(s.total), color: participant(s.authorId).color, text: s.text, groups: groupPcts(s) };
+}
 
-export const insightQuotes = [
-  { color: C.navy, text: 'What the heck is up with that? Where is all the water going?', by: '@wizard', dot: '#1F2560' },
-  { color: C.greenDark, text: 'We’re in a drought half the year. This feels backwards.', by: '@marisol', dot: '#05573F' },
-  { color: C.pink, text: 'Cooling towers next to a school? Come on.', by: '@kenji', dot: '#B5146F' },
-];
+function topicStatements(t: Topic): Statement[] {
+  const listed = t.statements.map((id) => byId.get(id)).filter((s): s is Statement => !!s);
+  const extra = t.catchAll ? statements.filter((s) => !assigned.has(s.id)) : [];
+  return [...listed, ...extra];
+}
 
-export const reportQuotes = [
-  { color: C.orangeLight, text: 'Nobody in the room had heard about the proposal before tonight.', by: '@cassidy', dot: C.navy },
-  { color: C.orange, text: 'We want a seat at the table before the permits go through.', by: '@deshawn', dot: C.pink },
-  { color: C.greenDark, text: 'Let’s do this again with folks from East Oakland.', by: '@tomas', dot: '#05573F' },
-];
+const host = participant(HOST_ID);
+
+export const questions: Question[] = topics.map((t) => {
+  const st = topicStatements(t);
+  return {
+    id: t.id,
+    text: t.question,
+    askedBy: host.name,
+    askedColor: host.color,
+    participants: Math.max(0, ...st.map((s) => s.total.votes)),
+    answers: [...st].sort((a, b) => b.total.votes - a.total.votes).map(toAnswer),
+    summary: st
+      .filter(voted)
+      .sort((a, b) => agreePct(b.total) - agreePct(a.total))
+      .slice(0, 3)
+      .map(toSummary),
+  };
+});
+
+export { polisGroups as groups };
+
+export type Quote = { text: string; color: string; groups: GroupPct[] };
+const toQuote = (s: Statement): Quote => ({ text: s.text, color: participant(s.authorId).color, groups: groupPcts(s) });
+const minGroup = (s: Statement) => Math.min(...polisGroups.map((g) => agreePct(s.groups[g.id])));
+const groupGap = (s: Statement) => {
+  const p = polisGroups.map((g) => agreePct(s.groups[g.id]));
+  return Math.max(...p) - Math.min(...p);
+};
+const short = (s: Statement) => s.text.length <= 140;
+
+/** Participant (non-host) statements most people agreed with, for the home ticker. */
+export const ticker: Quote[] = statements
+  .filter((s) => s.authorId !== HOST_ID && voted(s) && short(s))
+  .sort((a, b) => agreePct(b.total) - agreePct(a.total))
+  .slice(0, 6)
+  .map(toQuote);
+
+/** Common ground: statements every opinion group agreed with. */
+export const commonGround: Quote[] = statements
+  .filter((s) => voted(s) && short(s))
+  .sort((a, b) => minGroup(b) - minGroup(a))
+  .slice(0, 3)
+  .map(toQuote);
+
+/** Where opinion groups split the most. */
+export const divides: Quote[] = statements
+  .filter((s) => voted(s) && short(s))
+  .sort((a, b) => groupGap(b) - groupGap(a))
+  .slice(0, 3)
+  .map(toQuote);
 
 export type Event = {
   id: string;
@@ -170,8 +145,8 @@ export const events: Event[] = [
     title: 'Community Forum #1',
     date: 'Thursday, October 23, 2027',
     time: '5:00PM – 7:00PM',
-    place: 'Smokehouse Grill',
-    address: '1782 Telegraph Ave, Berkeley, CA 94609',
+    place: 'Deschutes Public Library',
+    address: '507 NW Wall St, Bend, OR 97703',
     blurb: campaign.about,
     attendees: [
       { name: 'Humphrey', color: C.orange },
@@ -184,7 +159,7 @@ export const events: Event[] = [
     date: 'Saturday, November 8, 2027',
     time: '2:00PM – 4:00PM',
     place: 'Cassidy’s place',
-    address: 'Fruitvale, Oakland, CA',
+    address: 'Redmond, OR',
     blurb: 'A small, facilitated conversation with neighbors. Snacks provided, opinions welcome.',
     attendees: [
       { name: 'Cassidy', color: C.pink },
@@ -195,14 +170,14 @@ export const events: Event[] = [
 ];
 
 export const resources = [
-  { title: 'The city’s draft proposal', desc: 'The full planning document submitted to the council.', kind: 'Document' },
-  { title: 'How data centers use water', desc: 'A plain-language explainer on cooling systems.', kind: 'Article' },
-  { title: 'Council meeting, Sept 12', desc: 'Recording of the public comment session.', kind: 'Video' },
-  { title: 'Grid capacity in the East Bay', desc: 'What PG&E says the grid can actually handle.', kind: 'Report' },
-  { title: 'Jobs: promises vs. reality', desc: 'What happened in three other cities.', kind: 'Article' },
-  { title: 'Community benefit agreements 101', desc: 'How other neighborhoods negotiated.', kind: 'Guide' },
-  { title: 'Map of proposed sites', desc: 'Where the three developments would go.', kind: 'Map' },
-  { title: 'Ask a researcher', desc: 'Q&A with a UC Berkeley energy researcher.', kind: 'Podcast' },
+  { title: 'Oregon’s data center water reporting rules', desc: 'What large facilities now have to disclose, and what they don’t.', kind: 'Document' },
+  { title: 'How data centers use water and power', desc: 'A plain-language explainer on cooling and the grid.', kind: 'Article' },
+  { title: 'AI in the classroom: a guide for parents', desc: 'What schools are doing and questions to ask.', kind: 'Guide' },
+  { title: 'Listening session, Sisters', desc: 'Recording of a community conversation on AI.', kind: 'Video' },
+  { title: 'Jobs: promises vs. reality', desc: 'What happened to employment in three other data center towns.', kind: 'Report' },
+  { title: 'Tax incentives 101', desc: 'How Oregon’s enterprise zones work, and who decides.', kind: 'Guide' },
+  { title: 'Map of proposed sites', desc: 'Where new facilities are planned across the region.', kind: 'Map' },
+  { title: 'Ask a researcher', desc: 'Q&A with an AI policy researcher.', kind: 'Podcast' },
 ];
 
 export type IdentityQuestion = { id: string; title: string; options: string[]; icon?: 'person' | 'flag' | 'cake' | 'laptop' };

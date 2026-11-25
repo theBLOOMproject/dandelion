@@ -90,7 +90,7 @@ function YouMenu() {
             <Avatar color={userColor} size={36} />
             <div>
               <b>You</b>
-              <span>{account?.email ?? 'Oakland, CA'}</span>
+              <span>{account?.email ?? campaign.location}</span>
             </div>
           </div>
           <Link to="/edit" viewTransition>Edit campaign <small>Host view</small></Link>
@@ -160,7 +160,7 @@ const composerCopy: Record<ComposerKind, { title: string; sub: string; placehold
   thought: {
     title: 'Share your thoughts.',
     sub: 'With neighbors who are thinking about this issue.',
-    placeholder: 'What’s on your mind about data centers in Oakland?',
+    placeholder: 'What’s on your mind about AI in Central Oregon?',
     cta: 'Share',
     tone: 'green',
   },

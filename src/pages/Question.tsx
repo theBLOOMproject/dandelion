@@ -107,7 +107,7 @@ export function Question() {
                       <Avatar color={a.color} size={36} />
                       <div className="answer-body">
                         <h3>{a.text}</h3>
-                        <div className="answer-meta">{a.author}</div>
+                        <div className="answer-meta">{a.author} · {a.votes} votes</div>
                         {state === 'active' && (
                           <div className="vote-row">
                             {VOTES.map((x) => (
@@ -151,12 +151,21 @@ export function Question() {
 
       {tab === 'summary' && (
         <div className="qtab-panel summary">
-          <div className="label">Where people land</div>
+          <div className="label">Most agreed with</div>
           {q.summary.map((s) => (
-            <div className="resp" key={s.text}>
+            <div className="resp resp-groups" key={s.text}>
               <span className="pct">{s.pct}%</span>
               <Avatar color={s.color} size={18} />
-              <span>“{s.text}”</span>
+              <div>
+                <span>“{s.text}”</span>
+                <div className="group-pcts">
+                  {s.groups.map((g) => (
+                    <span key={g.id}>
+                      {g.label} <b>{g.pct}%</b>
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           ))}
         </div>

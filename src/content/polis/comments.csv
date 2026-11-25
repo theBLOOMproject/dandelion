@@ -1,0 +1,202 @@
+comment-id,author-id,moderated,comment,total-votes,total-agrees,total-disagrees,total-passes,group-a-votes,group-a-agrees,group-a-disagrees,group-a-passes,group-b-votes,group-b-agrees,group-b-disagrees,group-b-passes
+0,0,1,Oregon now requires large (especially new or expanding) data centers to report their water use. They should also have to report how much electricity they consume.,218,207,5,6,93,92,1,0,125,115,4,6
+1,0,-1,Building more AI facilities in Oregon will put too much strain on our water supply.,4,1,0,3,1,1,0,0,3,0,0,3
+2,0,1,Tax breaks for AI companies building in Oregon should require demonstrated community benefits.,204,171,10,23,94,80,3,11,110,91,7,12
+3,0,-1,"Oregon has taken some steps to protect teenagers from harmful AI apps, but not enough.",30,13,7,10,3,2,1,0,27,11,6,10
+4,0,1,"For teenagers who can't access or afford therapy, AI chatbots are better than nothing.",199,27,123,49,93,6,73,14,106,21,50,35
+5,0,1,Parents should be able to see what their minor children discuss with AI mental health or companion apps.,239,185,23,31,101,79,8,14,138,106,15,17
+6,0,1,Oregon schools should have clear rules about when and how students can use AI.,224,208,6,10,97,91,2,4,127,117,4,6
+7,0,1,Learning how to use AI responsibly should be part of every Oregon student's education.,215,168,21,26,98,62,20,16,117,106,1,10
+8,0,-1,Oregon teachers need dedicated training and support to use AI well in their classrooms.,19,16,1,2,3,2,1,0,16,14,0,2
+9,0,-1,Students in rural Oregon or lower-income communities risk being left behind if AI tools reach well-funded schools before they reach everyone else.,22,17,1,4,3,3,0,0,19,14,1,4
+10,0,1,Parents who are worried about AI in their children's schools should be educating themselves and organizing with other parents — not waiting for administrators to act.,213,173,19,21,98,80,9,9,115,93,10,12
+11,0,-1,Workers should have the right to challenge employment-related decisions made by or with AI.,14,11,0,3,2,2,0,0,12,9,0,3
+12,0,1,Companies that use AI to automate jobs should also help fund training for the workers they displace.,242,187,32,23,107,95,3,9,135,92,29,14
+13,0,1,Workers should have the right to know when AI is being used to evaluate their performance or productivity.,218,202,7,9,100,99,0,1,118,103,7,8
+14,0,-1,Companies that produce or offer to the public AI companions or advice should be held responsible for injuries people experience as a result of trusting content provided by those features.,15,11,0,4,2,2,0,0,13,9,0,4
+15,0,-1,"When AI companies profit from Oregonian’s personal data, residents should have a legal right to a share of those profits.",19,14,1,4,3,3,0,0,16,11,1,4
+16,0,1,The algorithms that decide which news and political content Oregonians see online should be required to disclose how they make those decisions.,227,206,10,11,105,99,1,5,122,107,9,6
+17,0,-1,"When AI is used to help make medical decisions, patients in Oregon should be informed, and told why — and should have the right to ask for a human instead, without being penalized, financially or otherwise.",23,19,1,3,2,2,0,0,21,17,1,3
+18,0,1,"Government should be required to disclose when and how it is using AI to make decisions, and why it thinks it is a better use of taxpayer money than the alternative.",234,212,8,14,105,104,0,1,129,108,8,13
+19,0,-1,"There should be strict limits on monitoring or surveillance of Oregon residents, with or without the use of AI (and whether related actions are taken by government or by the private sector).",17,13,1,3,2,2,0,0,15,11,1,3
+20,0,-1,"When Oregon government agencies plan to use AI in services that affect residents, the public should be able to weigh in before — not after — changes are rolled out.",18,14,0,4,2,2,0,0,16,12,0,4
+21,0,-1,"The Federal Government should be able to decide how to regulate AI in order to have uniform national policy, even if those decisions conflict with the preferences of the Oregon state government.",11,1,6,4,2,0,2,0,9,1,4,4
+22,0,1,"Oregon's strong community networks — neighbors, faith groups, civic organizations — have a role to play in helping residents navigate AI, not just governments and tech companies.",229,186,16,27,97,75,8,14,132,111,8,13
+23,0,-1,"Individuals also need to be able to protect themselves and their families from the risks of AI, so it is critical that the state ensure the public has access to information that will enable them to do this effectively.",21,18,0,3,3,3,0,0,18,15,0,3
+24,0,1,"When Oregon decides how to expand AI access or manage its risks, rural communities and lower-income neighborhoods should be fully involved — not an afterthought.",216,200,5,11,99,90,3,6,117,110,2,5
+25,0,-1,AI will ultimately create more good jobs in Oregon than it eliminates.,5,1,1,3,1,0,1,0,4,1,0,3
+26,0,-1,Most Oregonians aren't equipped to tell the difference between real and AI-generated content.,5,2,0,3,1,1,0,0,4,1,0,3
+27,0,-1,AI is developing faster than governments and institutions can realistically keep up with.,10,8,0,2,2,2,0,0,8,6,0,2
+28,1,-1,I think we need more regulation at the state level,2,1,0,1,0,0,0,0,2,1,0,1
+29,3,-1,This is Stuarts test comment,0,0,0,0,0,0,0,0,0,0,0,0
+30,4,-1,TEST RAHMIN COMMENT,0,0,0,0,0,0,0,0,0,0,0,0
+31,4,-1,TEST TEST TEST,0,0,0,0,0,0,0,0,0,0,0,0
+32,5,-1,Test test test iPhone safari,1,1,0,0,0,0,0,0,1,1,0,0
+33,0,-1,"AI tools used by Central Oregon government agencies, schools, and healthcare providers should work in Spanish, not just English.
+",11,7,2,2,1,0,1,0,10,7,1,2
+34,0,-1,"AI tools that help doctors in Central Oregon diagnose patients faster could be especially important where it is hard to attract specialists.
+",4,0,1,3,1,0,1,0,3,0,0,3
+35,0,1,Data centers bring good-paying jobs and tax revenue to Central Oregon communities that need economic growth.,230,55,133,42,102,1,94,7,128,54,39,35
+36,0,-1,It is not appropriate for a chip manufacturer like Nvidia to shape what Central Oregon students learn about AI.,4,1,0,3,1,1,0,0,3,0,0,3
+37,0,-1,"AI is making everyday life more expensive for ordinary people, even if it makes companies more profitable.
+",16,7,3,6,2,2,0,0,14,5,3,6
+38,0,1,"Small businesses in Central Oregon should get free AI training so they are not left behind by bigger companies that can afford it.
+",243,125,69,49,108,43,41,24,135,82,28,25
+39,0,1,"AI companies should be held legally responsible when their products cause real harm to people, just like a doctor or building contractor.",222,190,14,18,101,98,1,2,121,92,13,16
+40,0,-1,AI companies are spending millions to influence elections and block safety rules that would protect people like us.,6,3,1,2,1,1,0,0,5,2,1,2
+41,0,-1,"Oregon should be able to set its own AI safety rules, even when the federal government pressures the state to back down.
+",22,20,0,2,3,3,0,0,19,17,0,2
+42,0,1,"The Confederated Tribes of Warm Springs should have a formal seat at the table when Central Oregon leaders make decisions about AI.
+",210,190,7,13,98,89,4,5,112,101,3,8
+43,0,1,"AI tools are already helping ordinary people do things that used to require expensive professionals.
+",243,149,62,32,113,43,54,16,130,106,8,16
+44,0,1,"The more Central Oregon residents rely on AI for advice, connection, and even companionship, the less they will turn to each other.",231,151,44,36,105,89,11,5,126,62,33,31
+45,7,-1,This is a test statement from stuart,0,0,0,0,0,0,0,0,0,0,0,0
+46,18,1,"AI is more than one thing, and we should not govern all forms of AI the same way",216,167,25,24,100,66,21,13,116,101,4,11
+47,21,-1,Did you use AI for these questions? One of the questions should be about rejection of artificial intelligence.,6,3,1,2,1,1,0,0,5,2,1,2
+48,0,1,AI Companies -- like NVIDIA -- sending ambassadors to Oregon universities will give our students a leg up in the job market.,219,69,73,77,101,3,67,31,118,66,6,46
+49,0,1,AI for children is fine – it just needs to engage students in ways that don't make it addictive.,221,45,141,35,105,3,92,10,116,42,49,25
+50,0,1,A small increase in power costs is worth it if we can get a lot of tax revenue out of new data centers.,201,31,136,34,93,0,87,6,108,31,49,28
+51,0,1,I trust our local and regional government officials to make the right decisions on new data centers – they are best positioned to make decisions that benefit everyone.,189,17,149,23,94,2,88,4,95,15,61,19
+52,0,1,"The changes coming with AI are inevitable. We should be learning to adapt, not trying to stop it.",239,106,102,31,110,12,86,12,129,94,16,19
+53,0,1,I would be fine with AI-related unemployment as long as Oregon had a better a better social safety net.,196,43,99,54,95,9,65,21,101,34,34,33
+54,0,1,The jobs being replaced by AI weren’t that essential to begin with. Let’s find more meaningful work for those affected.,184,25,126,33,89,5,77,7,95,20,49,26
+55,0,1,"Big corporations that are cutting jobs should be required to pay for their employees' retraining, instead of that cost falling on the government.",230,159,34,37,103,87,5,11,127,72,29,26
+56,0,1,Slowing down AI in Oregon means the jobs will just go to another state.,217,63,106,48,102,4,79,19,115,59,27,29
+57,0,1,"I don't think parents should be able to monitor their teenagers' chat logs in ChatGPT, etc – it's an invasion of privacy.",183,13,142,28,88,6,70,12,95,7,72,16
+58,0,1,We're still learning of the effects of social media on our health. We shouldn't be giving kids more tools until we've figured that out.,231,174,30,27,103,97,1,5,128,77,29,22
+59,42,1,There should be no regulation of any kind on AI. Let the free market determine how it will be applied.,174,7,161,6,87,2,82,3,87,5,79,3
+60,44,1,"Powerful AI could pose risks to humanity’s long-term survival, and Oregon should take that possibility seriously even when it feels remote.",240,177,37,26,107,97,4,6,133,80,33,20
+61,44,1,Concerns that AI could threaten humanity’s survival are overblown and distract from the real ways AI is affecting people in Oregon right now,235,76,117,42,112,10,85,17,123,66,32,25
+62,44,1,Companies building the most powerful AI systems should be required to show they can prevent catastrophic outcomes before deploying them.,209,179,10,20,98,92,3,3,111,87,7,17
+63,98,1,There needs to be more education on AI for the general public before many of these statements can be addressed. In using social media anymore there is no way to know if what I am reading/seeing is real or AI so I don't trust it anymore.,184,154,17,13,90,76,7,7,94,78,10,6
+64,99,1,"AI fundamentally restructures the foundations of capitalism. All training data for AI is either other people's intellectual property or in the public domain. Therefore, AI should be publicly owned only. No private ownership.",186,111,29,46,95,77,2,16,91,34,27,30
+65,106,1,"We need transparency from governments (city and county) on AI usage, from office software to data centers, and a willingness of government officials to listen and scale back AI usage if asked to.",171,145,13,13,88,82,2,4,83,63,11,9
+66,124,-1,With something similar to public library reference desk where propeinfo is available,60,22,8,30,24,8,2,14,36,14,6,16
+67,149,1,"AI often provides inaccurate information (occasionally harmfully). While it could be viewed as useful, most students use it as a crutch more than a tool that ends up negatively impacting their ability to think critically and problem solve.",142,108,9,25,74,71,1,2,68,37,8,23
+68,151,1,I don’t think AI has benefits that outweigh the environmental and social repercussions of computer-based control over our lives and information. Taxing tech companies to neutralize their profits on AI and using proceeds to fund public needs,132,79,17,36,72,62,1,9,60,17,16,27
+69,151,-1,"Absolutely yes that common folks who are not profiting from AI need to be leading the education. Also;  this survey seems broken where my response is now under a question I just answered, but not the one I was trying to answer. Is this AI?",33,8,3,22,14,4,0,10,19,4,3,12
+70,158,1,This will all be done through education. The only way to mitigate risks or take fear out of something is to educate. Providing opportunities for education is what we've got to focus on.,125,62,30,33,68,18,25,25,57,44,5,8
+71,162,1,We should not be using children as guinea pigs when it comes to AI. Allowing them to use these tools without guardrails has serious short and long-term risks.,135,126,1,8,73,71,0,2,62,55,1,6
+72,162,1,"We need stronger transparency around how AI is being used in the education system – by teachers, administrators, and students.",127,119,2,6,70,67,1,2,57,52,1,4
+73,162,1,Central Oregon has massive disparities in AI literacy. We need to help get everyone up to speed on the risks and opportunities AI poses to our communities.,124,83,13,28,68,34,13,21,56,49,0,7
+74,164,1,The best solutions are education and regulation.,131,87,19,25,72,46,11,15,59,41,8,10
+75,168,1,AI is already causing major issues by providing false information and people are relying upon it. There needs to be some sort of federal check.,130,90,19,21,68,58,4,6,62,32,15,15
+76,169,1,"AI is taking money and opportunity from artists, writers, musicians, and thinkers. It’s taking brain cells from our children.",133,95,24,14,75,71,3,1,58,24,21,13
+77,171,1,AI is an opportunity to connect people across demographics and cultures to collaborate on how we can leverage the potential for good.,125,48,47,30,65,7,41,17,60,41,6,13
+78,174,1,I think the human species is not evolved enough to be able to for see the effects this technology could have on humanity. It is unfortunate that we have the ability to create it.,130,73,36,21,70,58,5,7,60,15,31,14
+79,180,1,Companies shouldn’t get tax breaks for using AI,122,105,10,7,67,61,5,1,55,44,5,6
+80,184,1,"AI tech companies are moving too fast. I use Anthropic's Claude and find it to be beneficial in many ways. But I do not trust other companies that may be more interested in control, power and financial gain.",111,64,18,29,58,36,4,18,53,28,14,11
+81,194,1,"AI is being used by youth, aging workforce should be trained to create a smooth transition to the incoming workforce.",105,36,34,35,59,10,33,16,46,26,1,19
+82,207,-1,This needs expansive research.,4,3,1,0,4,3,1,0,0,0,0,0
+83,207,-1,"This needs expansive research. Water - We have been in a drought for years, wells have been drying up, forest fires, pollution from data center water processing, and the cost to the general public for increased costs.",60,46,3,11,34,30,2,2,26,16,1,9
+84,207,-1,"Power - already ai power usage costs have been passed on to the general public, then there continued infrastructure expansion costs, installing next to residential and farm areas, all uneccessary if not here.",4,3,0,1,4,3,0,1,0,0,0,0
+85,207,-1,"The current tech - chips, cooling systems - re: turnover, resources, power and water usage is not currently sustainable. Much waste, and for hallucinations - artificial regurgitation. AI doesn't ""think"" it guesses the next word. Research it",3,3,0,0,3,3,0,0,0,0,0,0
+86,207,1,AI if so great should already be intuitive and not need training beyond a basuc online youtube - free. It should be able to create its own training.,84,8,48,28,52,5,28,19,32,3,20,9
+87,207,-1,"These companies are so wealthy and powerful, that once the centers are in, and people, farms or forest fires need water, I doubt the data centers will be turned off to save anyone.  ""Bonus"" unemployment, drought, pollution, & utilities up",4,4,0,0,4,4,0,0,0,0,0,0
+88,207,1,"Using Ai instead of a person (which would help the economy), benefit$ a small group of companies that have tax breaks (doesn't benefit econ/community), takes - not provides jobs for uninspired results.",100,60,15,25,58,49,3,6,42,11,12,19
+89,207,1,"Data centers bring temporary construction jobs, use out of state contractors (worked at one), gives a temporary housing shortage (thousands of workers that leave) and VERY few jobs once running. It is monitoring temperature.",96,71,5,20,55,49,1,5,41,22,4,15
+90,207,-1,"The data centers already have a tax exempt deal. Kotek is pushing for 50 years. After 50, how do they assess income? Each company can operate virtually from a tax haven. the 4 or so employees' wages that  monitor temp won't be much.",3,2,0,1,3,2,0,1,0,0,0,0
+91,211,-1,"It’s not Artificial and it is not Intelligence, it’s a machine learning model using language patterns to produce a coherent answer. It’s a tool. You cannot trust the outputs because the training datasets are a blackbox.",1,1,0,0,1,1,0,0,0,0,0,0
+92,211,-1,"Learn by doing in order to understand the tool. It’s not a one size fits all product. Research the work DARPA has done. Look here: 
+https://www.darpa.mil/research/programs/methodological-advancements-generalizable-insights-complex-systems",1,1,0,0,1,1,0,0,0,0,0,0
+93,211,-1,"Learn by doing:
+Test the same question on multiple platforms?
+What does the platform miss contextually?
+Example when using Claude, look at the logic it uses when the system computes, which it refers to as thinking.
+What get’s missed?",1,1,0,0,1,1,0,0,0,0,0,0
+94,211,-1,"I know Simon Wardley and he has a grounded view of the tool:
+https://youtu.be/PFt-aHqapnU?si=dboLKKnDw2wLJcxW
+https://youtu.be/obh133OerEk?si=yNcYEIkjqTMPutLD
+
+So what happens when you map the AI space based on the current reality?",1,1,0,0,1,1,0,0,0,0,0,0
+95,211,-1,Every actor with capital extraction power has long time horizons and information advantages; every actor absorbing externalities has short time horizons and information lag. Tech leaders want to build before regulation hardens.,1,1,0,0,1,1,0,0,0,0,0,0
+96,211,-1,There is an information asymmetry problem. Decision makers have no domain knowledge of the space. Tech companies work around current systems that have not paid attention to what’s happening behind the scenes. What are the incentives?,50,23,1,26,29,17,0,12,21,6,1,14
+97,211,-1,"Data centers bring good-paying jobs and tax revenue to Central Oregon communities that need economic growth.
+
+What is the time horizon here?
+Define economic growth?
+What are the incentives?
+Who wins economically?
+",1,1,0,0,1,1,0,0,0,0,0,0
+98,211,-1,"The changes coming with AI are inevitable. We should be learning to adapt, not trying to stop it.
+
+Map the actually space so you can understand the reality.
+
+Move past the emotional arguments and understand the value chain.",1,1,0,0,1,1,0,0,0,0,0,0
+99,211,-1,"SOMEONE SAYS...
+“Concerns that AI could threaten humanity’s survival are overblown and distract from the real ways AI is affecting people in Oregon right now”
+
+I would ask: 
+
+How long have you worked in the space? 
+
+",1,1,0,0,1,1,0,0,0,0,0,0
+100,215,1,Cities and counties should continue to give huge tax breaks and limit existing regulations so data centers can be built in their area.,77,3,72,2,47,2,45,0,30,1,27,2
+101,216,1,"I don't think we really know what AI is. It means different things to different people, and on a very superficial level.",83,50,21,12,49,32,10,7,34,18,11,5
+102,218,-1,"The previous statement is not either/or. AI is coming--and we not only need to adapt, we also need to understand it enough to legislate some guardrails and then build in some evaluation and ability to modify as the technology changes",1,1,0,0,0,0,0,0,1,1,0,0
+103,218,1,"As a former educator, I am very concerned about how AI is changing the ability of our students to write. It is easy to search for facts, but much harder to evaluate the quality of the info and then present a coherent analysis.",91,82,1,8,52,51,0,1,39,31,1,7
+104,218,-1,I think this is going to be hard to quantify and manage. All disruptive technologies cause a displacement of workers. We have unemployment insurance and workforce training already available.,1,1,0,0,0,0,0,0,1,1,0,0
+105,218,-1,Yep. I saw this happen in Eastern Oregon. It also drove up the price of housing temporarily,1,1,0,0,0,0,0,0,1,1,0,0
+106,218,1,Fix the corporate tax structure and don't worry about adding more displaced worker programs. We already have unemployment insurance and worker training.,77,16,31,30,47,7,20,20,30,9,11,10
+107,218,-1,I'm not sure what this would look like or how this would be accomplished.,1,1,0,0,0,0,0,0,1,1,0,0
+108,218,-1,I agree with this AND think it will be very difficult to monitor and enforce.,1,1,0,0,0,0,0,0,1,1,0,0
+109,218,1,I'm not sure Oregon should continue giving tax breaks to AI companies that use increasingly scarce resources like water.,88,74,7,7,51,48,2,1,37,26,5,6
+110,218,-1,"I agree with this statement but think the horse is already out of the barn. Other than lawsuits, the best option would be to make sure going forward, companies have to compensate creators for their work",1,1,0,0,0,0,0,0,1,1,0,0
+111,218,1,Allowing teens to maintain privacy has to be balanced with safety. I trust counselors and teachers to balance those two values much more than I trust an AI chatbot. Some queries should just shut down the bot and direct the teen to a person,94,78,4,12,52,45,1,6,42,33,3,6
+112,224,1,Insist that governments use AI to help them make transit more successful,73,13,37,23,45,2,31,12,28,11,6,11
+113,227,-1,"I've yet to read about or experience benefits of AI. With the current administrations transactional mindset, risk management of further AI development will be a secondary consideration. And who's risks are we discussing?",1,1,0,0,1,1,0,0,0,0,0,0
+114,233,1,"Prolific AI use is causing us to lose cognitive and creative abilities at a rapid rate. While all new technology improves our lives in various ways, we are giving up more than we are gaining with AI.",33,14,8,11,17,13,0,4,16,1,8,7
+115,233,1,The environmental cost of being more data centers to Central Oregon will outweigh the benefits.,34,22,2,10,18,17,0,1,16,5,2,9
+116,234,1,The costs far out weigh any perceived potential benefit to the commonplace,35,16,9,10,18,15,0,3,17,1,9,7
+117,240,1,"AI is a tool, just like any other. Tools can be used for harm or good, depending on the user.",39,29,7,3,18,10,7,1,21,19,0,2
+118,243,1,"While there are many situations in which AI can be a benefit, I can see that using AI can lead to us forgetting how to think for ourselves, because AI is quick and convenient. That's a huge risk in our education system.",41,37,3,1,20,20,0,0,21,17,3,1
+119,247,1,"In the software industry, AI is creating so much new code so quickly that more software developers will be needed, not fewer.",31,11,10,10,14,5,3,6,17,6,7,4
+120,258,1,"AI is a tool like many others we use daily. It will be used for good and bad, will change the way we work, but should not be viewed as a replacement for people. But, the work we do will change as a result of it.",38,32,1,5,19,14,1,4,19,18,0,1
+121,259,1,"AI should sharpen human judgment, not substitute for it. If we let it think for us instead of improving us, we trade agency for convenience. The risk is that we will choose the ""easy button"" temptation of AI over improving ones thinking.",40,38,0,2,17,16,0,1,23,22,0,1
+122,265,1,"We should not blindly trust developers, promoters of AI. The Pope is correct in saying ""AI should be disarmed.""",38,31,2,5,19,18,0,1,19,13,2,4
+123,270,1,"There should be no tax credits for AI data centers - these centers raise everyone's electric bill, create very few jobs and their usefulness is up for debate. The people of Oregon shouldn't be giving these billionaires a tax break",39,33,2,4,20,20,0,0,19,13,2,4
+124,275,-1,AI should be used to enhance humanity and the planet’s welfare instead of replacing humans and destroying the planet.,1,1,0,0,1,1,0,0,0,0,0,0
+125,278,1,Efforts need to be made to get more women involved in controlling AI.  Leaving AI power to only the TechBros is what got our world in the mess it is now.,32,19,5,8,16,12,2,2,16,7,3,6
+126,279,-1,"It's impossible for AI to ever be a 'product' or an 'enabler'. The harvest & subsequent sale of user data gleaned from user prompts nets them profits & erodes your privacy. No longer are we consumers; rather, we have become the consumed.",1,1,0,0,1,1,0,0,0,0,0,0
+127,286,1,"AI does provide benefits - so much so, that I don't see society putting that genie back in the bottle - but I also think that taxation and regulation of the tech companies creating AI are equally important.",34,26,4,4,17,11,3,3,17,15,1,1
+128,286,1,"Data center development requires fair, methodical, and unhurried environmental and community review. I would not want to live next to a 5000 acre data center campus that competes with humans and wildlife for water and raises my energy bill.",39,37,0,2,19,18,0,1,20,19,0,1
+129,291,-1,"build, build, build.",1,1,0,0,0,0,0,0,1,1,0,0
+130,292,1,AI companies should not receive “liability shields” from lawsuits that stem from negative environmental or health effects that arise from the construction and operation of data centers. They need to pay for negative side effects.,40,35,2,3,22,22,0,0,18,13,2,3
+131,292,1,There are too many lies and half-truths from AI companies and community leaders about the “job opportunities” that AI data centers will produce once built.,40,33,2,5,21,20,0,1,19,13,2,4
+132,294,-1,My concern is the data centers going up everywhere… please keep me on the loop on this issue,1,1,0,0,0,0,0,0,1,1,0,0
+133,295,-1,"I worry it makes us stupid and lazy.  In the hands of an expert, its a useful tool.  How does one train the mind and develop expertise?  Without discipline, AI will be our ruin.",1,1,0,0,1,1,0,0,0,0,0,0
+134,297,1,Every organization should implement an AI policy that protects company data and prevents confidential or proprietary information from being entered into generative AI tools.,36,30,1,5,18,18,0,0,18,12,1,5
+135,301,1,"Tech workers in Oregon should form an Oregon Tech Workers Union to protect ourselves from AI related corporate layoffs, salary reductions, position eliminations, etc.",25,12,2,11,15,9,0,6,10,3,2,5
+136,308,-1,"As a builder of AI my goal has never been to take away jobs but to make the user more valuable to their company. I build extensions of the user making them more accurate, efficient end result more profitable. Not all builders are bad.",1,1,0,0,0,0,0,0,1,1,0,0
+137,308,-1,If builders are not building a “kill switch” like my Koroshiya AI app that encapsulates attackers until the developer fixes but also reports to the authorities any fraudulent behavior. My app prevents AI from getting out of control!,1,1,0,0,0,0,0,0,1,1,0,0
+138,308,-1,Some of this isn’t making sense,1,1,0,0,0,0,0,0,1,1,0,0
+139,308,-1,My AI willl wal,1,1,0,0,0,0,0,0,1,1,0,0
+140,308,-1,My AI walks you through the apps I build.,1,1,0,0,0,0,0,0,1,1,0,0
+141,18,1,"We need to prioritize building a rigorous, apolitical evidence base around AI's impact on many things- child development, worker outcomes, environmental impacts, social connection, professional interactions, research capabilities.",29,29,0,0,17,17,0,0,12,12,0,0
+142,18,1,"While AI companies should be engaged in measuring the impact of their tools and responsive to government and community sentiment, it's not their job (alone) to find solutions. Many parts of society need to be part of shaping solutions.",27,20,3,4,13,8,3,2,14,12,0,2
+143,18,1,"We don't yet know how to effectively regulate AI, but that shouldn't stop us from introducing any regulation or safeguards. We need to be trying good ideas, evaluating carefully, and create mechanisms that can evolve quickly.",28,25,2,1,14,12,1,1,14,13,1,0
+144,324,0,Data centers are consuming huge amounts of limited resources and impacting many communities just so people can play with chatGPT or create fake photos that are entertaining for a minute or two. The cost is not worth the reward.,1,1,0,0,1,1,0,0,0,0,0,0
+145,324,-1,"While AI is learning how to do our jobs and destroying our critical thinking skills amd creativity, big corporations are priming to take more control over our society. We're going to be sitting ducks on the path to de-humanizing humanity.",1,1,0,0,1,1,0,0,0,0,0,0
+146,331,-1,No Data centers and No surveillance cameras or devices! No!,1,1,0,0,1,1,0,0,0,0,0,0
+147,332,1,"I hope AI’s potential when it is used to advance public good. I support AI if it helps address climate, water, health, education, and workforce challenges while protecting privacy, promoting fairness, and reducing environmental impacts.",21,14,4,3,8,3,4,1,13,11,0,2
+148,337,-1,"Compare LLMs and so-called artificial intelligence to nuclear fission. Now ask yourself, why am I not allowed by law to run my own artificial intelligence LLM and invite children to play with it?",1,1,0,0,1,1,0,0,0,0,0,0
+149,338,0,I would like to apply my grandmother‘s standard assessment regarding AI: Is it necessary? Is it fair? Does it hurt anybody or anything?,1,1,0,0,1,1,0,0,0,0,0,0
+150,0,1,"Community members' voices should be included when local leaders are making decisions on using AI in government.
+",16,15,0,1,5,5,0,0,11,10,0,1
+151,0,1,I would volunteer to participate in a 3-day civic assembly to make recommendations on AI policy to local and state leaders.,16,9,3,4,5,4,1,0,11,5,2,4
+152,0,1,I think about how AI affects my family and community on a weekly basis.,14,9,4,1,5,5,0,0,9,4,4,1
+153,0,1,The most powerful AI models should be open so the public can inspect the code and prevent monopolies.,15,9,3,3,5,4,0,1,10,5,3,2
+154,0,1,Keeping the code behind world's most powerful AI models private is a necessary safety measure to prevent bad actors from using the technology for harm.,12,3,3,6,4,1,1,2,8,2,2,4
+155,0,1,AI companies should be required to watermark all synthetic content so that users can always distinguish between a real human and an AI-generated image or video.,13,10,0,3,4,4,0,0,9,6,0,3
+156,0,1,"Before being deployed in public sectors like law enforcement or healthcare, AI models must be independently audited to prove they do not have racial or gender biases.",15,12,0,3,5,5,0,0,10,7,0,3
+157,0,1,"Because AI is trained on historical data, it will inevitably reinforce existing societal prejudices unless we strictly regulate how that data is collected.",13,7,1,5,4,4,0,0,9,3,1,5
+158,339,-1,"I thinnk we should just get rid of ai, it will be no good for anyone.",1,1,0,0,1,1,0,0,0,0,0,0
+159,339,-1,The wording Is stupid,1,1,0,0,1,1,0,0,0,0,0,0
+160,339,-1,Say no to AI before it ruins our world.,1,1,0,0,1,1,0,0,0,0,0,0
+161,343,1,"The AI industry seems to be moving too fast towards an uncertain outcome. We should not be subsiding building data centers with tax breaks. The downsides are just not worth it: noise, pollution, higher water and electric bills.",11,10,1,0,4,4,0,0,7,6,1,0
+162,323,-1,All forms of AI should have guardrails. The state of oregon should,1,1,0,0,1,1,0,0,0,0,0,0
+163,323,-1,Oregon's elected leaders should support the Bill that senator Bernis,1,1,0,0,1,1,0,0,0,0,0,0
+164,323,-1,Oregon's elected leaders should support the Bill that Senator,1,1,0,0,1,1,0,0,0,0,0,0
+165,323,-1,Oregon's elected leaders should support the Bill that is proposed,1,1,0,0,1,1,0,0,0,0,0,0
+166,323,-1,oregon's elected officials should support senator Bernie Sanders,1,1,0,0,1,1,0,0,0,0,0,0

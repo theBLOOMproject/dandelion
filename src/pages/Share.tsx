@@ -167,7 +167,7 @@ export function Share() {
     requireAuth({
       fields: ['email', 'zip'],
       title: 'Save your responses',
-      sub: 'Add your email and zip code so your thoughts count toward what Oakland is saying.',
+      sub: 'Add your email and zip code so your thoughts count toward what Central Oregon is saying.',
       cta: 'Finish',
       onDone: () => {
         completeTask('share');
@@ -246,7 +246,7 @@ export function Share() {
             <h1 className="share-q">Thanks for weighing in.</h1>
             <p className="share-summary">
               {answered > 0 ? `You answered ${answered} question${answered === 1 ? '' : 's'} and` : 'You'} reacted to{' '}
-              {votes.length} of your neighbors’ statements. Your responses help everyone see where Oakland stands.
+              {votes.length} of your neighbors’ statements. Your responses help everyone see where Central Oregon stands.
             </p>
             <div className="share-actions">
               <button className="btn btn-share" onClick={done}>See the Community Q&amp;A</button>

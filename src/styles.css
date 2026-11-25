@@ -1028,3 +1028,7 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
   .compose-header { padding-right: 10px; }
   .sheet .header:has(.compose-header) { padding-top: 32px; padding-right: 20px; }
 }
+.resp-groups { align-items: start; padding: 10px 0; }
+.resp-groups .pct, .resp-groups .avatar { margin-top: 4px; }
+.group-pcts { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 6px; font-size: 14px; color: var(--muted); }
+.group-pcts b { font-weight: 500; color: var(--navy); }
