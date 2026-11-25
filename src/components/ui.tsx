@@ -74,7 +74,7 @@ function Header({ eyebrow, title, sub, stats, top, bottom, action, small, keepSt
     </div>
   );
   return (
-    <div className={`header ${className} ${keepStatsMobile ? 'keep-stats' : ''}`} style={{ background: color, color: fg, ['--hero-c' as string]: color }}>
+    <div className={`header ${className} ${keepStatsMobile ? 'keep-stats' : ''} ${fg === C.navy ? 'header-light' : ''}`} style={{ background: color, color: fg, ['--hero-c' as string]: color }}>
       {shot && (
         <>
           {/* Any photo works: it's desaturated and blended by luminosity, so the header color supplies the hue. */}

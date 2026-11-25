@@ -40,7 +40,7 @@ export function Canvas() {
       <Hero
         title="Community Q&A"
         sub={<p className="hero-sub">Explore what people have to say on the following questions, or propose your own.</p>}
-        action={<Link to="/share" viewTransition className="btn btn-lg btn-pink">Share your thoughts</Link>}
+        action={<Link to="/share" viewTransition className="btn btn-lg btn-hero">Share your thoughts</Link>}
       />
       <div className="page">
         <div className="list-head qlist-head">

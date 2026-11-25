@@ -14,7 +14,7 @@ export function Library() {
             <a href="#" onClick={(e) => e.preventDefault()}>How did these sources get chosen?</a>
           </p>
         }
-        action={<button className="btn btn-lg btn-green" onClick={() => openComposer('resource')}>Share a resource</button>}
+        action={<button className="btn btn-lg btn-hero" onClick={() => openComposer('resource')}>Share a resource</button>}
       />
       <div className="page">
         <div className="cards3">

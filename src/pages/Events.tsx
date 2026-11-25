@@ -15,7 +15,7 @@ export function Events() {
             Meet neighbors in person to talk through this issue. <a href="#" onClick={(e) => e.preventDefault()}>How do events work?</a>
           </p>
         }
-        action={<Link to="/events/new" viewTransition className="btn btn-lg btn-navy">Host an event</Link>}
+        action={<Link to="/events/new" viewTransition className="btn btn-lg btn-hero">Host an event</Link>}
       />
       <div className="page">
         <div className="grid2">

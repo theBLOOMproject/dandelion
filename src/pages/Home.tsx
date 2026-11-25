@@ -203,7 +203,7 @@ export function Home() {
         big
         photo
         keepStatsMobile
-        action={<Link to="/share" viewTransition className="btn btn-lg btn-pink">Share your thoughts</Link>}
+        action={<Link to="/share" viewTransition className="btn btn-lg btn-hero">Share your thoughts</Link>}
       />
       <Ticker />
       <div className="page">

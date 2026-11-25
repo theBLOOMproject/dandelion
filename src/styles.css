@@ -1215,3 +1215,10 @@ a.tcard:hover, button.tcard:hover { filter: brightness(0.94); }
   .hero:not(.hero-big) .header-sub { margin-top: 4px; }
 }
 @media (max-width: 1080px) { .hero:not(.hero-big):has(.header-sub) .header-row { align-items: flex-start; } }
+
+/* Header CTA: white, with the header's own color as its text (navy on a light header). */
+.btn-hero { background: #fff; color: var(--hero-c); }
+.header-light .btn-hero { background: var(--navy); color: #fff; }
+@media (max-width: 860px) {
+  .header-action, .header-action .btn { width: 100%; min-width: 0; }
+}
